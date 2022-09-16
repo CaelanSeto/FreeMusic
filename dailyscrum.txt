@@ -1,11 +1,249 @@
+
 9/16/22
 CAELAN:
+1) Done / Not done since Last Scrum:
+Worked on Proposal
+Mockups
+getting github repository set up
+Database design
+
+2) To do until next Scrum:
+start creating client-side skeleton
+
+3) Need Assistance / figure things out
+So far so good
+
 
 
 VLAD:
+1) Done / Not done since Last Scrum:
+Worked on Routes
+Creating database through sequelize
+
+2) To do until next Scrum:
+Finish server-side routes
+
+3) Need Assistance / figure things out
+So far so good
 
 
 EDGAR:
+1) Done / Not done since Last Scrum:
+Worked on proposal, Database design, creating database through sequelize
+
+2) To do until next Scrum:
+Login features
+
+3) Need Assistance / figure things out
+So far so good
+
+
+
+9/18/22
+CAELAN:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+
+VLAD:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+EDGAR:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+9/18/22
+CAELAN:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+
+VLAD:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+EDGAR:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+9/18/22
+CAELAN:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+
+VLAD:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+EDGAR:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+9/19/22
+CAELAN:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+
+VLAD:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+EDGAR:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+9/20/22
+CAELAN:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+
+VLAD:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+EDGAR:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+9/21/22
+CAELAN:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+
+VLAD:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+EDGAR:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+9/22/22
+CAELAN:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+
+VLAD:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+EDGAR:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+9/23/22
+CAELAN:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+
+VLAD:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+EDGAR:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
 
 
 
