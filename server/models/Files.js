@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    const Recordings = sequelize.define("Recordings", {
-      name: {
+    const Files = sequelize.define("Files", {
+      title: {
         type: DataTypes.STRING(260),
         allowNull: false,
       },
@@ -8,18 +8,26 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(300),
         allowNull: false,
       },
+      type: {
+        type: DataTypes.ENUM("recording", "sheetmusic"),
+        allowNull: false,
+      },
       description: {
         type: DataTypes.STRING(1000),
+        allowNull: false
+      },
+      instruments: {
+        type: DataTypes.STRING(400),
         allowNull: false
       }
     });
 
-    Recordings.associate = (models) =>{
-        Recordings.hasMany(models.Downloads, {
+    Files.associate = (models) =>{
+      Files.hasMany(models.Downloads, {
            onDelete: "cascade"
         });
     };
  
-    return Recordings;
+    return Files;
   };
   

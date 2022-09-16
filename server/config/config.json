@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "root 2022",
+    "password": "root2022",
     "database": "freemusicdb",
     "host": "127.0.0.1",
     "dialect": "mysql"

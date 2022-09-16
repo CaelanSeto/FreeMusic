@@ -14,4 +14,7 @@ db.sequelize.sync().then(() => {
     });
 });
 
+db.Users.hasMany(db.Downloads);
+db.Downloads.belongsTo(db.Users);
+
 

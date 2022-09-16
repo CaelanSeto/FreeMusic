@@ -5,20 +5,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: true,
       },
-      description: {
+      biography: {
         type: DataTypes.STRING(400),
         allowNull: false,
       },
     });
 
     Composers.associate = (models) =>{
-        Composers.hasMany(models.SheetMusic, {
-           onDelete: "cascade"
-        });
-    };
-
-    Composers.associate = (models) =>{
-        Composers.hasMany(models.Recordings, {
+        Composers.hasMany(models.Pieces, {
            onDelete: "cascade"
         });
     };
