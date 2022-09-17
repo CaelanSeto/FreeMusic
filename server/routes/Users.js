@@ -21,20 +21,14 @@ router.get("/:id", async (req, res) => {
 //user registration
 router.post("/register", async (req, res) => {  
     const {email, name, password} = req.body;
-    const user = await Users.findOne(email);
-    if(user){
-        res.json({ error: "The user exists, can not register again!" });
-    }
-    else{
-        bcrypt.hash(password, 10).then((hash) => {
-            Users.create({
-                email: email,
-                password: hash,
-                name: name
-            });
-            res.json("User Created!");
-        }); 
-    }
+    bcrypt.hash(password, 10).then((hash) => {
+        Users.create({
+            email: email,
+            password: hash,
+            name: name
+        });
+        res.json("User Created!");
+    }); 
 });
 
 //user login
@@ -64,20 +58,15 @@ router.post("/login", async (req, res) => {
 //update user
 router.patch("/edit/:id", async (req, res) => {
     const id = req.params.id;
-    const user = await Users.findByPk(id);
-    if(!user){
-        res.json({ error: "Smth went wrong!" });
-    }
-    else{
-        const name = req.body.name;
-        const role = req.body.role;
-        const status = req.body.status;
-        await Users.update({ name: name, role: role, status: status }, { 
-            where: {
-                id: id
-            }
-        });
-    }
+    const name = req.body.name;
+    const role = req.body.role;
+    const status = req.body.status;
+    await Users.update({ name: name, role: role, status: status }, { 
+        where: {
+            id: id
+        }
+    });
+    res.json("updated!!!");
 });
 
 //delete user
