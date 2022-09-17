@@ -4,7 +4,9 @@ const { Composers } = require("../models");
 
 //get all Composers
 router.get("/", async (req, res) => {
-    const listOfComposers = await Composers.findAll();
+    const listOfComposers = await Composers.findAll({
+        order: ["name"]
+    });
     res.json(listOfComposers);
 });
 
@@ -37,17 +39,19 @@ router.patch("/edit/:id", async (req, res) => {
                 id: id
             }
         });
+        res.json("updated");
     }
 });
 
 //delete Composer
 router.delete("/delete/:id", async (req, res) => {
     const id = req.params.id;
-    await biography.destroy({
+    await Composers.destroy({
         where: {
           id: id
         }
     });
+    res.json("deleted");
 });
 
 module.exports = router;

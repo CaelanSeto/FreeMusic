@@ -77,6 +77,7 @@ router.delete("/delete/:id", async (req, res) => {
           id: id
         }
     });
+    res.json("deleted!!!");
 });
 
 //authentification 

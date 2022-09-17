@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
 });
 
 //get all Downloads by UserId
-router.get("/:UserId", async (req, res) => {
+router.get("/userId/:UserId", async (req, res) => {
     const UserId = req.params.UserId;
     const listOfDownloads = await Downloads.findAll({
         where: {
@@ -20,7 +20,7 @@ router.get("/:UserId", async (req, res) => {
 });
 
 //get all Downloads by FileId
-router.get("/:FileId", async (req, res) => {
+router.get("/fileId/:FileId", async (req, res) => {
     const FileId = req.params.FileId;
     const listOfDownloads = await Downloads.findAll({
         where: {
@@ -52,6 +52,7 @@ router.delete("/delete/:id", async (req, res) => {
           id: id
         }
     });
+    res.json("deleted");
 });
 
 module.exports = router;
