@@ -42,6 +42,7 @@ function App() {
     <Router>
         <div className="navbar">
         <Link to ="/">Home</Link>
+        <div className="links">
         {!authState.status && (
         <>
         <Link to ="/login">Login</Link>
@@ -51,6 +52,7 @@ function App() {
         <div className="loggedInContainer">
         <h1>{authState.email}</h1>
          {authState.status && <button onClick={logout}> Logout </button>}
+        </div>
         </div>
       <Routes>
         <Route path="/" element={<Home />}></Route>
