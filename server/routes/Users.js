@@ -3,7 +3,7 @@ const router = express.Router();
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
 const {sign} = require("jsonwebtoken");
-const {validateToken} = require('../middlewares/AuthMiddlewares');
+const {validateToken} = require('../middlewares/AuthMiddleware');
 
 //get the list of all users
 router.get("/", async (req, res) => {
@@ -50,7 +50,7 @@ router.post("/login", async (req, res) => {
           "noSecretAtAll"
       );
 
-      res.json(accessToken);
+      res.json({token: accessToken, email: email, id: user.id});
       
     });
 });
