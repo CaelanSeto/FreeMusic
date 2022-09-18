@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/auth/auth", {
+      .get("http://localhost:3001/users/auth", {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
         },
@@ -52,16 +52,9 @@ function App() {
         <Router>
           <div classname="navbar-tempname">
             <div classname="links-tempname">
-            {!authState.status ? (
+              {!authState.status ? (
                 <>
-                  <Link to="/login">
-                    <Button>Login</Button>
-                  </Link>
-                  <Link to="/registration">
-                    <Button>
-                      Registration
-                    </Button>
-                  </Link>
+                  <NavbarComponent/>
                 </>
               ) : (
                 <>

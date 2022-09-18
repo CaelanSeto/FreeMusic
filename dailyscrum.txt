@@ -42,7 +42,7 @@ So far so good
 9/18/22
 CAELAN:
 1) Done / Not done since Last Scrum:
-
+DONE:
 2) To do until next Scrum:
 
 3) Need Assistance / figure things out
