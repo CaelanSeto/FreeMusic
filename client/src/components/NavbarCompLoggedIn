@@ -5,7 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function NavbarComponent() {
+function NavbarCompLoggedIn() {
 
   return (  
   
@@ -26,9 +26,7 @@ function NavbarComponent() {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Nav className="ml-auto">
-            <Nav.Link href="/login">Login/Register</Nav.Link>
-          </Nav>
+          
           <Form className="d-flex">
             <Form.Control
               type="search"
@@ -44,4 +42,4 @@ function NavbarComponent() {
   );
 }
 
-export default NavbarComponent;
+export default NavbarCompLoggedIn;
