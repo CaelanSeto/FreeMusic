@@ -14,7 +14,8 @@ router.get("/:PieceId", async (req, res) => {
     const listOfFiles = await Files.findAll({
         where: {
             PieceId: PieceId
-        }
+        },
+        order: ["type"]
     });
     res.json(listOfFiles);
 });
@@ -59,6 +60,7 @@ router.patch("/edit/:id", async (req, res) => {
                 id: id
             }
         });
+        res.json("updated");
     }
 });
 
@@ -70,6 +72,7 @@ router.delete("/delete/:id", async (req, res) => {
           id: id
         }
     });
+    res.json("deleted");
 });
 
 module.exports = router;
