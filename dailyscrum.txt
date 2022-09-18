@@ -43,78 +43,42 @@ So far so good
 CAELAN:
 1) Done / Not done since Last Scrum:
 DONE:
+    Navbar finished
+    CSS Bootstrap design decided
+    Homepage started
+
 2) To do until next Scrum:
+    Finish Homepage
+    
 
 3) Need Assistance / figure things out
-
+    Fix merges
+    Watch ep. 17 of Pedro's tutorial
 
 
 VLAD:
 1) Done / Not done since Last Scrum:
-
+DONE:
+    Validation for All API server-side
+    All API finished, might need revising in the future
 2) To do until next Scrum:
+    Composers Page
+    Pieces by Composers Page
 
 3) Need Assistance / figure things out
+    So far so good
 
 
 EDGAR:
 1) Done / Not done since Last Scrum:
+    Login/Registration done with some errors that needs fixing
 
 2) To do until next Scrum:
+    Profile Page
+    Finish Registration (working through errors)
 
 3) Need Assistance / figure things out
-
-
-9/18/22
-CAELAN:
-1) Done / Not done since Last Scrum:
-
-2) To do until next Scrum:
-
-3) Need Assistance / figure things out
-
-
-
-VLAD:
-1) Done / Not done since Last Scrum:
-
-2) To do until next Scrum:
-
-3) Need Assistance / figure things out
-
-
-EDGAR:
-1) Done / Not done since Last Scrum:
-
-2) To do until next Scrum:
-
-3) Need Assistance / figure things out
-
-
-9/18/22
-CAELAN:
-1) Done / Not done since Last Scrum:
-
-2) To do until next Scrum:
-
-3) Need Assistance / figure things out
-
-
-
-VLAD:
-1) Done / Not done since Last Scrum:
-
-2) To do until next Scrum:
-
-3) Need Assistance / figure things out
-
-
-EDGAR:
-1) Done / Not done since Last Scrum:
-
-2) To do until next Scrum:
-
-3) Need Assistance / figure things out
+    Watch ep. 17 of Pedro's tutorial
 
 
 9/19/22
@@ -194,7 +158,59 @@ EDGAR:
 
 3) Need Assistance / figure things out
 
+
 9/22/22
+CAELAN:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+
+VLAD:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+EDGAR:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+9/23/22
+CAELAN:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+
+VLAD:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+
+EDGAR:
+1) Done / Not done since Last Scrum:
+
+2) To do until next Scrum:
+
+3) Need Assistance / figure things out
+
+9/24/22
 CAELAN:
 1) Done / Not done since Last Scrum:
 

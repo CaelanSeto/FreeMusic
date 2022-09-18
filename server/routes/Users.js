@@ -3,7 +3,7 @@ const router = express.Router();
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
 const {sign} = require("jsonwebtoken");
-const {validateToken} = require('../middlewares/AuthMiddlewares');
+const {validateToken} = require('../middlewares/AuthMiddleware');
 
 //email format validation
 function isEmail(email) {
@@ -67,33 +67,23 @@ router.post("/login", async (req, res) => {
     const { email, password } = req.body;
     const user =  await Users.findOne({ where: { email: email } });
 
-    if (!user){
-        res.status(401).json({ error: "Bad Credentials!" });
-    }
-    else{
-        bcrypt.compare(password, user.password).then(async (match) => {
-            if (!match){
-                res.status(401).json({ error: "Bad Credentials!" });
-            } 
-            else{
-                if(user.status!==0){
-                    res.status(403).json({ error: "Your account is blocked, please contact admin!" });
-                }
-                else{
-                    const accessToken = sign(
-                        {
-                          email: user.email, 
-                          id: user.id,
-                          role: user.role
-                        }, 
-                          "noSecretAtAll"
-                    );
-                    res.status(201).json(accessToken);
-                }
-            }  
-        });
-          
-    } 
+    if (!user) res.json({ error: "Bad Credentials!" });
+
+    bcrypt.compare(password, user.password).then(async (match) => {
+      if (!match) res.json({ error: "Bad Credentials!" });
+
+      const accessToken = sign(
+        {
+          email: user.email, 
+          id: user.id,
+          role: user.role
+        }, 
+          "noSecretAtAll"
+      );
+
+      res.json({token: accessToken, email: email, id: user.id});
+      
+    });
 });
 
 //update user
