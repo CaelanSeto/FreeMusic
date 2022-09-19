@@ -5,8 +5,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function NavbarComponent() {
-
+function NavbarComponent(authState) {
+  console.log(authState);
   return (  
   
     <Navbar bg="dark" expand="lg" variant="dark">
@@ -26,9 +26,6 @@ function NavbarComponent() {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Nav className="ml-auto">
-            <Nav.Link href="/login">Login/Register</Nav.Link>
-          </Nav>
           <Form className="d-flex">
             <Form.Control
               type="search"
@@ -37,7 +34,22 @@ function NavbarComponent() {
               aria-label="Search"
             />
             <Button variant="outline-success">Search</Button>
-          </Form>
+          </Form>       
+          {!authState.status ? (
+            <>
+              <Nav className="ml-auto">
+                <Nav.Link href="/login">Login/Register</Nav.Link>
+              </Nav>
+            </>
+          ) : (
+            <>
+              <Nav className="ml-auto">
+                {authState.name}
+                {authState.status && <button onClick={console.log("logout")}> Logout</button>}
+              </Nav>
+            </>
+              )}
+
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -3,21 +3,20 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthContext } from "./helpers/AuthContext";
 import { useState , useEffect} from "react";
 import axios from "axios";
-import NavbarComponent from "./components/NavbarComponent"
-import NavbarCompLoggedIn from "./components/NavbarCompLoggedIn"
+import NavbarComponent from "./components/NavbarComponent";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 
-
 function App() {
+  
   const [authState, setAuthState] = useState({
     email: "",
     id: 0,
+    name: "",
     status: false,
   });
-
   useEffect(() => {
     axios.get("http://localhost:3001/users/auth", {
       headers: {
@@ -25,11 +24,14 @@ function App() {
     }
   }).then((response) => {
       if (response.data.error) {
+        console.log("error");
         setAuthState({ ...authState, status: false});
       }else{
+        console.log("NAME: " + response.data.name);
         setAuthState({
           email: response.data.email,
           id: response.data.id,
+          name: response.data.name,
           status: true,
         });
       }
@@ -38,7 +40,7 @@ function App() {
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setAuthState({ email: "", id: 0, status: false})
+    setAuthState({ email: "", id: 0, name: "", status: false})
   };
 
   return (
@@ -47,19 +49,8 @@ function App() {
         <Router>
           <div className="navbar-tempname">
             <div className="links-tempname">
-              {!authState.status ? (
-                <>
-                  <NavbarComponent/>
-                </>
-              ) : (
-                <>
-                  <NavbarCompLoggedIn/>
-                </>
-              )}
-            </div>
-            <div className="loggedInContainer">
-              <h1>{authState.email} </h1>
-              {authState.status && <button onClick={logout}> Logout</button>}
+              <NavbarComponent authState = {authState}/>
+              
             </div>
           </div>
             <Routes>
