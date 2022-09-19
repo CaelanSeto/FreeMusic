@@ -19,6 +19,7 @@ import Composers from "./pages/Composers";
 import Pieces from "./pages/Pieces";
 import Files from "./pages/Files";
 import Profile from "./pages/Profile";
+import CreateFile from "./pages/CreateFile";
 
 
 //MIDI ACCESS
@@ -121,6 +122,7 @@ function App() {
         <Route path="/pieces/:ComposerId" element={<Pieces />}></Route>
         <Route path="/files/:PieceId" element={<Files />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
+        <Route path="/admin/files/add" element={<CreateFile />}></Route>
       </Routes>
     </Router>
     </AuthContext.Provider>
