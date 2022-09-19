@@ -48,7 +48,6 @@ function App() {
       }
     });
   }, []);
-  window.name = authState.name;
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -67,13 +66,8 @@ function App() {
           <Nav className="me-auto">
             <NavDropdown title="Sheet Music and Recordings" id="basic-nav-dropdown">
               <NavDropdown.Item href="/composers">Composers</NavDropdown.Item>
-              <NavDropdown.Item href="/pieces">
-                Pieces
-              </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/donations">
-                Donations
-              </NavDropdown.Item>
+              <NavDropdown.Item href="/donations">Donations</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Form className="d-flex">
