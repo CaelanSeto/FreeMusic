@@ -66,24 +66,30 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
     const user =  await Users.findOne({ where: { email: email } });
-    if (!user) res.json({ error: "Bad Credentials!" });
-
-    bcrypt.compare(password, user.password).then(async (match) => {
-      if (!match) res.json({ error: "Bad Credentials!" });
-
-      const accessToken = sign(
-        {
-          email: user.email,
-          name: user.name,
-          id: user.id,
-          role: user.role
-        }, 
-          "noSecretAtAll"
-      );
-
-      res.json({ token: accessToken, email: email, id: user.id, name: user.name, role: user.role });
-      
-    });
+    if (!user){
+        res.json({ error: "Bad Credentials!" });
+    } 
+    else{
+        bcrypt.compare(password, user.password).then(async (match) => {
+            if (!match){
+                res.json({ error: "Bad Credentials!" });
+            }
+            else{
+                const accessToken = sign(
+                    {
+                      email: user.email,
+                      name: user.name,
+                      id: user.id,
+                      role: user.role,
+                      status: user.status
+                    }, 
+                      "noSecretAtAll"
+                  );
+            
+                  res.json({ token: accessToken, email: email, id: user.id, name: user.name, role: user.role, status: user.status });
+            }   
+        });
+    }
 });
 
 //update user
