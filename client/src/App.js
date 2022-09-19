@@ -3,8 +3,15 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthContext } from "./helpers/AuthContext";
 import { useState , useEffect} from "react";
 import axios from "axios";
-import NavbarComponent from "./components/NavbarComponent";
+//import NavbarComponent from "./components/NavbarComponent";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -50,12 +57,52 @@ function App() {
     <div className="App">
     <AuthContext.Provider value={{authState, setAuthState}}>
     <Router>
-    <div className="navbar-tempname">
-            <div className="links-tempname">
-              <NavbarComponent authState = {authState}/>
-              
-            </div>
-      </div>
+    <Navbar bg="dark" expand="lg" variant="dark">
+      <Container>
+        <Navbar.Brand href="/">FreeMusic</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <NavDropdown title="Sheet Music and Recordings" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/composers">Composers</NavDropdown.Item>
+              <NavDropdown.Item href="/pieces">
+                Pieces
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/donations">
+                Donations
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>       
+          {!authState.status ? (
+            <>
+              <Nav className="ml-auto">
+                <Nav.Link href="/login">Login/Register</Nav.Link>
+              </Nav>
+            </>
+          ) : (
+            <>
+              <Nav className="ml-auto">
+                <Nav.Link href="/profile">
+                  {authState.email}
+                  </Nav.Link>
+                  {authState.status && <Button onClick={ logout } variant="outline-success"> Logout</Button>}
+              </Nav>
+            </>
+              )}
+
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
