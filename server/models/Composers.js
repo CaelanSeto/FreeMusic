@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
       },
       biography: {
-        type: DataTypes.STRING(400),
+        type: DataTypes.STRING(10000),
         allowNull: false,
       },
     });

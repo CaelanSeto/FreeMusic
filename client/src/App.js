@@ -2,6 +2,9 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Composers from "./pages/Composers";
+import Pieces from "./pages/Pieces";
+import Files from "./pages/Files";
 import { AuthContext } from "./helpers/AuthContext";
 import { useState , useEffect} from "react";
 import axios from "axios";
@@ -55,6 +58,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/composers" element={<Composers />}></Route>
+        <Route path="/pieces/:ComposerId" element={<Pieces />}></Route>
+        <Route path="/files/:PieceId" element={<Files />}></Route>
       </Routes>
     </Router>
     </AuthContext.Provider>
