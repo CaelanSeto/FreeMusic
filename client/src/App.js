@@ -45,20 +45,29 @@ function App() {
 
   return (
     <div className="App">
-      <AuthContext.Provider value={{ authState, setAuthState }}>
-        <Router>
-          <div className="navbar-tempname">
-            <div className="links-tempname">
-              <NavbarComponent authState = {authState}/>
-              
-            </div>
-          </div>
-            <Routes>
-              <Route path="/" element={<Home />}></Route>
-              <Route path="/login" element={<Login />}></Route>
-            </Routes>
-        </Router>
-      </AuthContext.Provider>
+    <AuthContext.Provider value={{authState, setAuthState}}>
+    <Router>
+        <div className="navbar">
+        <Link to ="/">Home</Link>
+        {!authState.status && (
+        <>
+        <Link to ="/login">Login</Link>
+        </>
+        )} 
+        </div>
+        <div className="loggedInContainer">
+        <h1>{authState.email}</h1>
+         {authState.status && <button onClick={logout}> Logout </button>}
+        </div>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/composers" element={<Composers />}></Route>
+        <Route path="/pieces/:ComposerId" element={<Pieces />}></Route>
+        <Route path="/files/:PieceId" element={<Files />}></Route>
+      </Routes>
+    </Router>
+    </AuthContext.Provider>
     </div>
   );
 }
