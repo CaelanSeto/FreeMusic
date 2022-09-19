@@ -8,6 +8,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Composers from "./pages/Composers";
+import Pieces from "./pages/Pieces";
+import Files from "./pages/Files";
 
 function App() {
   
@@ -47,18 +50,12 @@ function App() {
     <div className="App">
     <AuthContext.Provider value={{authState, setAuthState}}>
     <Router>
-        <div className="navbar">
-        <Link to ="/">Home</Link>
-        {!authState.status && (
-        <>
-        <Link to ="/login">Login</Link>
-        </>
-        )} 
-        </div>
-        <div className="loggedInContainer">
-        <h1>{authState.email}</h1>
-         {authState.status && <button onClick={logout}> Logout </button>}
-        </div>
+    <div className="navbar-tempname">
+            <div className="links-tempname">
+              <NavbarComponent authState = {authState}/>
+              
+            </div>
+      </div>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>

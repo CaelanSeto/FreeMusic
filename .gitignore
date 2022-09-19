@@ -25,3 +25,4 @@ replay_pid*
 
 server/config/* 
 client/node_modules/*
+server/node_modules/*
