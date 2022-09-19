@@ -22,8 +22,12 @@ function Login() {
     });
 
     const onSubmit = (data) => {
-        axios.post("http://localhost:3001/users/register", data).then(() => {
+        axios.post("http://localhost:3001/users/register", data).then((response) => {
+            if(response.data.error) {
+                alert(response.data.error);
+              }else{
             console.log(data);
+              }
         })
     };
 
