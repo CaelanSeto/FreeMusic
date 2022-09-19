@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
 });
 
 //get user by id
-router.get("/:id", async (req, res) => {
+router.get("/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     const user = await Users.findByPk(id);
     if(!user){
