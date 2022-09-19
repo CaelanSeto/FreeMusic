@@ -20,6 +20,21 @@ import Pieces from "./pages/Pieces";
 import Files from "./pages/Files";
 import Profile from "./pages/Profile";
 
+
+//MIDI ACCESS
+if (navigator.requestMIDIAccess) {
+  navigator.requestMIDIAccess().then(success, failure);
+}
+function success(midiAccess) {
+  console.log(midiAccess)
+}
+function failure() {
+  console.log("Could not run MIDI")
+}
+
+
+
+
 function App() {
   
   const [authState, setAuthState] = useState({
@@ -89,8 +104,8 @@ function App() {
             <>
               <Nav className="ml-auto">
                 <Nav.Link href="/profile">
-                  {authState.name}
-                  </Nav.Link>
+                  Welcome, {authState.name}
+                </Nav.Link>
                   {authState.status && <Button onClick={ logout } variant="outline-success"> Logout</Button>}
               </Nav>
             </>
