@@ -84,26 +84,32 @@ EDGAR:
 9/19/22
 CAELAN:
 1) Done / Not done since Last Scrum:
+    Homepage, changed navbar logic
 
 2) To do until next Scrum:
+    implement MP3 player
 
 3) Need Assistance / figure things out
-
+    Navbar problems
+    How to pass object to another file
 
 
 VLAD:
 1) Done / Not done since Last Scrum:
+    DONE: Composers, Pieces, Individual Pieces
 
 2) To do until next Scrum:
+    Link files to S3
+    Implement upload/download
 
 3) Need Assistance / figure things out
 
 
 EDGAR:
 1) Done / Not done since Last Scrum:
-
+    Bugfixing login
 2) To do until next Scrum:
-
+    Profile page, finish bugfixing login
 3) Need Assistance / figure things out
 
 

@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 function NavbarComponent(authState) {
   console.log(authState);
+  window.name = authState;
   return (  
   
     <Navbar bg="dark" expand="lg" variant="dark">
@@ -44,8 +45,8 @@ function NavbarComponent(authState) {
           ) : (
             <>
               <Nav className="ml-auto">
-                {authState.name}
-                {authState.status && <button onClick={console.log("logout")}> Logout</button>}
+                {authState.email}
+                {authState.status && <button onClick={() => {"logout"} }> Logout</button>}
               </Nav>
             </>
               )}
