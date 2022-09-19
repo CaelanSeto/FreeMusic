@@ -20,21 +20,6 @@ import Pieces from "./pages/Pieces";
 import Files from "./pages/Files";
 import Profile from "./pages/Profile";
 
-
-//MIDI ACCESS
-if (navigator.requestMIDIAccess) {
-  navigator.requestMIDIAccess().then(success, failure);
-}
-function success(midiAccess) {
-  console.log(midiAccess)
-}
-function failure() {
-  console.log("Could not run MIDI")
-}
-
-
-
-
 function App() {
   
   const [authState, setAuthState] = useState({
