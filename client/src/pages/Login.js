@@ -22,8 +22,12 @@ function Login() {
     });
 
     const onSubmit = (data) => {
-        axios.post("http://localhost:3001/users/register", data).then(() => {
+        axios.post("http://localhost:3001/users/register", data).then((response) => {
+            if(response.data.error) {
+                alert(response.data.error);
+              }else{
             console.log(data);
+              }
         })
     };
 
@@ -34,6 +38,7 @@ function Login() {
     let navigate = useNavigate()
 
     const login = () => {
+        
         const data = { email: email, password: password };
         axios.post("http://localhost:3001/users/login", data).then((response) => {
             if(response.data.error) {
@@ -41,6 +46,7 @@ function Login() {
               }else{
               localStorage.setItem("accessToken", response.data.token);
               setAuthState({
+                name: response.data.name,
                 email: response.data.email,
                 id: response.data.id,
                 status: true,
