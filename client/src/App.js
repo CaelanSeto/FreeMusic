@@ -47,6 +47,7 @@ function App() {
       }
     });
   }, []);
+  window.name = authState.name;
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -93,7 +94,7 @@ function App() {
             <>
               <Nav className="ml-auto">
                 <Nav.Link href="/profile">
-                  {authState.email}
+                  {authState.name}
                   </Nav.Link>
                   {authState.status && <Button onClick={ logout } variant="outline-success"> Logout</Button>}
               </Nav>
