@@ -17,7 +17,7 @@ function isEmail(email) {
 router.get("/", async (req, res) => {
     const listOfUsers = await Users.findAll();
     if(!listOfUsers){
-        res.status(200).json("There are no users yet!");
+        res.status(200).json({error: "There are no users yet!"});
     }
     else{
         res.status(200).json(listOfUsers);
@@ -29,7 +29,7 @@ router.get("/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     const user = await Users.findByPk(id);
     if(!user){
-        res.status(404).json("The user is not found!");
+        res.status(404).json({error: "The user is not found!"});
     }
     else{
         res.status(200).json(user);

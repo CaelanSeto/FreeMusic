@@ -5,25 +5,40 @@ const { Donations } = require("../models");
 //get all Donations
 router.get("/", async (req, res) => {
     const listOfDonations = await Donations.findAll();
-    res.json(listOfDonations);
+    if(!listOfDonations){
+        res.json({error: "There are no donations yet!"});
+    }
+    else{
+        res.json(listOfDonations);
+    }
 });
 
 //get all Donations by UserId
-router.get("/:UserId", async (req, res) => {
+router.get("/:UserId([0-9]+)", async (req, res) => {
     const UserId = req.params.UserId;
     const listOfDonations = await Donations.findAll({
         where: {
             UserId: UserId
         }
     });
-    res.json(listOfDonations);
+    if(!listOfDonations){
+        res.json({error: "no donations yet with this user!"});
+    }
+    else{
+        res.json(listOfDonations);
+    }
 });
 
 //get one Donation by Id
-router.get("/byId/:id", async (req, res) => {
+router.get("/byId/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     const donation = await Donations.findByPk(id);
-    res.json(donation);
+    if(!donation){
+        res.json({error: "no such donation found!"});
+    }
+    else{
+        res.json(donation);
+    }
 });
 
 //create Donation
@@ -34,7 +49,7 @@ router.post("/add", async (req, res) => {
 });
 
 //update Donation
-router.patch("/edit/:id", async (req, res) => {
+router.patch("/edit/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     const donation = await Donations.findByPk(id);
     if(!donation){
@@ -54,7 +69,7 @@ router.patch("/edit/:id", async (req, res) => {
 });
 
 //delete Donation
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     await Donations.destroy({
         where: {
