@@ -75,25 +75,29 @@ router.post("/login", async (req, res) => {
                 res.json({ error: "Bad Credentials!" });
             }
             else{
-                const accessToken = sign(
-                    {
-                      email: user.email,
-                      name: user.name,
-                      id: user.id,
-                      role: user.role,
-                      status: user.status
-                    }, 
-                      "noSecretAtAll"
-                  );
-            
-                  res.json({ token: accessToken, email: email, id: user.id, name: user.name, role: user.role, status: user.status });
+                if(user.status===1){
+                    res.json({ error: "Your account is blocked, contact admin!" });
+                }
+                else{
+                    const accessToken = sign(
+                        {
+                          email: user.email,
+                          name: user.name,
+                          id: user.id,
+                          role: user.role,
+                          status: user.status
+                        }, 
+                          "noSecretAtAll"
+                      );
+                      res.json({ token: accessToken, email: email, id: user.id, name: user.name, role: user.role, status: user.status });
+                }
             }   
         });
     }
 });
 
 //update user
-router.patch("/edit/:id", async (req, res) => {
+router.patch("/edit/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     const name = req.body.name;
     const role = req.body.role;
@@ -107,7 +111,7 @@ router.patch("/edit/:id", async (req, res) => {
 });
 
 //delete user
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     await Users.destroy({
         where: {

@@ -27,6 +27,7 @@ function App() {
     email: "",
     id: 0,
     name: "",
+    role: "",
     status: false,
   });
   useEffect(() => {
@@ -36,7 +37,6 @@ function App() {
     }
   }).then((response) => {
       if (response.data.error) {
-        console.log("error");
         setAuthState({ ...authState, status: false});
       }else{
         console.log("NAME: " + response.data.name);
@@ -44,6 +44,7 @@ function App() {
           email: response.data.email,
           id: response.data.id,
           name: response.data.name,
+          role: response.data.role,
           status: true,
         });
       }
@@ -52,7 +53,7 @@ function App() {
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setAuthState({ email: "", id: 0, name: "", status: false})
+    setAuthState({ email: "", id: 0, name: "", role: "", status: false})
   };
 
   //SEARCHBAR TO DO
