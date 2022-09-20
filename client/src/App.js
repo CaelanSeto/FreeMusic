@@ -20,6 +20,7 @@ import Pieces from "./pages/Pieces";
 import Files from "./pages/Files";
 import Profile from "./pages/Profile";
 import CreateFile from "./pages/CreateFile";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   
@@ -44,6 +45,7 @@ function App() {
           email: response.data.email,
           id: response.data.id,
           name: response.data.name,
+          role: response.data.role,
           status: true,
         });
       }
@@ -108,6 +110,7 @@ function App() {
         <Route path="/files/:PieceId" element={<Files />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
         <Route path="/admin/files/add" element={<CreateFile />}></Route>
+        <Route path="/admin" element={<Dashboard />}></Route>
       </Routes>
     </Router>
     </AuthContext.Provider>

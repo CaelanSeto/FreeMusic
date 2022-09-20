@@ -49,9 +49,15 @@ function Login() {
                 name: response.data.name,
                 email: response.data.email,
                 id: response.data.id,
+                role: response.data.role,
                 status: true,
               })
-              navigate("/");
+              if (response.data.role === "user"){
+                navigate("/");
+              }else{
+                navigate("/admin");
+              }
+              
               }
             })
           };
