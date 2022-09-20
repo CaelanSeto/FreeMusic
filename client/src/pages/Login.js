@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { AuthContext } from "../helpers/AuthContext"
+import { useAuth } from "../helpers/AuthContext"
 import {useNavigate} from "react-router-dom";
 
 
@@ -33,7 +33,7 @@ function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const {setAuthState} = useContext(AuthContext);
+    const {setAuthState} = useContext(useAuth);
 
     let navigate = useNavigate()
 

@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AuthContext } from "./helpers/AuthContext";
+import { AuthProvider } from "./helpers/AuthContext";
 import { useState , useEffect} from "react";
 import axios from "axios";
 //import NavbarComponent from "./components/NavbarComponent";
@@ -19,7 +19,19 @@ import Composers from "./pages/Composers";
 import Pieces from "./pages/Pieces";
 import Files from "./pages/Files";
 import Profile from "./pages/Profile";
-import CreateFile from "./pages/CreateFile";
+import CreateFile from "./admin/CreateFile";
+
+import Layout from "./components/Layout";
+import Unauthorised from "./components/Unauthorised";
+import RequireAuth from "./components/RequireAuth";
+
+import Upload from "./admin/Upload";
+import Dashboard from "./admin/Dashboard";
+
+const ROLES = {
+    'User': "",
+    'Admin': ""
+  }
 
 function App() {
   
@@ -57,7 +69,7 @@ function App() {
 
   return (
     <div className="App">
-    <AuthContext.Provider value={{authState, setAuthState}}>
+    <AuthProvider value={{authState, setAuthState}}>
     <Router>
     <Navbar bg="dark" expand="lg" variant="dark">
       <Container>
@@ -101,16 +113,33 @@ function App() {
       </Container>
     </Navbar>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Layout />}></Route>
+        {/* public routes*/}
         <Route path="/login" element={<Login />}></Route>
         <Route path="/composers" element={<Composers />}></Route>
         <Route path="/pieces/:ComposerId" element={<Pieces />}></Route>
         <Route path="/files/:PieceId" element={<Files />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
+        <Route path="/unauthorised" element={<Unauthorised />}></Route>
+        {/* protected routes */}
+        <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+
+        <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+        <Route path="/admin/dashboard" element={<Dashboard />}></Route>
+        </Route>
+
+        <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
         <Route path="/admin/files/add" element={<CreateFile />}></Route>
+        </Route>
+
+        <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+        <Route path="/admin/stream/add" element={<Upload />}></Route>
+        </Route>
       </Routes>
     </Router>
-    </AuthContext.Provider>
+    </AuthProvider>
     </div>
   );
 }

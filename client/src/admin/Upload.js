@@ -1,10 +1,13 @@
 import React , {useState} from 'react';
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 import S3 from 'react-aws-s3';
 
 // npm install buffer --save
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
-const Upload = () => {
+function Upload () {
+    
 
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -29,7 +32,9 @@ const Upload = () => {
         .catch(err => console.error(err))
     }
     return <div>
+        {window.name}
         <div>React S3 File Upload</div>
+
         <input type="file" onChange={handleFileInput}/>
         <br></br>
         <button onClick={() => uploadFile(selectedFile)}> Upload to S3</button>
