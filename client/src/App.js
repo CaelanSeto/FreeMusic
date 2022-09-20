@@ -20,6 +20,7 @@ import Pieces from "./pages/Pieces";
 import Files from "./pages/Files";
 import Profile from "./pages/Profile";
 import CreateFile from "./pages/CreateFile";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   
@@ -27,6 +28,7 @@ function App() {
     email: "",
     id: 0,
     name: "",
+    role: "",
     status: false,
   });
   useEffect(() => {
@@ -36,7 +38,6 @@ function App() {
     }
   }).then((response) => {
       if (response.data.error) {
-        console.log("error");
         setAuthState({ ...authState, status: false});
       }else{
         console.log("NAME: " + response.data.name);
@@ -44,6 +45,7 @@ function App() {
           email: response.data.email,
           id: response.data.id,
           name: response.data.name,
+          role: response.data.role,
           status: true,
         });
       }
@@ -52,7 +54,7 @@ function App() {
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setAuthState({ email: "", id: 0, name: "", status: false})
+    setAuthState({ email: "", id: 0, name: "", role: "", status: false})
   };
 
   //SEARCHBAR TO DO
@@ -109,6 +111,7 @@ function App() {
         <Route path="/files/:PieceId" element={<Files />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
         <Route path="/admin/files/add" element={<CreateFile />}></Route>
+        <Route path="/admin" element={<Dashboard />}></Route>
       </Routes>
     </Router>
     <footer class="pt-3 mt-4 text-muted border-top">

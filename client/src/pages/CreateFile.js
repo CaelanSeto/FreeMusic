@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import Upload from './Upload';
 
 function CreateFile() {

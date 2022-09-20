@@ -9,6 +9,8 @@ import {useNavigate} from "react-router-dom";
 
 function Login() {
 
+
+    const [badCredentials, setBadCredentials] = useState("");
     const intialValues = {
         name: "",
         email: "",
@@ -24,7 +26,7 @@ function Login() {
     const onSubmit = (data) => {
         axios.post("http://localhost:3001/users/register", data).then((response) => {
             if(response.data.error) {
-                alert(response.data.error);
+                setBadCredentials(response.data.error);
               }else{
             console.log(data);
               }
@@ -42,16 +44,22 @@ function Login() {
         const data = { email: email, password: password };
         axios.post("http://localhost:3001/users/login", data).then((response) => {
             if(response.data.error) {
-                alert(response.data.error);
+                setBadCredentials(response.data.error);
               }else{
               localStorage.setItem("accessToken", response.data.token);
               setAuthState({
                 name: response.data.name,
                 email: response.data.email,
                 id: response.data.id,
+                role: response.data.role,
                 status: true,
               })
-              navigate("/");
+              if (response.data.role === "user"){
+                navigate("/");
+              }else{
+                navigate("/admin");
+              }
+              
               }
             })
           };
@@ -109,6 +117,7 @@ function Login() {
                         }}
                     />
                     </div>
+                    <p style={{color: 'red'}}>{badCredentials}</p>
                     <div>
                     <button onClick={login}> Login </button>
                     </div>
