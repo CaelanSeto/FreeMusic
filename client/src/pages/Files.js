@@ -16,19 +16,11 @@ function Files() {
         setListOfFiles(response.data);   
     });
   }, []);
-/*
-  useEffect(() => {  
-    axios.get(`http://localhost:3001/pieces/byId/${PieceId}`).then((response) => {
-        setPiece(response.data);   
-    });
-  }, []);
 
-  useEffect(() => {
-    axios.get(`http://localhost:3001/composers/byId/${piece.ComposerId}`).then((response) => {
-        setComposer(response.data);   
-    });
-  }, []);
+/*
+  https://freeclassicmusic.s3.us-east-2.amazonaws.com/lacrymosa.mp3
 */
+
   return (
     <div className="composerPiecesFiles">
     <div className="AppComposers"><br></br>
@@ -37,11 +29,11 @@ function Files() {
         return (
             <div className='composers'>   
                 <h3>{value.instruments}</h3>     
-                <button  onClick={() => {usenavigate(`${value.file}`)}}>
+                <a  href={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.file}`} target="_blank">
                     <div>
                         {value.file}
                     </div>
-                </button>    
+                </a>    
             </div>
         );     
       })}
