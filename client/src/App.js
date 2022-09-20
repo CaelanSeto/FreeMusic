@@ -20,6 +20,7 @@ import Pieces from "./pages/Pieces";
 import Files from "./pages/Files";
 import Profile from "./pages/Profile";
 import CreateFile from "./pages/CreateFile";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   
@@ -110,6 +111,7 @@ function App() {
         <Route path="/files/:PieceId" element={<Files />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
         <Route path="/admin/files/add" element={<CreateFile />}></Route>
+        <Route path="/admin" element={<Dashboard />}></Route>
       </Routes>
     </Router>
     <footer class="pt-3 mt-4 text-muted border-top">
