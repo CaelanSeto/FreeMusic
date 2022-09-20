@@ -55,6 +55,7 @@ function App() {
     setAuthState({ email: "", id: 0, name: "", status: false})
   };
 
+  //SEARCHBAR TO DO
   return (
     <div className="App">
     <AuthContext.Provider value={{authState, setAuthState}}>
@@ -78,12 +79,12 @@ function App() {
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success">Search</Button>
-          </Form>       
+            <Button variant="outline-light" className="me-3" href="#">Search</Button>
+          </Form>
           {!authState.status ? (
             <>
               <Nav className="ml-auto">
-                <Nav.Link href="/login">Login/Register</Nav.Link>
+                <Button variant="outline-light" href="/login" className="me-3">Login/Register</Button>
               </Nav>
             </>
           ) : (
@@ -92,7 +93,7 @@ function App() {
                 <Nav.Link href="/profile">
                   Welcome, {authState.name}
                 </Nav.Link>
-                  {authState.status && <Button onClick={ logout } variant="outline-success"> Logout</Button>}
+                  {authState.status && <Button onClick={ logout } href="" variant="outline-light"> Logout</Button>}
               </Nav>
             </>
               )}
@@ -110,6 +111,10 @@ function App() {
         <Route path="/admin/files/add" element={<CreateFile />}></Route>
       </Routes>
     </Router>
+    <footer class="pt-3 mt-4 text-muted border-top">
+      &copy; placeholder footer
+    </footer>
+    <br></br>
     </AuthContext.Provider>
     </div>
   );

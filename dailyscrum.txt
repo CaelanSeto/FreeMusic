@@ -116,8 +116,15 @@ EDGAR:
 9/20/22
 CAELAN:
 1) Done / Not done since Last Scrum:
+    MIDI Plugin
+    Homepage
+    CSS base and design
+    
 
 2) To do until next Scrum:
+    PDF Viewer in-browser to implement into individual pieces page
+    mp3 player in-browser to implement into individual pieces page
+    CSS for other pages
 
 3) Need Assistance / figure things out
 
@@ -125,16 +132,23 @@ CAELAN:
 
 VLAD:
 1) Done / Not done since Last Scrum:
+    Set up AWS Account to:
+    Upload files to AWS S3
+
 
 2) To do until next Scrum:
+    Create page for file upload
+    CRUD for files, composers, pieces
 
 3) Need Assistance / figure things out
 
 
 EDGAR:
 1) Done / Not done since Last Scrum:
-
+    Admin experiments
 2) To do until next Scrum:
+    Admin (in a different way)
+    Registration/Login functionality
 
 3) Need Assistance / figure things out
 
