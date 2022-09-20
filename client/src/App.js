@@ -19,11 +19,19 @@ import Composers from "./pages/Composers";
 import Pieces from "./pages/Pieces";
 import Files from "./pages/Files";
 import Profile from "./pages/Profile";
-import CreateFile from "./pages/CreateFile";
+
+/*****************************************/
+/*admin staff */ 
 import Dashboard from "./pages/Dashboard";
+//files CRUD
+import CreateFile from "./pages/CreateFile";
+import AdminUsers from "./pages/AdminUsers";
+import AdminComposers from "./pages/AdminComposers";
+import AdminPieces from "./pages/AdminPieces";
+import AdminFiles from "./pages/AdminFiles";
+
 
 function App() {
-  
   const [authState, setAuthState] = useState({
     email: "",
     id: 0,
@@ -54,7 +62,7 @@ function App() {
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setAuthState({ email: "", id: 0, name: "", role: "", status: false})
+    setAuthState({ email: "", id: 0, name: "", role: "", status: false});
   };
 
   //SEARCHBAR TO DO
@@ -74,6 +82,14 @@ function App() {
               <NavDropdown.Item href="/donations">Donations</NavDropdown.Item>
             </NavDropdown>
           </Nav>
+          {authState.role==="admin" && (  
+              <>
+              <Nav className="ml-auto">
+                <Button variant="outline-light" href="/admin" className="me-3">Dashboard</Button>
+              </Nav>
+              </>
+          )} 
+
           <Form className="d-flex">
             <Form.Control
               type="search"
@@ -98,8 +114,7 @@ function App() {
                   {authState.status && <Button onClick={ logout } href="" variant="outline-light"> Logout</Button>}
               </Nav>
             </>
-              )}
-
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
@@ -110,8 +125,16 @@ function App() {
         <Route path="/pieces/:ComposerId" element={<Pieces />}></Route>
         <Route path="/files/:PieceId" element={<Files />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
-        <Route path="/admin/files/add" element={<CreateFile />}></Route>
+
         <Route path="/admin" element={<Dashboard />}></Route>
+
+        <Route path="/admin/users" element={<AdminUsers />}></Route>
+        <Route path="/admin/composers" element={<AdminComposers />}></Route>
+        <Route path="/admin/pieces" element={<AdminPieces />}></Route>
+        <Route path="/admin/files" element={<AdminFiles />}></Route>
+
+        <Route path="/admin/files/add" element={<CreateFile />}></Route>
+
       </Routes>
     </Router>
     <footer class="pt-3 mt-4 text-muted border-top">

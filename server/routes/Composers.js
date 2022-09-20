@@ -4,28 +4,41 @@ const { Composers } = require("../models");
 
 //get all Composers
 router.get("/", async (req, res) => {
-    const listOfComposers = await Composers.findAll({
-        order: ["name"]
-    });
-    res.json(listOfComposers);
+    const listOfComposers = await Composers.findAll({order: ["name"]});
+    if(!listOfComposers){
+        res.json({error: "There are no composers yet!"});
+    }
+    else{
+        res.json(listOfComposers);
+    }
 });
 
 //get Composer by Id
-router.get("/byId/:id", async (req, res) => {
+router.get("/byId/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     const composer = await Composers.findByPk(id);
-    res.json(composer);
+    if(!composer){
+        res.json({error: "composer is not found!"});
+    }
+    else{
+        res.json(composer);
+    }
 });
 
 //create Composer
 router.post("/add", async (req, res) => {
     const composer = req.body;
     await Composers.create(composer);
-    res.json(composer);
+    if(!composer){
+        res.json({error: "no composer was created!"});
+    }
+    else{
+        res.json("composer is created!");
+    }
 });
 
 //update Composer
-router.patch("/edit/:id", async (req, res) => {
+router.patch("/edit/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     const composer = await Composers.findByPk(id);
     if(!composer){
@@ -44,7 +57,7 @@ router.patch("/edit/:id", async (req, res) => {
 });
 
 //delete Composer
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     await Composers.destroy({
         where: {

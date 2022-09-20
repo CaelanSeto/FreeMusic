@@ -4,12 +4,17 @@ const { Pieces } = require("../models");
 
 //get all Pieces
 router.get("/", async (req, res) => {
-    const listOfPieces = await Pieces.findAll();
-    res.json(listOfPieces);
+    const listOfPieces = await Pieces.findAll({order: ["title"]});
+    if(!listOfPieces){
+        res.json({error: "No Pieces yet!"});
+    }
+    else{
+        res.json(listOfPieces);
+    }
 });
 
 //get all Pieces by Composer
-router.get("/:ComposerId", async (req, res) => {
+router.get("/:ComposerId([0-9]+)", async (req, res) => {
     const ComposerId = req.params.ComposerId;
     const listOfPieces = await Pieces.findAll({
         where: {
@@ -17,25 +22,35 @@ router.get("/:ComposerId", async (req, res) => {
         },
         order: ["title"]
     });
-    res.json(listOfPieces);
+    if(!listOfPieces){
+        res.json({error: "No Pieces!"})
+    }
+    else{
+        res.json(listOfPieces);
+    } 
 });
 
 //get one Piece by Id
-router.get("/byId/:id", async (req, res) => {
+router.get("/byId/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     const piece = await Pieces.findByPk(id);
-    res.json(piece);
+    if(!piece){
+        res.json({error: "No such pieces found!"})
+    }
+    else{
+        res.json(piece);
+    } 
 });
 
 //create Piece
 router.post("/add", async (req, res) => {
     const piece = req.body;
     await Pieces.create(piece);
-    res.json(piece);
+    res.json("The piece is created!");
 });
 
 //update Piece
-router.patch("/edit/:id", async (req, res) => {
+router.patch("/edit/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     const piece = await Pieces.findByPk(id);
     if(!piece){
@@ -54,7 +69,7 @@ router.patch("/edit/:id", async (req, res) => {
 });
 
 //delete Piece
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     await Pieces.destroy({
         where: {

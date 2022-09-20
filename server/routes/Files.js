@@ -4,12 +4,17 @@ const { Files } = require("../models");
 
 //get all Files
 router.get("/", async (req, res) => {
-    const listOfFiles = await Files.findAll();
-    res.json(listOfFiles);
+    const listOfFiles = await Files.findAll({order: ["file"]});
+    if(!listOfFiles){
+        res.json({error: "no files found!"})
+    }
+    else{
+        res.json(listOfFiles);
+    }
 });
 
 //get all Files (recordings, sheet music) by PieceId
-router.get("/:PieceId", async (req, res) => {
+router.get("/:PieceId([0-9]+)", async (req, res) => {
     const PieceId = req.params.PieceId;
     const listOfFiles = await Files.findAll({
         where: {
@@ -17,25 +22,36 @@ router.get("/:PieceId", async (req, res) => {
         },
         order: ["type"]
     });
-    res.json(listOfFiles);
+    if(!listOfFiles){
+        res.json({error: "no files found!"});
+    }
+    else{
+        res.json(listOfFiles);
+    }
 });
 
 //get one File by Id
-router.get("/byId/:id", async (req, res) => {
+router.get("/byId/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     const file = await Files.findByPk(id);
-    res.json(file);
+    if(!file){
+        res.json({error: "No file found!"});
+    }
+    else{
+        res.json(file);
+    }
+    
 });
 
 //create File
 router.post("/add", async (req, res) => {
     const file = req.body;
     await Files.create(file);
-    res.json(file);
+    res.json("The file is created!");
 });
 
 //update File
-router.patch("/edit/:id", async (req, res) => {
+router.patch("/edit/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     const file = await Files.findByPk(id);
     if(!file){
@@ -65,7 +81,7 @@ router.patch("/edit/:id", async (req, res) => {
 });
 
 //delete File
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     await Files.destroy({
         where: {
