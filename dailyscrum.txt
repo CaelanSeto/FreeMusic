@@ -2,40 +2,40 @@
 9/16/22
 CAELAN:
 1) Done / Not done since Last Scrum:
-Worked on Proposal
-Mockups
-getting github repository set up
-Database design
+    Worked on Proposal
+    Mockups
+    getting github repository set up
+    Database design
 
 2) To do until next Scrum:
-start creating client-side skeleton
+    start creating client-side skeleton
 
 3) Need Assistance / figure things out
-So far so good
+    So far so good
 
 
 
 VLAD:
 1) Done / Not done since Last Scrum:
-Worked on Routes
-Creating database through sequelize
+    Worked on Routes
+    Creating database through sequelize
 
 2) To do until next Scrum:
-Finish server-side routes
+    Finish server-side routes
 
 3) Need Assistance / figure things out
-So far so good
+    So far so good
 
 
 EDGAR:
 1) Done / Not done since Last Scrum:
-Worked on proposal, Database design, creating database through sequelize
+    Worked on proposal, Database design, creating database through sequelize
 
 2) To do until next Scrum:
-Login features
+    Login features
 
 3) Need Assistance / figure things out
-So far so good
+    So far so good
 
 
 
