@@ -1,7 +1,7 @@
 .App {
   text-align: center;
 }
-
+/*
 .composerPiecesFiles{
   width:100%;
   display: flex;
@@ -21,7 +21,7 @@ body {
   padding: 0;
 }
 
-/*.navbar {
+.navbar {
   width: 100%;
   height: 70px;
   margin-bottom: 40px;
@@ -64,7 +64,7 @@ body {
   color: white;
   font-weight: lighter;
 }
-*/
+
 .loginPage{
   display: flex;
   flex-direction: row;
@@ -132,10 +132,11 @@ button {
   cursor: pointer;
   background-color: lightgray;
 }
-
+*/
 span {
   color: red;
 }
+/*
 .composers button{
   text-align: left;
   padding: 20px;

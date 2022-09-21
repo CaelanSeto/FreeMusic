@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Table from 'react-bootstrap/Table';
 
 
 function Composers() {
@@ -23,23 +25,26 @@ function Composers() {
         <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item active>Composers</Breadcrumb.Item>
       </Breadcrumb>
+      <h4>Composers</h4>
       <br></br>
-      <div className="composerPiecesFiles">
-        <div className="AppComposers"><br></br>
-          <h2>Composers</h2><br></br>
-          {listOfComposers.map((value) => {
-            return (
-                <div className='composers'>        
-                    <button  onClick={() => {usenavigate(`/pieces/${value.id}`)}}>
-                        <div>
-                            {value.name}
-                        </div>
-                    </button>    
-                </div>
-            );     
-          })}
-        </div>
-      </div>
+      <Table striped bordered hover size="sm">
+      <tr>
+        <th>ID#</th>
+        <th>Composer:</th>
+      </tr>
+      {listOfComposers.map((value) => {
+        return (
+        <tbody>
+          <tr>
+            <td>{value.id}</td>
+            <td><Button variant="outline-secondary" onClick={() => {usenavigate(`/pieces/${value.id}`)}}>{value.name}</Button></td>
+          </tr>
+        </tbody>
+        
+        );     
+      
+      })}
+      </Table>
       </Container>
     </div>
   )
