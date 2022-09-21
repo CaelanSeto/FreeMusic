@@ -26,7 +26,7 @@ function AdminUsers() {
   };
 
   return (
-    <div className="App">
+    <div className="container">
         <br></br>
       <h2>List of Users</h2>
       <br></br>

@@ -26,7 +26,7 @@ function AdminComposers() {
   };
 
   return (
-    <div className="App">
+    <div className="container">
         <br></br>
       <h2>List of Composers</h2>
       <br></br>
@@ -52,7 +52,11 @@ function AdminComposers() {
 					    <tr>
 						    <td>{val.id}</td>
 						    <td>{val.name}</td>
-						    <td>{val.biography}</td>
+						    <td style={{width:"25%"}}>
+                  <div className='composersTd'>
+                    {val.biography}
+                  </div>
+                </td>
                 <td>{val.updatedAt}</td>
 						    <td>
                                 <Link to={`/admin/composers/edit/${val.id}`}>

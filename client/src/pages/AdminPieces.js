@@ -26,7 +26,7 @@ function AdminPieces() {
   };
 
   return (
-    <div className="App">
+    <div className="container">
         <br></br>
       <h2>List of Pieces</h2>
       <br></br>

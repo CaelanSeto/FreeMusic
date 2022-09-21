@@ -23,7 +23,7 @@ function Pieces() {
     <div className="AppComposers"><br></br>
       <h2>{composer.name}</h2>   
         <div className="biograpphy"> 
-            <img src={require(`../images/${ComposerId}.JPG`)} alt={composer.name} />
+            <img src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${ComposerId}.JPG`} alt={composer.name} />
             <br></br>   
             <button id='pieces'>
                     {composer.biography}

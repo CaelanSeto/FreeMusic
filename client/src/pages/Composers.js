@@ -16,7 +16,7 @@ function Composers() {
   }, []);
   
   return (
-    <div>
+    <div className="container">
       <Container>
       <br></br>
       <Breadcrumb>
