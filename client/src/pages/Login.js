@@ -1,13 +1,11 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { Formik, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { AuthContext } from "../helpers/AuthContext"
 import { useNavigate } from "react-router-dom";
-
-import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
-
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -70,75 +68,91 @@ function Login() {
 
     return (
         <div>
-            <div className="row align-items-md-stretch">
-                <div className="col-md-6">
-                    <div className="h-100 p-5 text-white bg-secondary rounded-3">
-                        <Formik initialValues={intialValues} onSubmit={onSubmit}
-                            validationSchema={validationSchema}>
-                            <Form>
-                                <Form.Group className="mb-3" controlId="validationCustom01">
-                                    <Form.Label>Name</Form.Label>
+            <br></br>
+            <Container>
+                <div className="row align-items-md-stretch">
+                    <div className="col-md-6">
+                        <div className="h-100 p-5 text-white bg-secondary rounded-3">
+                            <h4>Registration</h4>
+                            <br></br>
+                            <Formik initialValues={intialValues} onSubmit={onSubmit}
+                                validationSchema={validationSchema}>
+                                <Form className="formContainer">
+
+                                    <label>Name:</label>
+                                    <br></br>
                                     <ErrorMessage name="name" component="span" />
+                                    <br></br>
                                     <Field
                                         autoComplete="off"
                                         id="inputCreatePost" name="name"
                                         placeholder="(Ex.John123...)"></Field>
-
-                                </Form.Group>
-
-                                <label>Email</label>
-                                <ErrorMessage name="email" component="span" />
-                                <Field
-                                    autoComplete="off"
-                                    id="inputCreatePost" name="email"
-                                    placeholder="(Ex.John@gmail...)"></Field>
-
-                                <label>Password</label>
-                                <ErrorMessage name="password" component="span" />
-                                <Field
-                                    autoComplete="off" type="password"
-                                    id="inputCreatePost" name="password"
-                                    placeholder="(Your Password)"></Field>
-
-                                <button type="submit">Register</button>
-                            </Form>
-                        </Formik>
+                                    <br></br><br></br>
+                                    <label>Email:</label>
+                                    <br></br>
+                                    <ErrorMessage name="email" component="span" />
+                                    <br></br>
+                                    <Field
+                                        autoComplete="off"
+                                        id="inputCreatePost" name="email"
+                                        placeholder="(Ex.John@gmail...)"></Field>
+                                    <br></br><br></br>
+                                    <label>Password:</label>
+                                    <br></br>
+                                    <ErrorMessage name="password" component="span" />
+                                    <br></br>
+                                    <Field
+                                        autoComplete="off" type="password"
+                                        id="inputCreatePost" name="password"
+                                        placeholder="(Your Password)"></Field>
+                                    <br></br><br></br>
+                                    <Button variant="dark" size="sm" type="submit">Register</Button>
+                                </Form>
+                            </Formik>
+                        </div>
                     </div>
+
+                    <div className="col-md-6">
+                        <div className="h-100 p-5 text-white bg-dark rounded-3">
+                            <h4>Login</h4>
+                            <br></br>
+                            <label>Email:</label>
+                            <br></br><br></br>
+                            <div>
+                                <input
+                                    type="text"
+                                    onChange={(event) => {
+                                        setEmail(event.target.value);
+                                    }}
+                                />
+                            </div>
+                            <br></br>
+                            <label>Password:</label>
+                            <br></br><br></br>
+                            <div>
+                                <input
+                                    type="password"
+                                    onChange={(event) => {
+                                        setPassword(event.target.value);
+                                    }}
+                                />
+                            </div>
+                            <br></br>
+                            <div>
+                                <Button variant="secondary" size="sm" onClick={login}> Login </Button>
+                            </div>
+                            <br></br>
+                            <span>{badCredentials}</span>
+                        </div>
+                    </div>
+                    <link
+                        rel="stylesheet"
+                        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+                        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+                        crossorigin="anonymous"
+                    />
                 </div>
-            </div>
-
-            <div className="col-md-6">
-                <div className="h-100 p-5 text-white bg-secondary rounded-3">
-                    <label>Email:</label>
-                    <div>
-                        <input
-                            type="text"
-                            onChange={(event) => {
-                                setEmail(event.target.value);
-                            }}
-                        />
-                    </div>
-                    <label>Password:</label>
-                    <div>
-                        <input
-                            type="password"
-                            onChange={(event) => {
-                                setPassword(event.target.value);
-                            }}
-                        />
-                    </div>
-                    <p style={{ color: 'red' }}>{badCredentials}</p>
-                    <div>
-                        <button onClick={login}> Login </button>
-                    </div>
-                </div>
-            </div>
-            <link
-                rel="stylesheet"
-                href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-                integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-                crossorigin="anonymous"
-            />
+            </Container>
         </div>
     );
 }
