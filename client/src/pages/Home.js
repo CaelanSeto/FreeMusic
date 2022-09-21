@@ -8,8 +8,6 @@ import MIDIAccess from "../MIDI/MIDIAccess";
 
 <MIDIAccess />
 
-//IMAGE NEEDS TO BE FIXED
-
 function Home() {
   return (
     <div>

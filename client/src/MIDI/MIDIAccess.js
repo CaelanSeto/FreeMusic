@@ -43,14 +43,15 @@ function handleInput(input) {
   switch (command) {
     // DAMPER PEDAL TODO
     case 176: // MIDI for various effects and functions
-    if (note == 64) { // 64 == damper pedal
-      if (velocity == 127) {  // damper pedal on
+    if (note === 64) { // 64 == damper pedal
+      if (velocity === 127) {  // damper pedal on
         damperOn();
-      } if (velocity == 0) {  // damper pedal off
+      } if (velocity === 0) {  // damper pedal off
         damperOff();
       }  
     }  
     break;
+
     case 144: // MIDI for noteOn
     if (velocity > 0) { // sometimes MIDI devices sets velocity to 0 on noteOff instead of changing the command to 128
       noteOn(note, velocity);
@@ -62,7 +63,7 @@ function handleInput(input) {
     noteOff(note);
     break;
     default:
-      break;  
+    break;  
   }  
 }
 
@@ -85,7 +86,7 @@ function noteOn(note, velocity) {
   const oscGain = ctx.createGain();
   oscGain.gain.value = 0.3;
 
-  const velocityGainAmount = (1/127) * velocity;
+  const velocityGainAmount = (1/127) * velocity;  // velocity output by midi has a range from 0 to 127
   const velocityGain = ctx.createGain();
   velocityGain.gain.value = velocityGainAmount;
 
@@ -93,7 +94,7 @@ function noteOn(note, velocity) {
   osc.type = 'sine';
   osc.frequency.value = miditoFreq(note);
   
-  //initial gain * velocity % * speaker volume
+  //initial gain * velocity % ((0~127) / 127) * speaker volume
   osc.connect(oscGain); 
   oscGain.connect(velocityGain);
   velocityGain.connect(ctx.destination); //ctx.destination is your speaker
@@ -122,7 +123,7 @@ function noteOff(note) {
   // fade out over 2 seconds to avoid the 'click' sound at the end
 
   oscGain.gain.setValueAtTime(oscGain.gain.value, ctx.currentTime);
-  oscGain.gain.exponentialRampToValueAtTime(0.0000001, ctx.currentTime + 2);
+  oscGain.gain.exponentialRampToValueAtTime(0.0000001, ctx.currentTime + 2);  //function will return an error if gain set to 0
 
   noteDelayStop(osc);
 
@@ -132,7 +133,7 @@ function noteOff(note) {
 
 
 
-// checks in real-time what MIDI devices are plugged in or not; can be used to select which MIDI device you want to you
+// checks and updates in real-time what MIDI devices are plugged in or not; can be used to select which MIDI device you want to use on client-side
 function updateDevices(event) {
   console.log(`Name: ${event.port.name}, Brand: ${event.port.manufacturer}, State: ${event.port.state}, Type: ${event.port.type}`)
 }

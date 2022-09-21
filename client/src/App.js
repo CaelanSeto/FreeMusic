@@ -59,7 +59,6 @@ function App() {
       if (response.data.error) {
         setAuthState({ ...authState, status: false});
       }else{
-        console.log("NAME: " + response.data.name);
         setAuthState({
           email: response.data.email,
           id: response.data.id,
