@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import { AuthContext } from "./helpers/AuthContext";
 import { useState , useEffect} from "react";
 import axios from "axios";
@@ -15,6 +15,7 @@ import Button from 'react-bootstrap/Button';
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 import Composers from "./pages/Composers";
 import Pieces from "./pages/Pieces";
 import Files from "./pages/Files";
@@ -121,7 +122,7 @@ function App() {
                 <Nav.Link href="/profile">
                   Welcome, {authState.name}
                 </Nav.Link>
-                  {authState.status && <Button onClick={ logout } href="" variant="outline-light"> Logout</Button>}
+                  {authState.status && <Button onClick={ logout } href="/logout" variant="outline-light"> Logout</Button>}
               </Nav>
             </>
           )}
@@ -131,6 +132,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/logout" element={<Logout />}></Route>
         <Route path="/composers" element={<Composers />}></Route>
         <Route path="/pieces/:ComposerId" element={<Pieces />}></Route>
         <Route path="/files/:PieceId" element={<Files />}></Route>

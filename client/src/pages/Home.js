@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Container from 'react-bootstrap/Container';
 
-import MIDIAccess from "../helpers/MIDIAccess";
+import MIDIAccess from "../MIDI/MIDIAccess";
 
 <MIDIAccess />
 
@@ -29,10 +29,9 @@ function Home() {
             <img 
               src="https://freeclassicmusic.s3.us-east-2.amazonaws.com/3.JPG"
               className='img-fuild img-thumbnail' 
-              alt="Image of a Composer"
+              alt=""
             />
-            <br></br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies ultrices tortor, vitae suscipit risus interdum a. Phasellus id felis felis. 
+            <p><br></br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies ultrices tortor, vitae suscipit risus interdum a. Phasellus id felis felis. 
               Sed risus ligula, interdum sed nunc id, aliquet ullamcorper dolor. Praesent ex risus, lobortis at volutpat at, dictum et diam. 
               Praesent luctus urna lacus, ut efficitur sem ultrices vitae. In eget mattis eros. Ut congue, odio id dapibus aliquam, elit eros pharetra erat, 
               id maximus quam nunc vel ante. In bibendum tortor nisl, vel vehicula erat malesuada non. Fusce neque est, efficitur et diam sed, dictum gravida enim.</p>
