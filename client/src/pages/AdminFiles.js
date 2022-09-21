@@ -26,7 +26,7 @@ function AdminFiles() {
   };
 
   return (
-    <div className="App">
+    <div className="container">
         <br></br>
       <h2>List of Files</h2>
       <br></br>
@@ -47,7 +47,7 @@ function AdminFiles() {
 						    <th>Instruments</th>
                 <th>Piece ID</th>
                 <th>Updated At</th>
-						    <th>Update &nbsp;&nbsp; | &nbsp;&nbsp; Delete</th>
+						    <th>Update &nbsp;&nbsp; / &nbsp;&nbsp; Delete</th>
 					    </tr>
 				    </thead>
 				    <tbody>
@@ -66,7 +66,7 @@ function AdminFiles() {
                                 <Link to={`/admin/files/edit/${val.id}`}>
                                     <button className="btn btn-dark">Update</button>
                                 </Link>
-                                &nbsp;&nbsp;
+                                <br></br><br></br>
                                     <button onClick={() => {deleteFile(val.id)}} className="btn btn-secondary">Delete</button> 	    
 						    </td>
 					    </tr>

@@ -25,11 +25,21 @@ import Profile from "./pages/Profile";
 /*admin staff */ 
 import Dashboard from "./pages/Dashboard";
 //files CRUD
-import CreateFile from "./pages/CreateFile";
-import AdminUsers from "./pages/AdminUsers";
 import AdminComposers from "./pages/AdminComposers";
+import CreateComposer from "./pages/CreateComposer";
+import EditComposer from "./pages/EditComposer";
+
+import AdminUsers from "./pages/AdminUsers";
+import EditUser from "./pages/EditUser";
+
 import AdminPieces from "./pages/AdminPieces";
+import CreatePiece from "./pages/CreatePiece";
+import EditPiece from "./pages/EditPiece";
+
 import AdminFiles from "./pages/AdminFiles";
+import CreateFile from "./pages/CreateFile";
+import EditFile from "./pages/EditFile";
+import UploadFiles from "./pages/UploadFiles";
 
 
 function App() {
@@ -86,7 +96,7 @@ function App() {
           {authState.role==="admin" && (  
               <>
               <Nav className="ml-auto">
-                <Button variant="outline-light" href="/admin" className="me-3">Dashboard</Button>
+                <Button variant="outline-light" href="/admin" className="me-3" style={{color: 'yellow'}}>Admin Dashboard</Button>
               </Nav>
               </>
           )} 
@@ -129,13 +139,23 @@ function App() {
         <Route path="/Profile" element={<Profile />}></Route>
 
         <Route path="/admin" element={<Dashboard />}></Route>
-
+        
         <Route path="/admin/users" element={<AdminUsers />}></Route>
+        <Route path="/admin/users/edit/:id" element={<EditUser />}></Route>
+        
         <Route path="/admin/composers" element={<AdminComposers />}></Route>
-        <Route path="/admin/pieces" element={<AdminPieces />}></Route>
-        <Route path="/admin/files" element={<AdminFiles />}></Route>
+        <Route path="/admin/composers/add" element={<CreateComposer />}></Route>
+        <Route path="/admin/composers/edit/:id" element={<EditComposer />}></Route>
 
+        <Route path="/admin/pieces" element={<AdminPieces />}></Route>
+        <Route path="/admin/pieces/add" element={<CreatePiece />}></Route>
+        <Route path="/admin/pieces/edit/:id" element={<EditPiece />}></Route>
+
+        <Route path="/admin/files" element={<AdminFiles />}></Route>
         <Route path="/admin/files/add" element={<CreateFile />}></Route>
+        <Route path="/admin/files/edit/:id" element={<EditFile />}></Route>
+        <Route path="/admin/uploads" element={<UploadFiles />}></Route>
+        
 
       </Routes>
     </Router>

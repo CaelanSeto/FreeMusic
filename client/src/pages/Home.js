@@ -27,7 +27,7 @@ function Home() {
             <h2>Composers</h2>
             <br></br>
             <img 
-              src={require(`../images/3.JPG`)}
+              src="https://freeclassicmusic.s3.us-east-2.amazonaws.com/3.JPG"
               className='img-fuild img-thumbnail' 
               alt=""
             />
