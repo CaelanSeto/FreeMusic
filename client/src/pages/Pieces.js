@@ -23,6 +23,8 @@ function Pieces() {
     });
   },[]);
   window.name = composer.name;
+  window.composerId = composer.id;
+
   return (
 
    <div>
@@ -35,7 +37,7 @@ function Pieces() {
       <Breadcrumb.Item active>{composer.name}</Breadcrumb.Item>
     </Breadcrumb>
     <br></br>
-    <Card>
+    <Card style={{ }}>
       <Card.Body>
         <Card.Title>{composer.name}</Card.Title>
         <Card.Text>
@@ -52,12 +54,12 @@ function Pieces() {
     <br></br>
     <h4>Pieces</h4>
     <br></br>
-    <Table striped bordered hover size="sm">
+    <Table striped hover size="sm">
       <thead>
         <tr>
           <th>#</th>
           <th>Piece:</th>
-          <th></th>
+
         </tr>
       </thead>
       {listOfPieces.map((value) => {
@@ -65,8 +67,7 @@ function Pieces() {
         <tbody>
           <tr>
             <td>{value.id}</td>
-            <td>{value.title}</td>
-            <td><Button  onClick={() => {usenavigate(`/files/${value.id}`)}}></Button></td>
+            <td onClick={() => {usenavigate(`/files/${value.id}`)}}>{value.title}</td>
           </tr>
         </tbody>
         

@@ -34,6 +34,7 @@ function success(midiAccess) {
   })  
 }  
 
+let sustain = false;
 function handleInput(input) {
   console.log(input);
   const command = input.data[0];  // MIDI for saying if note is on or off
@@ -41,17 +42,7 @@ function handleInput(input) {
   const velocity = input.data[2]; // MIDI note velocity if command is 144 or 128, if command is 176, velocity is damper pedal on(127)/off(0)
   
   switch (command) {
-    // DAMPER PEDAL TODO
-    case 176: // MIDI for various effects and functions
-    if (note === 64) { // 64 == damper pedal
-      if (velocity === 127) {  // damper pedal on
-        damperOn();
-      } if (velocity === 0) {  // damper pedal off
-        damperOff();
-      }  
-    }  
-    break;
-
+    
     case 144: // MIDI for noteOn
     if (velocity > 0) { // sometimes MIDI devices sets velocity to 0 on noteOff instead of changing the command to 128
       noteOn(note, velocity);
@@ -62,21 +53,23 @@ function handleInput(input) {
     case 128: // MIDI for noteOff
     noteOff(note);
     break;
+    // SUSTAIN PEDAL TO FIX
+    case 176: // MIDI for various effects and functions
+    if (note === 64) { // 64 === sustain pedal
+      if (velocity === 127) {  // sustain pedal on
+        sustain = true;
+      } if (velocity === 0) {  // sustain pedal off
+        sustain = false;
+      }  
+    }  
+    break;
     default:
-    break;  
+    break;
   }  
 }
 
 /* DAMPER PEDAL FUNCTIONALITY TODO */
-  
-function damperOn() {
-  
-}
-  
-function damperOff() {
 
-}
-  
 
 /* PLAYING NOTES FUNCTIONALITY */
 function noteOn(note, velocity) {
@@ -101,7 +94,7 @@ function noteOn(note, velocity) {
   
   osc.gain = oscGain;
 
-  // fade in over 0.015 seconds to avoid the 'click' sound at the beginning
+  // fade in over 0.015 seconds to avoid the 'click' sound at the beginning, time could be set longer for cool effects
   oscGain.gain.setValueAtTime(0.0000001, ctx.currentTime);
   oscGain.gain.exponentialRampToValueAtTime(oscGain.gain.value, ctx.currentTime + 0.015);
   
@@ -110,9 +103,13 @@ function noteOn(note, velocity) {
   osc.start();
 }  
 
-// stop the note after a 2 second delay
+// stop the note after a 2 second delay or 10 seconds if the sustain pedal is pressed
 async function noteDelayStop(osc) {
-  await new Promise (resolve => setTimeout(resolve, 2000));
+  if (!sustain) {
+    await new Promise (resolve => setTimeout(resolve, 2000));
+  } else {
+    await new Promise (resolve => setTimeout(resolve, 10000));
+  }
   osc.stop();
 }  
 
@@ -120,10 +117,15 @@ function noteOff(note) {
   const osc = oscillators[note.toString()];
   const oscGain = osc.gain;
 
-  // fade out over 2 seconds to avoid the 'click' sound at the end
+  // fade out over 2 seconds to avoid the 'click' sound at the end, time could be set shorter or longer for interesting effects
+  // You will need to change the time in noteDelayStop to match whatever you set it to as well
 
   oscGain.gain.setValueAtTime(oscGain.gain.value, ctx.currentTime);
-  oscGain.gain.exponentialRampToValueAtTime(0.0000001, ctx.currentTime + 2);  //function will return an error if gain set to 0
+  if (!sustain) {
+    oscGain.gain.exponentialRampToValueAtTime(0.0000001, ctx.currentTime + 2);  //function will return an error if gain set to 0
+  } else {
+    oscGain.gain.exponentialRampToValueAtTime(0.0000001, ctx.currentTime + 10);
+  }
 
   noteDelayStop(osc);
 

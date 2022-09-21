@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -80,17 +79,14 @@ function App() {
     <div className="App">
     <AuthContext.Provider value={{authState, setAuthState}}>
     <Router>
-    <Navbar bg="dark" expand="lg" variant="dark">
+    <Navbar bg="dark" collapseOnSelect expand="lg" variant="dark">
       <Container>
         <Navbar.Brand href="/">FreeMusic</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavDropdown title="Sheet Music and Recordings" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/composers">Composers</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/donations">Donations</NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link href="/composers">Composers</Nav.Link>
+            <Nav.Link href="/donations">Donations</Nav.Link>
           </Nav>
           {authState.role==="admin" && (  
               <>
@@ -158,7 +154,7 @@ function App() {
 
       </Routes>
     </Router>
-    <footer class="pt-3 mt-4 text-muted border-top">
+    <footer className="pt-3 mt-4 text-muted border-top">
       &copy; placeholder footer
     </footer>
     <br></br>

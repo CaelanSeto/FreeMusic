@@ -180,7 +180,7 @@ span {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 15px;
 }
 
 /* Track */
@@ -191,13 +191,13 @@ span {
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(0, 0, 0);
+  background: rgb(59, 62, 73);
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(31, 30, 30); 
+  background: rgb(56, 54, 54); 
 }
 
 .container .composer{
