@@ -2,14 +2,24 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import Card from 'react-bootstrap/Card';
 
 function Files() {
-   const [listOfFiles, setListOfFiles] = useState([]);
-   //const [piece, setPiece] = useState([]);
-   //const [composer, setComposer] = useState([]);
-   const usenavigate = useNavigate();
 
-   let { PieceId } = useParams();
+  
+  const [listOfFiles, setListOfFiles] = useState([]);
+  // const [piece, setPiece] = useState([]);
+  // const [composer, setComposer] = useState([]);
+  // const usenavigate = useNavigate();
+  
+  let { PieceId } = useParams();
+  
+  
+
 
   useEffect(() => {  
     axios.get(`http://localhost:3001/files/${PieceId}`).then((response) => {
@@ -22,25 +32,67 @@ function Files() {
 */
 
   return (
-    <div className="composerPiecesFiles">
-    <div className="AppComposers"><br></br>
-      <h2>{window.name} / Files</h2><br></br>
-      {listOfFiles.map((value) => {
-        return (
-            <div className='composers'>   
-                <h3>{value.instruments}</h3>     
-                <a  href={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.file}`} target="_blank">
-                    <div>
-                        {value.file}
-                    </div>
-                </a>    
-            </div>
-        );     
-      })}
+    <div>
+      <Container>
+      <br></br>
+      <Breadcrumb>
+        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+        <Breadcrumb.Item href="/composers">Composers</Breadcrumb.Item>
+        <Breadcrumb.Item href={`/pieces/${window.composerId}`}>{window.name}</Breadcrumb.Item>
+        <Breadcrumb.Item active>{window.pieceTitle}</Breadcrumb.Item>
+      </Breadcrumb>
+          {listOfFiles.map((value) => {
+            window.pieceTitle = value.title;
+            function toggle() {
+              var x = document.getElementById(`toggle${value.file}`);
+              if (x.style.display === "none") {
+                x.style.display = "block";
+              } else {
+                x.style.display = "none";
+              }
+            }
 
-    </div>
+            function docType() {
+              if (`${value.type}` === 'recording') {
+                return <audio 
+                          controls
+                          src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.file}`}>
+                            
+                          </audio>
+              } if (`${value.type}` === 'sheetmusic') {
+                return <embed src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.file}`} width="80%" height="1000px" />
+              }
+            }
+
+            return (
+              <div>
+                <Card style={{ width: '80vw'}}>
+                  <br></br>
+                  <Card.Title>{value.file}</Card.Title>
+                  <Card.Text>{value.type}</Card.Text>
+                    <a  href={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.file}`} target="_blank" rel="noreferrer">
+                      <div>
+                        <Button className="btn-secondary" size="sm">Download</Button>
+                      </div>
+                    </a>
+                  <br></br>
+                  <Button className="btn btn-dark" onClick={toggle} size="sm">View/Hide the file</Button>
+                  <br></br><br></br>
+                  <div id={`toggle${value.file}`}>
+                    {docType()}
+                  </div>
+                </Card>
+                
+              </div>
+            );     
+          })}
+        <br></br>
+        <p>Click on the button below if you want to play the sheets on your MIDI device:</p>
+        <div> <Button className="btn btn-dark" id="MIDIbutton">Start MIDI plugin</Button></div>
+      </Container>
     </div>
   )
+  
 }
 
 

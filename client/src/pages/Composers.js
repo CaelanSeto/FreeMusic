@@ -18,7 +18,7 @@ function Composers() {
   }, []);
   
   return (
-    <div className="container">
+    <div>
       <Container>
       <br></br>
       <Breadcrumb>
@@ -28,16 +28,11 @@ function Composers() {
       <h4>Composers</h4>
       <br></br>
       <Table striped bordered hover size="sm">
-      <tr>
-        <th>ID#</th>
-        <th>Composer:</th>
-      </tr>
       {listOfComposers.map((value) => {
         return (
         <tbody>
           <tr>
-            <td>{value.id}</td>
-            <td><Button variant="outline-secondary" onClick={() => {usenavigate(`/pieces/${value.id}`)}}>{value.name}</Button></td>
+            <td onClick={() => {usenavigate(`/pieces/${value.id}`)}}>{value.name}</td>
           </tr>
         </tbody>
         
