@@ -80,7 +80,7 @@ const App = () => {
   };
 
   const user = () => {
-    localStorage.removeItem("accessToken");
+    localStorage.getItem("accessToken");
    if (authState.role === "admin"){
     setAuthState({ email: "", id: 0, name: "", role: "admin", status: true});
    }};
