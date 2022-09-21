@@ -21,6 +21,7 @@ function Composers() {
       <br></br>
       <Breadcrumb>
         <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+        <Breadcrumb.Item active>Composers</Breadcrumb.Item>
       </Breadcrumb>
       <br></br>
       <div className="composerPiecesFiles">

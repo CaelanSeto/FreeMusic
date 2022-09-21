@@ -17,7 +17,7 @@ function Home() {
       <div>
         <br></br>
         <Breadcrumb>
-          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+          <Breadcrumb.Item active>Home</Breadcrumb.Item>
         </Breadcrumb>
         </div>
         <br></br>
@@ -45,7 +45,7 @@ function Home() {
               Sed risus ligula, interdum sed nunc id, aliquet ullamcorper dolor. Praesent ex risus, lobortis at volutpat at, dictum et diam. 
               Praesent luctus urna lacus, ut efficitur sem ultrices vitae. In eget mattis eros. Ut congue, odio id dapibus aliquam, elit eros pharetra erat, 
               id maximus quam nunc vel ante. In bibendum tortor nisl, vel vehicula erat malesuada non. Fusce neque est, efficitur et diam sed, dictum gravida enim.</p>
-            <Button variant="btn btn-outline-light" href="/">Placeholder</Button>
+            <Button variant="btn btn-dark" href="/">Placeholder</Button>
           </div>
         </div>
       </div>
