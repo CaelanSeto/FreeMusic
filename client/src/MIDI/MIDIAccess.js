@@ -119,7 +119,7 @@
     if (!sustain) {
       await new Promise(resolve => setTimeout(resolve, 2000));
     } else {
-      await new Promise(resolve => setTimeout(resolve, 15000));
+      await new Promise(resolve => setTimeout(resolve, 10000));
     }
     delete noteOffOsc[note.toString()];
     osc.stop();
@@ -136,7 +136,7 @@
     if (!sustain) {
       oscGain.gain.exponentialRampToValueAtTime(0.0000001, ctx.currentTime + 2);  //function will return an error if gain set to 0
     } else {
-      oscGain.gain.exponentialRampToValueAtTime(0.0000001, ctx.currentTime + 15);
+      oscGain.gain.exponentialRampToValueAtTime(0.0000001, ctx.currentTime + 10);
     }
   
   
