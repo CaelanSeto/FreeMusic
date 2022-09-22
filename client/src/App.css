@@ -162,7 +162,7 @@ span {
   scrollbar-width: thin;
 }
 .composersTd{
-  height:50px;
+  height:100px;
   text-align: left;
   overflow-y:scroll;
   border-radius: 3px;  
