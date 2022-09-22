@@ -42,7 +42,7 @@ router.post("/register", async (req, res) => {
     const user =  await Users.findOne({ where: { email: email } });
 
     if (user) {
-        res.status(403).json({ error: "User with this email exists, can not register again!" });
+        res.json({ error: "User with this email exists, can not register again!" });
     }
     else{
         if(isEmail(email)){

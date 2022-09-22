@@ -13,6 +13,8 @@ function Login() {
 
 
     const [badCredentials, setBadCredentials] = useState("");
+    const [success, setSuccess] = useState("");
+    const [error, setError] = useState("");
     const intialValues = {
         name: "",
         email: "",
@@ -28,9 +30,11 @@ function Login() {
     const onSubmit = (data) => {
         axios.post("http://localhost:3001/users/register", data).then((response) => {
             if (response.data.error) {
-                setBadCredentials(response.data.error);
-            } else {
-                console.log(data);
+                setError(response.data.error);
+
+            } 
+            else {
+                setSuccess("Congratulations, you are registered!")
             }
         })
     };
@@ -106,6 +110,9 @@ function Login() {
                                         id="inputCreatePost" name="password"
                                         placeholder="(Your Password)"></Field>
                                     <br></br><br></br>
+                                    <p style={{color: 'red'}}>{error}</p>
+                                    <p style={{color: '#a5d6a7'}}>{success}</p>
+                                    <br></br>
                                     <Button variant="dark" size="sm" type="submit">Register</Button>
                                 </Form>
                             </Formik>
@@ -122,6 +129,7 @@ function Login() {
                                 <input
                                     type="text"
                                     onChange={(event) => {
+                                        setBadCredentials("");
                                         setEmail(event.target.value);
                                     }}
                                 />
@@ -133,6 +141,7 @@ function Login() {
                                 <input
                                     type="password"
                                     onChange={(event) => {
+                                        setBadCredentials("");
                                         setPassword(event.target.value);
                                     }}
                                 />
