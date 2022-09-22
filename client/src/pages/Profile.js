@@ -3,7 +3,7 @@ import React from 'react'
 function Profile() {
   return (
     <div>
-     {window.name}
+     Profile Page
     </div>
   )
 }
