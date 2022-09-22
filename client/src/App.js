@@ -74,8 +74,8 @@ function App () {
 
   const logout = () => {
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("role");
     setAuthState({ email: "", id: 0, name: "", role: "", status: false });
-    sessionStorage.removeItem("role");
   };
 
   //SEARCHBAR TO DO
@@ -92,7 +92,7 @@ function App () {
                   <Nav.Link href="/composers">Composers</Nav.Link>
                   <Nav.Link href="/donations">Donations</Nav.Link>
                 </Nav>
-                {sessionStorage.getItem("role") === "admin" && (
+                {localStorage.getItem("role") === "admin" && (
                   <>
                     <Nav className="ml-auto">
                       <Button variant="outline-light" href="/admin" className="me-3" style={{ color: 'yellow' }}>Admin Dashboard</Button>
@@ -139,43 +139,43 @@ function App () {
             <Route path="/Profile" element={<Profile />}></Route>
 
               <Route path="/admin" element={<ProtectedRoute redirectPath="/" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <Dashboard /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <Dashboard /></ProtectedRoute>} />
 
               <Route path="/admin/users" element={<ProtectedRoute redirectPath="/" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <AdminUsers /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <AdminUsers /></ProtectedRoute>} />
 
               <Route path="/admin/users/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <EditUser /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <EditUser /></ProtectedRoute>} />
 
               <Route path="/admin/composers" element={<ProtectedRoute redirectPath="/" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <AdminComposers /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <AdminComposers /></ProtectedRoute>} />
 
               <Route path="/admin/composers/add" element={<ProtectedRoute redirectPath="/" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <CreateComposer /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <CreateComposer /></ProtectedRoute>} />
 
               <Route path="/admin/composers/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <EditComposer /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <EditComposer /></ProtectedRoute>} />
 
               <Route path="/admin/pieces" element={<ProtectedRoute redirectPath="/" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <AdminPieces /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <AdminPieces /></ProtectedRoute>} />
 
               <Route path="/admin/pieces/add" element={<ProtectedRoute redirectPath="/" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <CreatePiece /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <CreatePiece /></ProtectedRoute>} />
 
               <Route path="/admin/pieces/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <EditPiece /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <EditPiece /></ProtectedRoute>} />
 
               <Route path="/admin/files" element={<ProtectedRoute redirectPath="/" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <AdminFiles /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <AdminFiles /></ProtectedRoute>} />
 
               <Route path="/admin/files/add" element={<ProtectedRoute redirectPath="/" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <CreateFile /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <CreateFile /></ProtectedRoute>} />
 
               <Route path="/admin/files/edit/:id" element={<ProtectedRoute redirectPath="/home" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <EditFile /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <EditFile /></ProtectedRoute>} />
 
               <Route path="/admin/uploads" element={<ProtectedRoute redirectPath="/home" isAllowed={
-              sessionStorage.getItem("role") === "admin" }> <UploadFiles /></ProtectedRoute>} />
+              localStorage.getItem("role") === "admin" }> <UploadFiles /></ProtectedRoute>} />
 
               <Route path="*" element={<p>There's nothing here: 404!</p>}></Route>
 
