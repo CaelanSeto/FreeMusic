@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthContext } from "./helpers/AuthContext";
-import { useState, useEffect } from "react";
+import { useState, useEffect, setStatus } from "react";
 import axios from "axios";
 //import NavbarComponent from "./components/NavbarComponent";
 
@@ -89,7 +89,7 @@ function App () {
   const admin = () => {
     localStorage.getItem("accessToken");
     if (authState.role === "admin") {
-      <admin />
+      setStatus(true)
     }
   };
 
@@ -156,7 +156,7 @@ function App () {
             <Route element={<ProtectedRoute isAllowed={ admin } />}>
 
               <Route path="/admin" element={<ProtectedRoute redirectPath="/" isAllowed={
-              admin }> <Dashboard /></ProtectedRoute>} />
+              authState.role === "admin" }> <Dashboard /></ProtectedRoute>} />
 
               <Route path="/admin/users" element={<ProtectedRoute redirectPath="/" isAllowed={
                 authState.role === "admin"}> <AdminUsers /></ProtectedRoute>} />
