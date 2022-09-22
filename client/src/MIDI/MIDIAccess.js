@@ -103,12 +103,12 @@ function noteOn(note, velocity) {
   osc.start();
 }  
 
-// stop the note after a 2 second delay or 10 seconds if the sustain pedal is pressed
+// stop the note after a 2 second delay for the fade out to function or 10 seconds if the sustain pedal is pressed
 async function noteDelayStop(osc) {
   if (!sustain) {
     await new Promise (resolve => setTimeout(resolve, 2000));
   } else {
-    await new Promise (resolve => setTimeout(resolve, 10000));
+    await new Promise (resolve => setTimeout(resolve, 15000));
   }
   osc.stop();
 }  
@@ -124,7 +124,7 @@ function noteOff(note) {
   if (!sustain) {
     oscGain.gain.exponentialRampToValueAtTime(0.0000001, ctx.currentTime + 2);  //function will return an error if gain set to 0
   } else {
-    oscGain.gain.exponentialRampToValueAtTime(0.0000001, ctx.currentTime + 10);
+    oscGain.gain.exponentialRampToValueAtTime(0.0000001, ctx.currentTime + 15);
   }
 
   noteDelayStop(osc);
