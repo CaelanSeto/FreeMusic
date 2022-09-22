@@ -79,13 +79,6 @@ function App () {
     setAuthState({ email: "", id: 0, name: "", role: "", status: false });
   };
 
-  {/** const user = () => {
-    localStorage.getItem("accessToken");
-    if (authState === "null" || authState.role === "user" && !authState.role === "admin") {
-      return user
-    }
-  }*/}
-
   const admin = () => {
     localStorage.getItem("accessToken");
     if (authState.role === "admin") {
