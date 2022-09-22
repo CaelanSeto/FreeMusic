@@ -102,11 +102,16 @@ router.patch("/edit/:id([0-9]+)", async (req, res) => {
     const name = req.body.name;
     const role = req.body.role;
     const status = req.body.status;
-    await Users.update({ name: name, role: role, status: status }, { 
-        where: {
-            id: id
-        }
-    });
+    const password = req.body.password;
+
+    bcrypt.hash(password, 10).then((hash) => {
+         Users.update({ name: name, role: role, status: status, password: hash }, { 
+            where: {
+                id: id
+            }
+        });
+    }); 
+
     res.json("updated!!!");
 });
 

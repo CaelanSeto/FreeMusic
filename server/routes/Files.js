@@ -45,8 +45,24 @@ router.get("/byId/:id([0-9]+)", async (req, res) => {
 
 //create File
 router.post("/add", async (req, res) => {
-    const file = req.body;
-    await Files.create(file);
+    const title = req.body.title;
+    const type = req.body.type;
+    let file = title+".pdf";
+    if(type === "recording"){
+        file = title+".mp3";
+    }
+    const description = req.body.description;
+    const instruments = req.body.instruments;
+    const PieceId = req.body.PieceId;
+
+    await Files.create({
+        title: title, 
+        type: type, 
+        file: file, 
+        description: description, 
+        instruments: instruments, 
+        PieceId: PieceId
+    });
     res.json("The file is created!");
 });
 

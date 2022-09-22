@@ -37,7 +37,7 @@ function CreateComposer() {
             <h2>Add Composer</h2>
             <br></br>
           <div class="form-group">
-            <label>Composer:</label>
+            <label>Composer Name:</label>
             <Field className="form-control"  name="name" placeholder="FamilyName, FirstName"/>
             <ErrorMessage name="name" component="span"/>
           </div>

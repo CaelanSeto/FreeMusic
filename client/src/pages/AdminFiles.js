@@ -47,7 +47,7 @@ function AdminFiles() {
 						    <th>Instruments</th>
                 <th>Piece ID</th>
                 <th>Updated At</th>
-						    <th>Update &nbsp;&nbsp; / &nbsp;&nbsp; Delete</th>
+						    <th>Update &nbsp; / &nbsp;Delete</th>
 					    </tr>
 				    </thead>
 				    <tbody>

@@ -43,7 +43,7 @@ function AdminComposers() {
 						    <th>Name</th>
 						    <th>Biography</th>
                 <th>Updated At</th>
-						    <th>Update &nbsp;&nbsp; | &nbsp;&nbsp; Delete</th>
+						    <th>Update &nbsp; / &nbsp;Delete</th>
 					    </tr>
 				    </thead>
 				    <tbody>
@@ -62,7 +62,7 @@ function AdminComposers() {
                                 <Link to={`/admin/composers/edit/${val.id}`}>
                                     <button className="btn btn-dark">Update</button>
                                 </Link>
-                                &nbsp;&nbsp;
+                                <br></br><br></br>
                                     <button onClick={() => {deleteComposer(val.id)}} className="btn btn-secondary">Delete</button> 	    
 						    </td>
 					    </tr>
