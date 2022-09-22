@@ -41,7 +41,7 @@ function Files() {
       <Breadcrumb>
         <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item href="/composers">Composers</Breadcrumb.Item>
-        <Breadcrumb.Item href={`/pieces/${window.composerId}`}>{window.name}</Breadcrumb.Item>
+        <Breadcrumb.Item href={`/pieces/${sessionStorage.getItem("composerId")}`}>{sessionStorage.getItem("composerName")}</Breadcrumb.Item>
         <Breadcrumb.Item active>{window.pieceTitle}</Breadcrumb.Item>
       </Breadcrumb>
           {listOfFiles.map((value) => {

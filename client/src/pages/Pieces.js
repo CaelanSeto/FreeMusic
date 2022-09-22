@@ -18,11 +18,17 @@ function Pieces() {
         setComposer(response.data);   
     });
     axios.get(`http://localhost:3001/pieces/${ComposerId}`).then((response) => {
-        setListOfPieces(response.data);   
-    });
-  },[]);
-  window.name = composer.name;
-  window.composerId = composer.id;
+        setListOfPieces(response.data);
+      });
+    },[]);
+
+    // set session storage
+    sessionStorage.setItem("composerName", composer.name);
+    sessionStorage.setItem("composerId", composer.id);
+
+    var composerName = sessionStorage.getItem("composerName");
+  //window.name = composer.name;
+  //window.composerId = composer.id;
 
   return (
 
@@ -33,17 +39,17 @@ function Pieces() {
     <Breadcrumb>
       <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
       <Breadcrumb.Item href="/composers">Composers</Breadcrumb.Item>
-      <Breadcrumb.Item active>{composer.name}</Breadcrumb.Item>
+      <Breadcrumb.Item active>{composerName}</Breadcrumb.Item>
     </Breadcrumb>
     <br></br>
     <Card style={{ }}>
       <Card.Body>
-        <Card.Title>{composer.name}</Card.Title>
+        <Card.Title>{composerName}</Card.Title>
         <Card.Text>
         <img
           src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${ComposerId}.JPG`}
           className='img-thumbnail' 
-          alt={composer.name}
+          alt={composerName}
         />
         <br></br>
         {composer.biography}
