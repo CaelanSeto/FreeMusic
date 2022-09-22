@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthContext } from "./helpers/AuthContext";
 import { useState , useEffect} from "react";
 import axios from "axios";
@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -23,6 +22,8 @@ import Profile from "./pages/Profile";
 
 /*****************************************/
 /*admin staff */ 
+import ProtectedRoute from "./pages/ProtectedRoute";
+
 import Dashboard from "./pages/Dashboard";
 //files CRUD
 import AdminComposers from "./pages/AdminComposers";
@@ -42,7 +43,7 @@ import EditFile from "./pages/EditFile";
 import UploadFiles from "./pages/UploadFiles";
 
 
-function App() {
+const App = () => {
   const [authState, setAuthState] = useState({
     email: "",
     id: 0,
@@ -50,6 +51,7 @@ function App() {
     role: "",
     status: false,
   });
+  
   useEffect(() => {
     axios.get("http://localhost:3001/users/auth", {
       headers: {
@@ -59,7 +61,6 @@ function App() {
       if (response.data.error) {
         setAuthState({ ...authState, status: false});
       }else{
-        console.log("NAME: " + response.data.name);
         setAuthState({
           email: response.data.email,
           id: response.data.id,
@@ -71,27 +72,32 @@ function App() {
     });
   }, []);
 
+  
+
   const logout = () => {
     localStorage.removeItem("accessToken");
     setAuthState({ email: "", id: 0, name: "", role: "", status: false});
   };
 
+  const user = () => {
+    localStorage.getItem("accessToken");
+   if (authState.role === "admin"){
+    setAuthState({ email: "", id: 0, name: "", role: "admin", status: true});
+   }};
+ 
   //SEARCHBAR TO DO
   return (
     <div className="App">
     <AuthContext.Provider value={{authState, setAuthState}}>
     <Router>
-    <Navbar bg="dark" expand="lg" variant="dark">
+    <Navbar bg="dark" collapseOnSelect expand="lg" variant="dark">
       <Container>
         <Navbar.Brand href="/">FreeMusic</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavDropdown title="Sheet Music and Recordings" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/composers">Composers</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/donations">Donations</NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link href="/composers">Composers</Nav.Link>
+            <Nav.Link href="/donations">Donations</Nav.Link>
           </Nav>
           {authState.role==="admin" && (  
               <>
@@ -130,6 +136,7 @@ function App() {
       </Container>
     </Navbar>
       <Routes>
+      <Route index element={<Home />}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
@@ -138,28 +145,27 @@ function App() {
         <Route path="/files/:PieceId" element={<Files />}></Route>
         <Route path="/Profile" element={<Profile />}></Route>
 
+        <Route element={<ProtectedRoute user={user} />}>
+
         <Route path="/admin" element={<Dashboard />}></Route>
-        
         <Route path="/admin/users" element={<AdminUsers />}></Route>
         <Route path="/admin/users/edit/:id" element={<EditUser />}></Route>
-        
         <Route path="/admin/composers" element={<AdminComposers />}></Route>
         <Route path="/admin/composers/add" element={<CreateComposer />}></Route>
         <Route path="/admin/composers/edit/:id" element={<EditComposer />}></Route>
-
         <Route path="/admin/pieces" element={<AdminPieces />}></Route>
         <Route path="/admin/pieces/add" element={<CreatePiece />}></Route>
         <Route path="/admin/pieces/edit/:id" element={<EditPiece />}></Route>
-
         <Route path="/admin/files" element={<AdminFiles />}></Route>
         <Route path="/admin/files/add" element={<CreateFile />}></Route>
         <Route path="/admin/files/edit/:id" element={<EditFile />}></Route>
         <Route path="/admin/uploads" element={<UploadFiles />}></Route>
-        
+        </Route>
+        <Route path="*" element={<p>There's nothing here: 404!</p>}></Route>
 
       </Routes>
     </Router>
-    <footer class="pt-3 mt-4 text-muted border-top">
+    <footer className="pt-3 mt-4 text-muted border-top">
       &copy; placeholder footer
     </footer>
     <br></br>

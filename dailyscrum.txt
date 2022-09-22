@@ -156,26 +156,34 @@ EDGAR:
 9/21/22
 CAELAN:
 1) Done / Not done since Last Scrum:
+    CSS, updated MIDI plugin
 
 2) To do until next Scrum:
+    Searchbar, finish PDF viewer, mp3 player
 
 3) Need Assistance / figure things out
 
 
 
+
 VLAD:
 1) Done / Not done since Last Scrum:
+    Lists of all tables
+    Admin CRUD
 
 2) To do until next Scrum:
+    Finish admin CRUD
 
 3) Need Assistance / figure things out
 
 
 EDGAR:
 1) Done / Not done since Last Scrum:
+    Research protected routes
 
 2) To do until next Scrum:
-
+    REGEX validation for admin, protected routes
+    
 3) Need Assistance / figure things out
 
 

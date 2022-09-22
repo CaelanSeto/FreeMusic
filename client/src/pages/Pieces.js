@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import Container from 'react-bootstrap/Container';
+import Card from 'react-bootstrap/Card';
+import Table from 'react-bootstrap/Table';
 
 function Pieces() {
    const [listOfPieces, setListOfPieces] = useState([]);
@@ -18,34 +22,60 @@ function Pieces() {
     });
   },[]);
   window.name = composer.name;
+  window.composerId = composer.id;
+
   return (
-   <div className="composerPiecesFiles">
-    <div className="AppComposers"><br></br>
-      <h2>{composer.name}</h2>   
-        <div className="biograpphy"> 
-            <img src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${ComposerId}.JPG`} alt={composer.name} />
-            <br></br>   
-            <button id='pieces'>
-                    {composer.biography}
-            </button>
-        </div>
-            
-      <br></br><br></br>
-      
-      <h3>Composer Pieces</h3>
+
+   <div>
+    <Container>
+
+    <br></br>
+    <Breadcrumb>
+      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+      <Breadcrumb.Item href="/composers">Composers</Breadcrumb.Item>
+      <Breadcrumb.Item active>{composer.name}</Breadcrumb.Item>
+    </Breadcrumb>
+    <br></br>
+    <Card style={{ }}>
+      <Card.Body>
+        <Card.Title>{composer.name}</Card.Title>
+        <Card.Text>
+        <img
+          src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${ComposerId}.JPG`}
+          className='img-thumbnail' 
+          alt={composer.name}
+        />
+        <br></br>
+        {composer.biography}
+        </Card.Text>
+      </Card.Body>
+    </Card>
+    <br></br>
+    <h4>Pieces</h4>
+    <br></br>
+    <Table striped hover size="sm">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Piece:</th>
+
+        </tr>
+      </thead>
       {listOfPieces.map((value) => {
         return (
-            <div className='composers'>        
-                <button  onClick={() => {usenavigate(`/files/${value.id}`)}}>
-                    <div>
-                        {value.title}
-                    </div>
-                </button>    
-            </div>
+        <tbody>
+          <tr>
+            <td>{value.id}</td>
+            <td onClick={() => {usenavigate(`/files/${value.id}`)}}>{value.title}</td>
+          </tr>
+        </tbody>
+        
         );     
+      
       })}
+      </Table>
 
-    </div>
+    </Container>
   </div>
   )
 }

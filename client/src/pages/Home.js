@@ -8,8 +8,6 @@ import MIDIAccess from "../MIDI/MIDIAccess";
 
 <MIDIAccess />
 
-//IMAGE NEEDS TO BE FIXED
-
 function Home() {
   return (
     <div>
@@ -17,13 +15,13 @@ function Home() {
       <div>
         <br></br>
         <Breadcrumb>
-          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+          <Breadcrumb.Item active>Home</Breadcrumb.Item>
         </Breadcrumb>
         </div>
         <br></br>
-        <div class="row align-items-md-stretch">
-        <div class="col-md-6">
-          <div class="h-100 p-5 text-white bg-secondary rounded-3">
+        <div className="row align-items-md-stretch">
+        <div className="col-md-6">
+          <div className="h-100 p-5 text-white bg-secondary rounded-3">
             <h2>Composers</h2>
             <br></br>
             <img 
@@ -38,19 +36,20 @@ function Home() {
             <Button variant="btn btn-outline-light" href="/composers">Browse our Composers</Button>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="h-100 p-5 text-white bg-secondary border rounded-3">
+        <div className="col-md-6">
+          <div className="h-100 p-5 text-white bg-secondary border rounded-3">
             <h2>Placeholder (Searchbar?)</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies ultrices tortor, vitae suscipit risus interdum a. Phasellus id felis felis. 
               Sed risus ligula, interdum sed nunc id, aliquet ullamcorper dolor. Praesent ex risus, lobortis at volutpat at, dictum et diam. 
               Praesent luctus urna lacus, ut efficitur sem ultrices vitae. In eget mattis eros. Ut congue, odio id dapibus aliquam, elit eros pharetra erat, 
               id maximus quam nunc vel ante. In bibendum tortor nisl, vel vehicula erat malesuada non. Fusce neque est, efficitur et diam sed, dictum gravida enim.</p>
-            <Button variant="btn btn-outline-light" href="/">Placeholder</Button>
+            <Button variant="btn btn-dark" href="/">Placeholder</Button>
           </div>
         </div>
       </div>
       <br></br>
-      <div> <Button className="btn btn-dark" id="MIDIbutton">Start MIDI plugin</Button></div>
+      
+      <div> <Button className="btn btn-dark" id="MIDIbutton">Temporary MIDI plugin for testing</Button></div>
       <br></br>
 
       
