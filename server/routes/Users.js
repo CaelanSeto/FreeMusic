@@ -42,7 +42,7 @@ router.post("/register", async (req, res) => {
     const user =  await Users.findOne({ where: { email: email } });
 
     if (user) {
-        res.status(403).json({ error: "User with this email exists, can not register again!" });
+        res.json({ error: "User with this email exists, can not register again!" });
     }
     else{
         if(isEmail(email)){
@@ -84,12 +84,11 @@ router.post("/login", async (req, res) => {
                           email: user.email,
                           name: user.name,
                           id: user.id,
-                          role: user.role,
-                          status: user.status
+                          role: user.role
                         }, 
                           "noSecretAtAll"
                       );
-                      res.json({ token: accessToken, email: email, id: user.id, name: user.name, role: user.role, status: user.status });
+                      res.json({ token: accessToken, email: email, id: user.id, name: user.name, role: user.role });
                 }
             }   
         });

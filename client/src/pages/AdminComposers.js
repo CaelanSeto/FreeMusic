@@ -22,7 +22,7 @@ function AdminComposers() {
 
   const deleteComposer = (id) => {
     axios.delete(`http://localhost:3001/composers/delete/${id}`);
-    window.location.reload(true);
+    window.location.reload();
   };
 
   return (
