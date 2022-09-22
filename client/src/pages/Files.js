@@ -60,7 +60,7 @@ function Files() {
                             
                           </audio>
               } if (`${value.type}` === 'sheetmusic') {
-                return <embed src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.file}`} width="80%" height="1000px" />
+                return <iframe src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.file}#toolbar=0`} width="80%" height="1000px" />
               }
             }
 

@@ -121,7 +121,6 @@ async function noteDelayStop(osc, note) {
     await new Promise(resolve => setTimeout(resolve, 15000));
   }
   delete noteOffOsc[note.toString()];
-  console.log(noteOffOsc);
   osc.stop();
 }
 
