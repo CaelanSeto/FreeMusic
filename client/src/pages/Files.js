@@ -15,6 +15,8 @@ function Files() {
 
   
   const [listOfFiles, setListOfFiles] = useState([]);
+  const [composerId, setComposerId] = useState([]);
+  const [composer, setComposer] = useState([]);
   // const [piece, setPiece] = useState([]);
   // const [composer, setComposer] = useState([]);
   // const usenavigate = useNavigate();
@@ -26,24 +28,35 @@ function Files() {
 
   useEffect(() => {  
     axios.get(`http://localhost:3001/files/${PieceId}`).then((response) => {
-        setListOfFiles(response.data);   
+        setListOfFiles(response.data);
+        
+    });
+    axios.get(`http://localhost:3001/pieces/byId/${PieceId}`).then((response) => {
+      setComposerId(response.data.ComposerId);
+      console.log(response.data.ComposerId);
+    });
+    axios.get(`http://localhost:3001/composers/byId/${composerId}`).then((response) => {
+      setComposer(response.data.name);
     });
   }, []);
-
-/*
+  
+  
+  /*
   https://freeclassicmusic.s3.us-east-2.amazonaws.com/lacrymosa.mp3
-*/
-
-  return (
+  */
+ 
+ return (
     <div>
+      {console.log(composerId)}
       <Container>
       <br></br>
       <Breadcrumb>
         <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item href="/composers">Composers</Breadcrumb.Item>
-        <Breadcrumb.Item href={`/pieces/${sessionStorage.getItem("composerId")}`}>{sessionStorage.getItem("composerName")}</Breadcrumb.Item>
+        <Breadcrumb.Item href={`/pieces/${composerId}`}>dummy{composer}</Breadcrumb.Item>
         <Breadcrumb.Item active>{window.pieceTitle}</Breadcrumb.Item>
       </Breadcrumb>
+
           {listOfFiles.map((value) => {
             window.pieceTitle = value.title;
             function toggle() {

@@ -15,7 +15,8 @@ function Pieces() {
 
   useEffect(() => {  
     axios.get(`http://localhost:3001/composers/byId/${ComposerId}`).then((response) => {
-        setComposer(response.data);   
+        setComposer(response.data);
+        console.log(response.data);
     });
     axios.get(`http://localhost:3001/pieces/${ComposerId}`).then((response) => {
         setListOfPieces(response.data);
