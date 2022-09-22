@@ -16,7 +16,8 @@ function Files() {
   
   const [listOfFiles, setListOfFiles] = useState([]);
   const [composerId, setComposerId] = useState([]);
-  const [composer, setComposer] = useState([]);
+  const [composerName, setComposerName] = useState([]);
+  const [pieceTitle, setPieceTitle] = useState([]);
   // const [piece, setPiece] = useState([]);
   // const [composer, setComposer] = useState([]);
   // const usenavigate = useNavigate();
@@ -28,17 +29,35 @@ function Files() {
 
   useEffect(() => {  
     axios.get(`http://localhost:3001/files/${PieceId}`).then((response) => {
+      if(response.data){
         setListOfFiles(response.data);
-        
+      }
+      else{
+        setListOfFiles(null);
+      }      
     });
+
     axios.get(`http://localhost:3001/pieces/byId/${PieceId}`).then((response) => {
-      setComposerId(response.data.ComposerId);
-      console.log(response.data.ComposerId);
-    });
-    axios.get(`http://localhost:3001/composers/byId/${composerId}`).then((response) => {
-      setComposer(response.data.name);
+      if(response.data){
+        setComposerId(response.data.ComposerId);
+        setPieceTitle(response.data.title);
+      }
+      else{
+        setComposerId(null);
+      }
     });
   }, []);
+
+  useEffect(() => {
+    axios.get(`http://localhost:3001/composers/byId/${composerId}`).then((response) => {
+      if(response.data){
+        setComposerName(response.data.name);
+      }
+      else{
+        setComposerName(null); 
+      }
+    });
+  }, [composerId])
   
   
   /*
@@ -53,8 +72,8 @@ function Files() {
       <Breadcrumb>
         <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
         <Breadcrumb.Item href="/composers">Composers</Breadcrumb.Item>
-        <Breadcrumb.Item href={`/pieces/${composerId}`}>dummy{composer}</Breadcrumb.Item>
-        <Breadcrumb.Item active>{window.pieceTitle}</Breadcrumb.Item>
+        <Breadcrumb.Item href={`/pieces/${composerId}`}>{composerName}</Breadcrumb.Item>
+        <Breadcrumb.Item active>{pieceTitle}</Breadcrumb.Item>
       </Breadcrumb>
 
           {listOfFiles.map((value) => {
