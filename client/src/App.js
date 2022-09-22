@@ -163,17 +163,17 @@ function App () {
               <Route path="/admin/composers/add" element={<ProtectedRoute redirectPath="/" isAllowed={
                 authState.role === "admin"}> <CreateComposer /></ProtectedRoute>} />
 
-              {/*<Route path="/admin/composers/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
-                authState.role === "admin"}> <EditComposer /></ProtectedRoute>} />*/}
+              <Route path="/admin/composers/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
+                authState.role === "admin"}> <EditComposer /></ProtectedRoute>} />
 
               <Route path="/admin/pieces" element={<ProtectedRoute redirectPath="/" isAllowed={
                 authState.role === "admin"}> <AdminPieces /></ProtectedRoute>} />
 
-              {/*<Route path="/admin/pieces/add" element={<ProtectedRoute redirectPath="/" isAllowed={
-                authState.role === "admin"}> <CreatePiece /></ProtectedRoute>} />*/}
+              <Route path="/admin/pieces/add" element={<ProtectedRoute redirectPath="/" isAllowed={
+                authState.role === "admin"}> <CreatePiece /></ProtectedRoute>} />
 
-              {/*<Route path="/admin/pieces/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
-                authState.role === "admin"}> <EditPiece /></ProtectedRoute>} />*/}
+              <Route path="/admin/pieces/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
+                authState.role === "admin"}> <EditPiece /></ProtectedRoute>} />
 
               <Route path="/admin/files" element={<ProtectedRoute redirectPath="/" isAllowed={
                 authState.role === "admin"}> <AdminFiles /></ProtectedRoute>} />
@@ -181,8 +181,8 @@ function App () {
               <Route path="/admin/files/add" element={<ProtectedRoute redirectPath="/" isAllowed={
                 authState.role === "admin"}> <CreateFile /></ProtectedRoute>} />
 
-              {/*<Route path="/admin/files/edit/:id" element={<ProtectedRoute redirectPath="/home" isAllowed={
-              authState.role === "admin"}> <EditFile /></ProtectedRoute>} />*/}
+              <Route path="/admin/files/edit/:id" element={<ProtectedRoute redirectPath="/home" isAllowed={
+              authState.role === "admin"}> <EditFile /></ProtectedRoute>} />
 
               <Route path="/admin/uploads" element={<ProtectedRoute redirectPath="/home" isAllowed={
                 authState.role === "admin"}> <UploadFiles /></ProtectedRoute>} />

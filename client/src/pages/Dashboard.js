@@ -8,15 +8,15 @@ function Dashboard() {
       <br></br><br></br><br></br>
       <h2>Admin Dashboard</h2>
       <br></br><br></br>
-      <Link to="/admin/users"><button className="btn btn-dark">Users</button></Link>
+      <Link to="/admin/users"><button className="btn btn-dark dashboard">Users</button></Link>
       <br></br><br></br>
-      <Link to="/admin/composers"><button className="btn btn-dark">Composers</button></Link>
+      <Link to="/admin/composers"><button className="btn btn-dark dashboard">Composers</button></Link>
       <br></br><br></br>
-      <Link to="/admin/pieces"><button className="btn btn-dark">Pieces</button></Link>
+      <Link to="/admin/pieces"><button className="btn btn-dark dashboard">Pieces</button></Link>
       <br></br><br></br>
-      <Link to="/admin/files"><button className="btn btn-dark">Files</button></Link> 
+      <Link to="/admin/files"><button className="btn btn-dark dashboard">Files</button></Link> 
       <br></br><br></br>
-      <Link to="/admin/uploads"><button className="btn btn-dark">Uploads</button></Link> 
+      <Link to="/admin/uploads"><button className="btn btn-dark dashboard">Uploads</button></Link> 
       <br></br><br></br>
     </div>
   )
