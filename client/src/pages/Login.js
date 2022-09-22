@@ -63,6 +63,7 @@ function Login() {
                 if (response.data.role === "user") {
                     navigate("/");
                 } else {
+                    sessionStorage.setItem("role", response.data.role);
                     navigate("/admin");
                 }
 
