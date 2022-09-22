@@ -21,10 +21,10 @@ import Files from "./pages/Files";
 import Profile from "./pages/Profile";
 
 /*****************************************/
-/*admin staff */
+/*admin stuff */
 import ProtectedRoute from "./pages/ProtectedRoute";
-
 import Dashboard from "./pages/Dashboard";
+
 //files CRUD
 import AdminComposers from "./pages/AdminComposers";
 import CreateComposer from "./pages/CreateComposer";
