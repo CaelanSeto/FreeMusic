@@ -190,28 +190,39 @@ EDGAR:
 9/22/22
 CAELAN:
 1) Done / Not done since Last Scrum:
+    Search bar not done
+
+    PDF viewer, mp3 player integrated into Files page
 
 2) To do until next Scrum:
+    Search bar
+    UUID for S3 upload
 
 3) Need Assistance / figure things out
-
+    Protected Routes
 
 
 VLAD:
 1) Done / Not done since Last Scrum:
+    All CRUD finished
 
 2) To do until next Scrum:
+    Protected Routes
+    UUID for S3 upload
 
 3) Need Assistance / figure things out
-
+    Protected Routes
 
 EDGAR:
 1) Done / Not done since Last Scrum:
+    Protected Routes base
 
 2) To do until next Scrum:
+    Update Trello User Stories
+    Stripe
 
 3) Need Assistance / figure things out
-
+    Protected Routes
 
 9/23/22
 CAELAN:

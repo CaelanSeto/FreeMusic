@@ -4,10 +4,6 @@ import Button from 'react-bootstrap/Button';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Container from 'react-bootstrap/Container';
 
-import MIDIAccess from "../MIDI/MIDIAccess";
-
-<MIDIAccess />
-
 function Home() {
   return (
     <div>

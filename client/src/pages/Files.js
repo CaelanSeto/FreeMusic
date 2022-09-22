@@ -8,7 +8,10 @@ import Container from 'react-bootstrap/Container';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Card from 'react-bootstrap/Card';
 
+import MIDIAccess from "../MIDI/MIDIAccess";
+
 function Files() {
+<MIDIAccess />
 
   
   const [listOfFiles, setListOfFiles] = useState([]);
@@ -18,7 +21,7 @@ function Files() {
   
   let { PieceId } = useParams();
   
-  
+
 
 
   useEffect(() => {  

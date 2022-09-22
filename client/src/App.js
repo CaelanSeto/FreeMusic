@@ -81,9 +81,11 @@ function App () {
 
   const admin = () => {
     localStorage.getItem("accessToken");
-    if (authState.role === "admin") {
-      setStatus(true)
-    }
+      if (authState.role === "admin") {
+        setStatus(true);
+      } else {
+        setStatus(false);
+      }
   };
 
   //SEARCHBAR TO DO
@@ -146,49 +148,49 @@ function App () {
             <Route path="/files/:PieceId" element={<Files />}></Route>
             <Route path="/Profile" element={<Profile />}></Route>
 
-            <Route element={<ProtectedRoute isAllowed={ admin } />}>
+            {/*<Route element={<ProtectedRoute isAllowed={ authState.status && authState.role.includes('admin') } />}> */}
 
               <Route path="/admin" element={<ProtectedRoute redirectPath="/" isAllowed={
-              authState.role === "admin" }> <Dashboard /></ProtectedRoute>} />
+              authState.status && authState.role.includes('admin') }> <Dashboard /></ProtectedRoute>} />
 
               <Route path="/admin/users" element={<ProtectedRoute redirectPath="/" isAllowed={
-                authState.role === "admin"}> <AdminUsers /></ProtectedRoute>} />
+                authState.status && authState.role.includes('admin')}> <AdminUsers /></ProtectedRoute>} />
 
               <Route path="/admin/users/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
-                authState.role === "admin"}> <EditUser /></ProtectedRoute>} />
+                authState.status && authState.role.includes('admin')}> <EditUser /></ProtectedRoute>} />
 
               <Route path="/admin/composers" element={<ProtectedRoute redirectPath="/" isAllowed={
-                 authState.role === "admin"}> <AdminComposers /></ProtectedRoute>} />
+                 authState.status && authState.role.includes('admin')}> <AdminComposers /></ProtectedRoute>} />
 
               <Route path="/admin/composers/add" element={<ProtectedRoute redirectPath="/" isAllowed={
-                authState.role === "admin"}> <CreateComposer /></ProtectedRoute>} />
+                authState.status && authState.role.includes('admin')}> <CreateComposer /></ProtectedRoute>} />
 
               {/*<Route path="/admin/composers/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
-                authState.role === "admin"}> <EditComposer /></ProtectedRoute>} />*/}
+                authState.status && authState.role.includes('admin')}> <EditComposer /></ProtectedRoute>} />*/}
 
               <Route path="/admin/pieces" element={<ProtectedRoute redirectPath="/" isAllowed={
-                authState.role === "admin"}> <AdminPieces /></ProtectedRoute>} />
+                authState.status && authState.role.includes('admin')}> <AdminPieces /></ProtectedRoute>} />
 
               {/*<Route path="/admin/pieces/add" element={<ProtectedRoute redirectPath="/" isAllowed={
-                authState.role === "admin"}> <CreatePiece /></ProtectedRoute>} />*/}
+                authState.status && authState.role.includes('admin')}> <CreatePiece /></ProtectedRoute>} />*/}
 
               {/*<Route path="/admin/pieces/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
-                authState.role === "admin"}> <EditPiece /></ProtectedRoute>} />*/}
+                authState.status && authState.role.includes('admin')}> <EditPiece /></ProtectedRoute>} />*/}
 
               <Route path="/admin/files" element={<ProtectedRoute redirectPath="/" isAllowed={
-                authState.role === "admin"}> <AdminFiles /></ProtectedRoute>} />
+                authState.status && authState.role.includes('admin')}> <AdminFiles /></ProtectedRoute>} />
 
               <Route path="/admin/files/add" element={<ProtectedRoute redirectPath="/" isAllowed={
-                authState.role === "admin"}> <CreateFile /></ProtectedRoute>} />
+                authState.status && authState.role.includes('admin')}> <CreateFile /></ProtectedRoute>} />
 
               {/*<Route path="/admin/files/edit/:id" element={<ProtectedRoute redirectPath="/home" isAllowed={
-              authState.role === "admin"}> <EditFile /></ProtectedRoute>} />*/}
+                authState.status && authState.role.includes('admin')}> <EditFile /></ProtectedRoute>} />*/}
 
-              <Route path="/admin/uploads" element={<ProtectedRoute redirectPath="/home" isAllowed={
-                authState.role === "admin"}> <UploadFiles /></ProtectedRoute>} />
+              <Route path="/admin/uploads" element={<ProtectedRoute redirectPath="/" isAllowed={
+                authState.status && authState.role.includes('admin')}> <UploadFiles /></ProtectedRoute>} />
 
-            </Route>
-            <Route path="*" element={<p>There's nothing here: 404!</p>}></Route>
+            {/*</Route>*/}
+            <Route path="*" element={<h3>Error 404: Page does not exist</h3>}></Route>
 
           </Routes>
         </Router>
