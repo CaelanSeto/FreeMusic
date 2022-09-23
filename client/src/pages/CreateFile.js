@@ -111,31 +111,46 @@ function CreateFile() {
           <br></br>
 
           <div class="form-group">
-            <label>Instruments:</label>
+            <label>Main instrument(s):</label>
             <Field as="select" name="instruments" className="form-control">
-             <option value=""></option>
-             <option value="Bass">Bass</option>
-             <option value="Bassoon">Bassoon</option>
-            <option value="Bass drum">Bass drum</option>
-            <option value="Cello">Cello</option>
-            <option value="Clarinet">Clarinet</option>
-            <option value="Cymbal">Cymbal</option>
-            <option value="Double bass">Double bass</option>
-            <option value="English Horn">English Horn</option>
-            <option value="Flute">Flute</option>
-            <option value="French Horn">French Horn</option>
-            <option value="Gong">Gong</option>
-            <option value="Oboe">Oboe</option>
-            <option value="Piano">Piano</option>
-            <option value="Piccolo">Piccolo</option>
-            <option value="Snare drum">Snare drum</option>
-            <option value="Timpani">Timpani</option>
-            <option value="Triangle">Triangle</option>
-            <option value="Trombone">Trombone</option>
-            <option value="Trumpet">Trumpet</option>
-            <option value="Tuba">Tuba</option>
-            <option value="Viola">Viola</option>
-            <option value="Violin">Violin</option>
+             <option disabled value="">Select instrument(s) here...</option>
+             <optgroup label="Brass">
+              <option value="French Horn">French Horn</option>
+              <option value="Trombone">Trombone</option>
+              <option value="Trumpet">Trumpet</option>
+              <option value="Tuba">Tuba</option>
+             </optgroup>
+             <optgroup label="Percussion">
+              <option value="Bass drum">Bass drum</option>
+              <option value="Cymbal">Cymbal</option>
+              <option value="Gong">Gong</option>
+              <option value="Oboe">Oboe</option>
+              <option value="Snare drum">Snare drum</option>
+              <option value="Timpani">Timpani</option>
+              <option value="Triangle">Triangle</option>
+             </optgroup>
+             <optgroup label="Piano">
+              <option value="Piano">Piano</option>
+             </optgroup>
+             <optgroup label="Strings"> 
+              <option value="Cello">Cello</option>
+              <option value="Double bass">Double bass</option>
+              <option value="Viola">Viola</option>
+              <option value="Violin">Violin</option>
+             </optgroup>
+             <optgroup label="Woodwind">
+              <option value="Bassoon">Bassoon</option>
+              <option value="Clarinet">Clarinet</option>
+              <option value="English Horn">English Horn</option>
+              <option value="Flute">Flute</option>
+              <option value="Piccolo">Piccolo</option>
+             </optgroup>
+             <optgroup label="Multiple">
+              <option value="Duet">Duet</option>
+              <option value="Orchestra">Orchestra</option>
+              <option value="Quartet">Quartet</option>
+              <option value="Trio">Trio</option>
+             </optgroup>
            </Field>
             <ErrorMessage name="instruments" component="span"/>
           </div>

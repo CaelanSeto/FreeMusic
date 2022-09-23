@@ -36,13 +36,13 @@ function CreateComposer() {
           <br></br><br></br><br></br>
             <h2>Add Composer</h2>
             <br></br>
-          <div class="form-group">
+          <div className="form-group">
             <label>Composer Name:</label>
             <Field className="form-control"  name="name" placeholder="FamilyName, FirstName"/>
             <ErrorMessage name="name" component="span"/>
           </div>
           <br></br>
-          <div class="form-group">
+          <div className="form-group">
             <label>Biography:</label>
             <Field  as="textarea" className="form-control" name="biography"/>
             <ErrorMessage name="biography" component="span"/>
