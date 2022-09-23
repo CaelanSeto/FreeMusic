@@ -15,6 +15,7 @@ function EditFile() {
     const validationSchema = Yup.object().shape({
         title: Yup.string().min(3).max(260).matches(/^\S*$/, 'No spaces allowed').required(),
         file: Yup.string().min(3).max(260).matches(/^\S*$/, 'No spaces allowed').required(),
+        uuid: Yup.string().max(360).matches(/^\S*$/, 'No spaces allowed').required(),
         PieceId: Yup.number().required(),
         type: Yup.string().oneOf(["recording", "sheetmusic"]).required(),
         description: Yup.string().max(1000),
@@ -50,6 +51,7 @@ function EditFile() {
         <Formik initialValues={{
             title: file.title, 
             file: file.file,
+            uuid: file.uuid,
             PieceId: file.PieceId,
             type: file.type,
             description: file.description,
@@ -73,6 +75,13 @@ function EditFile() {
             <label>File Name:</label>
             <Field className="form-control" as={CustomInputComponent} name="file" defaultValue={file.file}/>
             <ErrorMessage name="file" component="span"/>
+          </div>
+          <br></br>
+
+          <div class="form-group">
+            <label>UUID:</label>
+            <Field className="form-control" as={CustomInputComponent} name="uuid" defaultValue={file.uuid}/>
+            <ErrorMessage name="uuid" component="span"/>
           </div>
           <br></br>
 

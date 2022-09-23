@@ -42,6 +42,7 @@ function AdminFiles() {
 						    <th>ID</th>
 						    <th>Title</th>
 						    <th>File Name</th>
+                <th>UUID</th>
 						    <th>Type</th>
 						    <th>Description</th>
 						    <th>Instruments</th>
@@ -57,6 +58,7 @@ function AdminFiles() {
 						    <td>{val.id}</td>
 						    <td>{val.title}</td>
 						    <td>{val.file}</td>
+                <td>{val.uuid}</td>
 						    <td>{val.type}</td>
 						    <td>{val.description}</td>
 						    <td>{val.instruments}</td>
