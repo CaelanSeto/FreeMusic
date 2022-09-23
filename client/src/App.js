@@ -20,6 +20,12 @@ import Pieces from "./pages/Pieces";
 import Files from "./pages/Files";
 import Profile from "./pages/Profile";
 
+/****************************************
+ * searchbar *
+*/
+import SearchBar from './components/SearchBar';
+
+
 /*****************************************/
 /*admin stuff */
 import ProtectedRoute from "./pages/ProtectedRoute";
@@ -100,15 +106,7 @@ function App () {
                   </>
                 )}
 
-                <Form className="d-flex">
-                  <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-light" className="me-3" href="#">Search</Button>
-                </Form>
+                <SearchBar />
                 {!authState.status ? (
                   <>
                     <Nav className="ml-auto">

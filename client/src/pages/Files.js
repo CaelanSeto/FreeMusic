@@ -8,11 +8,10 @@ import Container from 'react-bootstrap/Container';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Card from 'react-bootstrap/Card';
 
-import MIDIAccess from "../MIDI/MIDIAccess";
+import MIDIAccess from '../MIDI/MIDIAccess';
 
 function Files() {
-<MIDIAccess />
-
+  
   
   const [listOfFiles, setListOfFiles] = useState([]);
   const [composerId, setComposerId] = useState([]);
@@ -24,9 +23,9 @@ function Files() {
   
   let { PieceId } = useParams();
   
-
-
-
+  
+  
+  
   useEffect(() => {  
     axios.get(`http://localhost:3001/files/${PieceId}`).then((response) => {
       if(response.data){
@@ -47,7 +46,7 @@ function Files() {
       }
     });
   }, []);
-
+  
   useEffect(() => {
     axios.get(`http://localhost:3001/composers/byId/${composerId}`).then((response) => {
       if(response.data){
@@ -57,16 +56,16 @@ function Files() {
         setComposerName(null); 
       }
     });
-  }, [composerId])
+  }, [composerId]);
   
   
   /*
   https://freeclassicmusic.s3.us-east-2.amazonaws.com/lacrymosa.mp3
   */
  
+
  return (
-    <div>
-      {console.log(composerId)}
+   <div>
       <Container>
       <br></br>
       <Breadcrumb>
@@ -100,10 +99,10 @@ function Files() {
             }
 
             return (
-              <div>
+              <div key={value.file}>
                 <Card style={{ width: '80vw'}}>
                   <br></br>
-                  <Card.Title>{value.file}</Card.Title>
+                  <Card.Title >{value.file}</Card.Title>
                   <Card.Text>{value.type}</Card.Text>
                     <a  href={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.file}`} target="_blank" rel="noreferrer">
                       <div>
