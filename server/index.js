@@ -7,18 +7,19 @@ const Stripe = require('stripe')(process.env.SECRET_KEY);
 const cors = require('cors');
 
 
-
-app2.listen(5000, () => {
-  console.log("Started server on 5000");   
-});
-
 app1.use(express.json());
 app1.use(cors());
 app2.use(cors());
 app2.use(bodyParser.json());
 app2.use(bodyParser.urlencoded({ extended: true }));
 
-app2.post('/payment', async (req, res) => {
+//Stripe
+
+app2.listen(5000, () => {
+  console.log("Started server on 5000");   
+});
+
+app2.post('/donation', async (req, res) => {
     let status, error;
     const { token, amount } = req.body;
     try {
@@ -35,10 +36,11 @@ app2.post('/payment', async (req, res) => {
     res.json({ error, status });
 });
 
-const db = require('./models');
-
 
 //For Routers
+
+const db = require('./models');
+
 const userRouter = require('./routes/Users');
 app1.use("/users", userRouter);
 
