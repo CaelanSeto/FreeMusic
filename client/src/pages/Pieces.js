@@ -16,7 +16,6 @@ function Pieces() {
   useEffect(() => {  
     axios.get(`http://localhost:3001/composers/byId/${ComposerId}`).then((response) => {
         setComposer(response.data);
-        console.log(response.data);
     });
     axios.get(`http://localhost:3001/pieces/${ComposerId}`).then((response) => {
         setListOfPieces(response.data);
@@ -51,6 +50,8 @@ function Pieces() {
           src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${ComposerId}.JPG`}
           className='img-thumbnail' 
           alt={composerName}
+          width="200"
+      
         />
         <br></br>
         {composer.biography}
@@ -63,16 +64,13 @@ function Pieces() {
     <Table striped hover size="sm">
       <thead>
         <tr>
-          <th>#</th>
           <th>Piece:</th>
-
         </tr>
       </thead>
       {listOfPieces.map((value) => {
         return (
-        <tbody>
+        <tbody key={value.id}>
           <tr>
-            <td>{value.id}</td>
             <td onClick={() => {usenavigate(`/files/${value.id}`)}}>{value.title}</td>
           </tr>
         </tbody>

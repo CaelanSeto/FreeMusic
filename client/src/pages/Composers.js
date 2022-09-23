@@ -30,7 +30,7 @@ function Composers() {
       <Table striped bordered hover size="sm">
       {listOfComposers.map((value) => {
         return (
-        <tbody>
+        <tbody key={value.id}>
           <tr>
             <td onClick={() => {usenavigate(`/pieces/${value.id}`)}}>{value.name}</td>
           </tr>

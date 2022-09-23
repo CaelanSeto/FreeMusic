@@ -1,4 +1,5 @@
 
+function MIDIAccess() {
 
   //MIDI ACCESS + SOUND IN BROWSER
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -160,3 +161,5 @@
   function failure() {
     console.log("Could not run MIDI")
   }
+}
+export default MIDIAccess();
