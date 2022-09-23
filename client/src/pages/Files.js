@@ -78,7 +78,7 @@ function Files() {
           {listOfFiles.map((value) => {
             window.pieceTitle = value.title;
             function toggle() {
-              var x = document.getElementById(`toggle${value.file}`);
+              var x = document.getElementById(`toggle${value.uuid}`);
               if (x.style.display === "none") {
                 x.style.display = "block";
               } else {
@@ -90,11 +90,11 @@ function Files() {
               if (`${value.type}` === 'recording') {
                 return <audio 
                           controls
-                          src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.file}`}>
+                          src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.uuid}`}>
                             
                           </audio>
               } if (`${value.type}` === 'sheetmusic') {
-                return <iframe src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.file}#toolbar=0`} width="80%" height="1000px" />
+                return <iframe src={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.uuid}#toolbar=0`} width="80%" height="1000px" />
               }
             }
 
@@ -104,7 +104,7 @@ function Files() {
                   <br></br>
                   <Card.Title >{value.file}</Card.Title>
                   <Card.Text>{value.type}</Card.Text>
-                    <a  href={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.file}`} target="_blank" rel="noreferrer">
+                    <a  href={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.uuid}`} target="_blank" rel="noreferrer">
                       <div>
                         <Button className="btn-secondary" size="sm">Download</Button>
                       </div>
@@ -112,7 +112,7 @@ function Files() {
                   <br></br>
                   <Button className="btn btn-dark" onClick={toggle} size="sm">View/Hide the file</Button>
                   <br></br><br></br>
-                  <div id={`toggle${value.file}`}>
+                  <div id={`toggle${value.uuid}`}>
                     {docType()}
                   </div>
                 </Card>

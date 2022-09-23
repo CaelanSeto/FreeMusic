@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(300),
         allowNull: false,
       },
+      uuid: {
+        type: DataTypes.STRING(300),
+        allowNull: false,
+      },
       type: {
         type: DataTypes.ENUM("recording", "sheetmusic"),
         allowNull: false,

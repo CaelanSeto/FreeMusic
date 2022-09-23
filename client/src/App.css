@@ -162,6 +162,7 @@ span {
   border-radius: 7px;  
   scrollbar-width: thin;
 }
+*/
 .composersTd{
   height:100px;
   text-align: left;
@@ -169,7 +170,7 @@ span {
   border-radius: 3px;  
   scrollbar-width: thin;
 }
-
+/*
 .img{
   width:100%;
   height:100px;

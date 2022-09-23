@@ -1,3 +1,4 @@
+const e = require("express");
 const express = require("express");
 const router = express.Router();
 const { Files } = require("../models");
@@ -51,6 +52,13 @@ router.post("/add", async (req, res) => {
     if(type === "recording"){
         file = title+".mp3";
     }
+    let uuid = req.body.uuid;
+    if(type === "recording"){
+        uuid = uuid+".mp3";
+    }
+    else{
+        uuid = uuid+".pdf"; 
+    }
     const description = req.body.description;
     const instruments = req.body.instruments;
     const PieceId = req.body.PieceId;
@@ -59,6 +67,7 @@ router.post("/add", async (req, res) => {
         title: title, 
         type: type, 
         file: file, 
+        uuid: uuid,
         description: description, 
         instruments: instruments, 
         PieceId: PieceId
@@ -76,6 +85,7 @@ router.patch("/edit/:id([0-9]+)", async (req, res) => {
     else{
         const title = req.body.title;
         const file = req.body.file;
+        const uuid = req.body.uuid;
         const type = req.body.type;
         const description = req.body.description;
         const instruments = req.body.instruments;
@@ -83,6 +93,7 @@ router.patch("/edit/:id([0-9]+)", async (req, res) => {
         await Files.update({ 
             title: title, 
             file: file,
+            uuid: uuid,
             type: type,
             description: description,
             instruments: instruments,
