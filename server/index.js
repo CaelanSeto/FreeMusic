@@ -1,36 +1,67 @@
 const express = require("express");
-const app = express();
-
+const app1 = express();
+const app2 = express();
+const bodyParser = require('body-parser');
+require('dotenv').config();
+const Stripe = require('stripe')(process.env.SECRET_KEY);
 const cors = require('cors');
 
-app.use(express.json());
-app.use(cors());
 
-const db = require('./models');
+app1.use(express.json());
+app1.use(cors());
+app2.use(cors());
+app2.use(bodyParser.json());
+app2.use(bodyParser.urlencoded({ extended: true }));
+
+//Stripe
+
+app2.listen(5000, () => {
+  console.log("Started server on 5000");   
+});
+
+app2.post('/donation', async (req, res) => {
+    let status, error;
+    const { token, amount } = req.body;
+    try {
+        await Stripe.charges.create({
+            source: token.id,
+            amount,
+            currency: 'usd',
+        });
+        status = 'success';
+    } catch (error) {
+        console.log(error);
+        status = 'Failure';
+    }
+    res.json({ error, status });
+});
 
 
 //For Routers
+
+const db = require('./models');
+
 const userRouter = require('./routes/Users');
-app.use("/users", userRouter);
+app1.use("/users", userRouter);
 
 const pieceRouter = require('./routes/Pieces');
-app.use("/pieces", pieceRouter);
+app1.use("/pieces", pieceRouter);
 
 const fileRouter = require('./routes/Files');
-app.use("/files", fileRouter);
+app1.use("/files", fileRouter);
 
 const downloadRouter = require('./routes/Downloads');
-app.use("/downloads", downloadRouter);
+app1.use("/downloads", downloadRouter);
 
 const donationRouter = require('./routes/Donations');
-app.use("/donations", donationRouter);
+app1.use("/donations", donationRouter);
 
 const composerRouter = require('./routes/Composers');
-app.use("/composers", composerRouter);
+app1.use("/composers", composerRouter);
 
 
 db.sequelize.sync().then(() => {
-    app.listen(3001, () => {
+    app1.listen(3001, () => {
         console.log("server running on port 3001");
     });
 });

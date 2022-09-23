@@ -19,6 +19,7 @@ import Composers from "./pages/Composers";
 import Pieces from "./pages/Pieces";
 import Files from "./pages/Files";
 import Profile from "./pages/Profile";
+import Donations from "./pages/Donations";
 
 /****************************************
  * searchbar *
@@ -144,7 +145,8 @@ function App () {
             <Route path="/composers" element={<Composers />}></Route>
             <Route path="/pieces/:ComposerId" element={<Pieces />}></Route>
             <Route path="/files/:PieceId" element={<Files />}></Route>
-            <Route path="/Profile" element={<Profile />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/donations" element={<Donations />}></Route>
 
               <Route path="/admin" element={<ProtectedRoute redirectPath="/" isAllowed={
               localStorage.getItem("role") === "admin" }> <Dashboard /></ProtectedRoute>} />
