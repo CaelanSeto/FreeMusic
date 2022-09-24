@@ -24,7 +24,7 @@ import Donations from "./pages/Donations";
 /****************************************
  * searchbar *
 */
-import SearchBar from './components/SearchBar';
+import SearchBar from './searchbar/SearchBar';
 
 
 /*****************************************/
@@ -59,6 +59,8 @@ function App () {
     status: false,
   });
 
+  const [listOfPieces, setListOfPieces] = useState([]);
+
   useEffect(() => {
     axios.get("http://localhost:3001/users/auth", {
       headers: {
@@ -78,6 +80,13 @@ function App () {
       }
     });
   }, []);
+  useEffect(() => {
+    axios.get(`http://localhost:3001/pieces`).then((response) => {
+      if (response.data) {
+        setListOfPieces(response.data);
+      }
+    });
+  }, []);
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -86,6 +95,7 @@ function App () {
   };
 
   //SEARCHBAR TO DO
+  console.log(listOfPieces);
   return (
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>
@@ -107,7 +117,7 @@ function App () {
                   </>
                 )}
 
-                <SearchBar />
+                <SearchBar placeholder="Enter Piece name..." data={listOfPieces}/>
                 {!authState.status ? (
                   <>
                     <Nav className="ml-auto">
