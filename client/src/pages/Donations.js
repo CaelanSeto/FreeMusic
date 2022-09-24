@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content';
+import { number } from 'yup';
 
 const MySwal = withReactContent(Swal);
 
@@ -12,11 +13,14 @@ function Donations() {
     const publishableKey =
         'pk_test_51LlEDRFEvmZ7SBdbiDWpgIa1UuHPg9Nba1hhzeXFS9eC3NWnt0VAhLHP6mKEp21KRpvwKPHbaN0pvsKv1bT0YzcU00q4K4b8bI'
     const [donation, setDonation] = useState({
-        amount: "amount",
+        amount: 0,
     })
 
-    const donateWithStripe = donation.amount * 100;
+    const donateWithStripe = donation.amount;
 
+    const handleChange = (event) => {
+       setDonation(event.target.value);
+    }
 
     const handleSuccess = () => {
         MySwal.fire({
@@ -32,6 +36,7 @@ function Donations() {
           time: 4000,
         });
       };
+      
 
     const donateNow = async token => {
         try {
@@ -39,7 +44,7 @@ function Donations() {
                 url: 'http://localhost:5000/donation',
                 method: 'post',
                 data: {
-                    amount: donation.amount * 100,
+                    amount: setDonation,
                     token,
                 }
             });
@@ -59,9 +64,7 @@ function Donations() {
             <h3>Please leave us a donation to help us to continue to provide free music</h3>
             <br></br>
             <p>How much would you like to donate </p>
-            <input type="number" placeholder="$.." onChange={(event) => {
-                setDonation(event.target.value);
-            }} />
+            <input type="number" placeholder="$.." onChange={handleChange} value={donation} />
             <StripeCheckout
                 stripeKey={publishableKey}
                 label="Donate Now"
@@ -69,7 +72,7 @@ function Donations() {
                 billingAddress
                 shippingAddress
                 amount={donateWithStripe}
-                description={`Thank You for your Donation of $${donation.amount}`}
+                description={`Thank You for your Donation of $${donation}`}
                 token={donateNow}
             />
 

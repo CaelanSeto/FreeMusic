@@ -63,7 +63,6 @@ function Login() {
                 if (response.data.role === "user") {
                     navigate("/");
                 } else {
-                    localStorage.setItem("role", response.data.role);
                     navigate("/admin");
                 }
 
