@@ -1,5 +1,5 @@
 .dataResult {
-    position: auto;
+    position: fixed;
     margin-top: 5px;
     width: vw;
     height: 20vh;
@@ -7,7 +7,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: hidden;
     overflow-y: auto;
-    z-index: 1;
+    
 }
 
 .dataResult::-webkit-scrollbar {
@@ -26,11 +26,11 @@
     margin-left: 10px;
 }
 
-a {
+.dataResult a {
     text-decoration: none;
 }
 
-a:hover {
+.dataResult a:hover {
     background-color: lightgray;
 }
 
