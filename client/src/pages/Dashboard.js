@@ -16,6 +16,8 @@ function Dashboard() {
       <br></br><br></br>
       <Link to="/admin/files"><button className="btn btn-dark dashboard">Files</button></Link> 
       <br></br><br></br>
+      <Link to="/admin/statistics"><button className="btn btn-dark dashboard">Statistics</button></Link> 
+      <br></br><br></br>
       <Link to="/admin/uploads"><button className="btn btn-dark dashboard">Uploads</button></Link> 
       <br></br><br></br>
     </div>
