@@ -51,8 +51,11 @@ function Login() {
         axios.post("http://localhost:3001/users/login", data).then((response) => {
             if (response.data.error) {
                 setBadCredentials(response.data.error);
-            } else {
+            } 
+            else {
                 localStorage.setItem("accessToken", response.data.token);
+                localStorage.setItem("userId", response.data.id);
+                localStorage.setItem("status", true);
                 setAuthState({
                     name: response.data.name,
                     email: response.data.email,
@@ -61,8 +64,15 @@ function Login() {
                     status: true,
                 })
                 if (response.data.role === "user") {
-                    navigate("/");
-                } else {
+                    if(localStorage.getItem("linkToFiles")){
+                        navigate(localStorage.getItem("linkToFiles"));
+                    }
+                    else{
+                        navigate("/");
+                    }
+                } 
+                else {
+                    localStorage.setItem("role", response.data.role);
                     navigate("/admin");
                 }
 
@@ -90,7 +100,14 @@ function Login() {
                                     <Field
                                         autoComplete="off"
                                         id="inputCreatePost" name="name"
-                                        placeholder="(Ex.John123...)"></Field>
+                                        placeholder="(Ex.John123...)"
+                                        onClick={() => {
+                                            setError("");
+                                            setSuccess("");
+                                        }}
+                                    >
+                                        
+                                    </Field>
                                     <br></br><br></br>
                                     <label>Email:</label>
                                     <br></br>
@@ -99,7 +116,13 @@ function Login() {
                                     <Field
                                         autoComplete="off"
                                         id="inputCreatePost" name="email"
-                                        placeholder="(Ex.John@gmail...)"></Field>
+                                        placeholder="(Ex.John@gmail...)"
+                                        onClick={() => {
+                                            setError("");
+                                            setSuccess("");
+                                        }}
+                                    >
+                                    </Field>
                                     <br></br><br></br>
                                     <label>Password:</label>
                                     <br></br>
@@ -108,7 +131,12 @@ function Login() {
                                     <Field
                                         autoComplete="off" type="password"
                                         id="inputCreatePost" name="password"
-                                        placeholder="(Your Password)"></Field>
+                                        placeholder="(Your Password)"
+                                        onClick={() => {
+                                            setError("");
+                                            setSuccess("");
+                                        }}
+                                    ></Field>
                                     <br></br><br></br>
                                     <p style={{color: 'red'}}>{error}</p>
                                     <p style={{color: '#a5d6a7'}}>{success}</p>

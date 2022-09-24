@@ -114,6 +114,23 @@ router.patch("/edit/:id([0-9]+)", async (req, res) => {
     res.json("updated!!!");
 });
 
+//update profile
+router.patch("/edit/profile/:id([0-9]+)", async (req, res) => {
+    const id = req.params.id;
+    const name = req.body.name;
+    const password = req.body.password;
+
+    bcrypt.hash(password, 10).then((hash) => {
+         Users.update({ name: name, password: hash }, { 
+            where: {
+                id: id
+            }
+        });
+    }); 
+
+    res.json("updated!!!");
+});
+
 //delete user
 router.delete("/delete/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;

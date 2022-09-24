@@ -209,4 +209,7 @@ span {
   width: 30%;
  }
 
-
+.profile:hover{
+  opacity: 50%;
+  color:rgb(47, 35, 35);
+}

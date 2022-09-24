@@ -71,7 +71,10 @@ function Pieces() {
         return (
         <tbody key={value.id}>
           <tr>
-            <td onClick={() => {usenavigate(`/files/${value.id}`)}}>{value.title}</td>
+            <td onClick={() => {localStorage.setItem("linkToFiles", `/files/${value.id}`);
+                                usenavigate(`/files/${value.id}`);
+                               }
+                        }>{value.title}</td>
           </tr>
         </tbody>
         
