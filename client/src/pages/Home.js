@@ -18,7 +18,7 @@ function Home() {
         <div className="row align-items-md-stretch">
         <div className="col-md-6">
           <div className="h-100 p-5 text-white bg-secondary rounded-3">
-            <h2>Composers</h2>
+            <h2>Welcome to Free Music</h2>
             <br></br>
             <img 
               src="https://freeclassicmusic.s3.us-east-2.amazonaws.com/3.JPG"
@@ -44,10 +44,6 @@ function Home() {
         </div>
       </div>
       <br></br>
-      
-      <div> <Button className="btn btn-dark" id="MIDIbutton">Temporary MIDI plugin for testing</Button></div>
-      <br></br>
-
       
 
     </Container>
