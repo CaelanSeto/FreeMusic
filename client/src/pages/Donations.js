@@ -18,7 +18,7 @@ function Donations() {
     const donateWithStripe = donation.amount;
 
     const handleChange = (event) => {
-       setDonation(event.target.value);
+       setDonation(event.target.donation);
     }
 
     const handleSuccess = () => {

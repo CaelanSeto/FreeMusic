@@ -261,12 +261,16 @@ EDGAR:
 
 3) Need Assistance / figure things out
 
-9/25/22
+9/24/22
 CAELAN:
 1) Done / Not done since Last Scrum:
-
+    
 
 2) To do until next Scrum:
+    Update CreateFiles.js
+    bugfixing
+    (Research deployment to AWS)
+    Trello
 
 3) Need Assistance / figure things out
 
@@ -274,16 +278,23 @@ CAELAN:
 
 VLAD:
 1) Done / Not done since Last Scrum:
+    Protected routes for files, users
+    Upon login returning to the same page
+    Profile page
 
 2) To do until next Scrum:
+    Statistics page
+    (maybe) repair create file page
 
 3) Need Assistance / figure things out
 
 
 EDGAR:
 1) Done / Not done since Last Scrum:
+    Alpha testing done on Stripe
 
 2) To do until next Scrum:
+    Reword Stripe code
 
 3) Need Assistance / figure things out
 
