@@ -51,10 +51,10 @@ router.get("/fileId/:FileId([0-9]+)", async (req, res) => {
 router.get("/statistics", async (req, res) => {
     const listOfDownloads = await Downloads.findAll({
         attributes: [
-            'createdAt',
+            'date',
             [sequelize.fn('COUNT', sequelize.col('id')), 'total'],
           ],
-          group: ["createdAt"],
+          group: ["date"],
         });
     if(!listOfDownloads){
         res.json({error: "No downloads yet!"});
@@ -80,7 +80,12 @@ router.get("/byId/:id([0-9]+)", async (req, res) => {
 router.post("/add", async (req, res) => {
     const download = req.body;
     await Downloads.create(download);
-    res.json(download);
+    if(!download){
+        res.json({error: "no download was recorded!"});
+    }
+    else{
+        res.json("download was recorded!");
+    }
 });
 
 //delete Download

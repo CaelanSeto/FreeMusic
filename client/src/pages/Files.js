@@ -109,7 +109,12 @@ function Files() {
                 <Card.Text>{value.type}</Card.Text>
                 <a href={`https://freeclassicmusic.s3.us-east-2.amazonaws.com/${value.uuid}`} target="_blank" rel="noreferrer">
                   <div>
-                    <Button className="btn-secondary" size="sm">Download</Button>
+                    <Button className="btn-secondary" size="sm" 
+                      onClick={() => {
+                        axios.post("http://localhost:3001/downloads/add", {
+                          UserId: localStorage.getItem("userId"),
+                          FileId: value.id
+                      })}}>Download</Button>
                   </div>
                 </a>
                 <br></br>

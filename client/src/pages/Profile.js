@@ -12,6 +12,8 @@ function Profile() {
     const [success, setSuccess] = useState("");
     const [downloads, setDownloads] = useState([]);
     const [errMessage, setErrMessage] = useState("");
+    const [err1Message, setErr1Message] = useState("");
+    const [donations, setDonations] = useState([]);
   
     const validationSchema = Yup.object().shape({
         name: Yup.string().min(3).max(100).required(),
@@ -47,6 +49,17 @@ function Profile() {
               setDownloads(response.data);
           }           
         });
+    }, []);
+
+    useEffect(() => {
+      axios.get(`http://localhost:3001/donations/${id}`).then((response) =>{
+        if(response.data.error) {
+            setErr1Message(response.data.error);
+        }
+        else{
+            setDonations(response.data);
+        }           
+      });
     }, []);
 
     const formatDate = (dateString) => {
@@ -112,6 +125,31 @@ function Profile() {
             })}
 				    </tbody>
 			    </table>
+          <p style={{color: 'red'}}>{errMessage}</p>
+          <br></br>
+        <h4>My donations:</h4>
+        <br></br>
+        <table className="table table-striped table-bordered">
+				    <thead className="thead-dark">
+					    <tr>
+						    <th>Amount $</th>
+                <th>Operation ID</th>
+						    <th>Date</th>
+					    </tr>
+				    </thead>
+				    <tbody>
+            {donations.map((val) => {
+            return (
+					    <tr className = "profile">
+						    <td>{val.amount}</td>
+                <td>{val.operationId}</td>
+						    <td>{formatDate(val.createdAt)}</td>
+					    </tr>
+              );
+            })}
+				    </tbody>
+			    </table>
+          <p style={{color: 'red'}}>{err1Message}</p>
      </div>
     );
 }
