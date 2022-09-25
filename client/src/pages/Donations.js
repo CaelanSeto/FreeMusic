@@ -16,7 +16,7 @@ function Donations() {
         amount: 10,
     })
 
-    const donateWithStripe = donation.amount * 100;
+    const donateWithStripe = donation.amount;
 
     const handleSuccess = () => {
         MySwal.fire({
@@ -40,7 +40,7 @@ function Donations() {
                 url: 'http://localhost:5000/donation',
                 method: 'post',
                 data: {
-                    amount: donation.amount * 100,
+                    amount: donation.amount,
                     token,
                 }
             });
