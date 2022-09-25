@@ -51,6 +51,8 @@ import UploadFiles from "./pages/UploadFiles";
 import { Person } from 'react-bootstrap-icons';
 import AdminStat from "./pages/AdminStat";
 
+import { ContactUs } from "./pages/ContactUs";
+
 
 function App () {
   const [authState, setAuthState] = useState({
@@ -136,6 +138,9 @@ function App () {
                 )}
 
                 <SearchBar placeholder="Enter Piece name..." data={listOfPieces}/>
+                <Nav className="ml-auto">
+                      <Button variant="outline-light" href="/contact" className="me-3">Contact Us</Button>
+                </Nav>
                 {!authState.status ? (
                   <>
                     <Nav className="ml-auto">
@@ -155,6 +160,7 @@ function App () {
           <Routes>
             <Route index element={<Home />}></Route>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/contact" element={<ContactUs />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/logout" element={<Logout />}></Route>
             <Route path="/composers" element={<Composers />}></Route>
