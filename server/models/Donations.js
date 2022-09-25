@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       operationId: {
         type: DataTypes.STRING(200),
-        allowNull: false
+        allowNull: true
       }
     });
  

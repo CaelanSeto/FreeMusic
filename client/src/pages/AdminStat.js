@@ -40,7 +40,7 @@ function AdminStat() {
         <br></br>
       <h3>Files activity:</h3>
       <br></br>
-      <div>
+      <div style={{width: "90%"}}>
         <Bar data={data}/>
       </div>
     </div>
