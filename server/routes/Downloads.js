@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const { Downloads } = require("../models");
+const sequelize = require("sequelize");
 
 //get all Downloads
 router.get("/", async (req, res) => {
-    const listOfDownloads = await Downloads.findAll();
+    const listOfDownloads = await Downloads.findAll({order: ["createdAt"]});
     if(!listOfDownloads){
         res.json({error: "No downloads yet!"});
     }
@@ -39,6 +40,24 @@ router.get("/fileId/:FileId([0-9]+)", async (req, res) => {
     });
     if(!listOfDownloads){
         res.json({error: "No downloads yet on this file!"});
+    }
+    else{
+        res.json(listOfDownloads);
+    }
+});
+
+
+//count all downloads grouped by date
+router.get("/statistics", async (req, res) => {
+    const listOfDownloads = await Downloads.findAll({
+        attributes: [
+            'createdAt',
+            [sequelize.fn('COUNT', sequelize.col('id')), 'total'],
+          ],
+          group: ["createdAt"],
+        });
+    if(!listOfDownloads){
+        res.json({error: "No downloads yet!"});
     }
     else{
         res.json(listOfDownloads);
