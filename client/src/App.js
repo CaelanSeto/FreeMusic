@@ -217,7 +217,7 @@ function App () {
           </Routes>
         </Router>
         <footer className="pt-3 mt-4 text-muted border-top">
-          &copy; placeholder footer
+          &copy; FreeMusicDB
         </footer>
         <br></br>
       </AuthContext.Provider>
