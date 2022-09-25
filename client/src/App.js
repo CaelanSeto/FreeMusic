@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import Home from "./pages/Home";
@@ -217,7 +216,7 @@ function App () {
           </Routes>
         </Router>
         <footer className="pt-3 mt-4 text-muted border-top">
-          &copy; placeholder footer
+          &copy; FreeMusicDB
         </footer>
         <br></br>
       </AuthContext.Provider>
