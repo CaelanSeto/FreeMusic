@@ -299,27 +299,40 @@ EDGAR:
 3) Need Assistance / figure things out
 
 
-9/26/22
+9/25/22
 CAELAN:
 1) Done / Not done since Last Scrum:
+    Added security server-side for admins
 
 2) To do until next Scrum:
+    Deploy to AWS
+    Bugfixing
+    CSS and fill website
 
 3) Need Assistance / figure things out
 
 
 VLAD:
 1) Done / Not done since Last Scrum:
+    Statistics page
+    Contact Us page
+    Sending emails through contact us page
 
 2) To do until next Scrum:
+    Deploy to AWS
+    Bugfixing
 
 3) Need Assistance / figure things out
 
 
 EDGAR:
 1) Done / Not done since Last Scrum:
+    Updated Donations page
+    Updated Stripe functionality
 
 2) To do until next Scrum:
+    Deploy to AWS
+    Bugfixing
 
 3) Need Assistance / figure things out
 
