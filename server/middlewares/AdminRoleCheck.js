@@ -11,9 +11,7 @@ const adminRoleCheck = (req, res, next) => {
     if (!validToken) {
       return res.json({ error: "User has invalid token!" });
     }
-    //Check token validity
-    //req.user = validToken["user"];
-
+    
     const role = validToken["role"];
     console.log(role);
 
