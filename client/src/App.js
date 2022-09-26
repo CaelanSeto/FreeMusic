@@ -54,7 +54,7 @@ import AdminStat from "./pages/AdminStat";
 import { ContactUs } from "./pages/ContactUs";
 
 
-function App () {
+function App() {
   const [authState, setAuthState] = useState({
     email: "",
     id: 0,
@@ -122,16 +122,16 @@ function App () {
                   <Nav.Link href="/composers">Composers</Nav.Link>
                   <Nav.Link href="/donations">Donations</Nav.Link>
                   {!authState.status ? (
-                  <>
-                  </>
+                    <>
+                    </>
                   ) : (
-                  <>
-                    <Nav.Link href="/profile">
-                      &nbsp;{authState.name}&nbsp;<Person></Person>
-                    </Nav.Link>
-                  </>
-                )}
-                  
+                    <>
+                      <Nav.Link href="/profile">
+                        &nbsp;{authState.name}&nbsp;<Person></Person>
+                      </Nav.Link>
+                    </>
+                  )}
+
                 </Nav>
                 {admin && (
                   <>
@@ -141,9 +141,9 @@ function App () {
                   </>
                 )}
 
-                <SearchBar placeholder="Enter Piece name..." data={listOfPieces}/>
+                <SearchBar placeholder="Enter Piece name..." data={listOfPieces} />
                 <Nav className="ml-auto">
-                      <Button variant="outline-light" href="/contact" className="me-3">Contact Us</Button>
+                  <Button variant="outline-light" href="/contact" className="me-3">Contact Us</Button>
                 </Nav>
                 {!authState.status ? (
                   <>
@@ -173,62 +173,89 @@ function App () {
 
             <Route path="/files/:PieceId" element={<ProtectedRoute redirectPath="/login" isAllowed={
               user}> <Files /></ProtectedRoute>} />
-            <Route path="/profile"  element={<ProtectedRoute redirectPath="/login" isAllowed={
+            <Route path="/profile" element={<ProtectedRoute redirectPath="/login" isAllowed={
               user}> <Profile /></ProtectedRoute>} />
-            <Route path="/donations"  element={<ProtectedRoute redirectPath="/login" isAllowed={
+            <Route path="/donations" element={<ProtectedRoute redirectPath="/login" isAllowed={
               user}> <Donations /></ProtectedRoute>} />
 
 
-              <Route path="/admin" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <Dashboard /></ProtectedRoute>} />
 
-              <Route path="/admin/users" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/users" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <AdminUsers /></ProtectedRoute>} />
 
-              <Route path="/admin/users/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/users/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <EditUser /></ProtectedRoute>} />
 
-              <Route path="/admin/composers" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/composers" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <AdminComposers /></ProtectedRoute>} />
 
-              <Route path="/admin/composers/add" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/composers/add" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <CreateComposer /></ProtectedRoute>} />
 
-              <Route path="/admin/composers/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/composers/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <EditComposer /></ProtectedRoute>} />
 
-              <Route path="/admin/pieces" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/pieces" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <AdminPieces /></ProtectedRoute>} />
 
-              <Route path="/admin/pieces/add" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/pieces/add" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <CreatePiece /></ProtectedRoute>} />
 
-              <Route path="/admin/pieces/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/pieces/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <EditPiece /></ProtectedRoute>} />
 
-              <Route path="/admin/files" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/files" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <AdminFiles /></ProtectedRoute>} />
 
-              <Route path="/admin/files/add" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/files/add" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <CreateFile /></ProtectedRoute>} />
 
-              <Route path="/admin/files/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/files/edit/:id" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <EditFile /></ProtectedRoute>} />
 
-              <Route path="/admin/statistics" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/statistics" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <AdminStat /></ProtectedRoute>} />
 
-              <Route path="/admin/uploads" element={<ProtectedRoute redirectPath="/" isAllowed={
+            <Route path="/admin/uploads" element={<ProtectedRoute redirectPath="/" isAllowed={
               admin}> <UploadFiles /></ProtectedRoute>} />
 
-              <Route path="*" element={<p>There's nothing here: 404!</p>}></Route>
+            <Route path="*" element={<p>There's nothing here: 404!</p>}></Route>
 
           </Routes>
         </Router>
-        <footer className="pt-3 mt-4 text-muted border-top">
-          &copy; FreeMusicDB
+        <footer className="pt-3 mt-4 bg-light text-muted border-top">
+          <div className="container p-4 pb-0">
+            <section className="">
+              {/*Currently placeholder for better future footer*/}
+              <form action="">
+                <div className="row d-flex justify-content-center">
+                  <div className="col-auto">
+                    <p className="pt-2">
+                      <strong>Sign up for our newsletter (filler)</strong>
+                    </p>
+                  </div>
+                  <div className="col-md-5 col-12">
+                    <div className="form-outline form-white mb-4">
+                      <input type="email" id="form5Example2" className="form-control" />
+                      <label className="form-label" htmlFor="form5Example2">Email address (Currently non-functional)</label>
+                    </div>
+                  </div>
+                  <div className="col-auto">
+                    <button type="submit" className="btn btn-outline-dark mb-4">
+                      Subscribe
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </section>
+          </div>
+
+          <div className="text-center p-3">
+            &copy; 2022 FreeMusic DB
+          </div>
         </footer>
-        <br></br>
       </AuthContext.Provider>
     </div>
   );

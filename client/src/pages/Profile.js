@@ -79,7 +79,7 @@ function Profile() {
           <br></br>
             <h2>Welcome, {user.name}!</h2>
             <br></br>
-          <div class="form-group">
+          <div className="form-group">
             <label>Name:</label>
             <Field name="name" as={CustomInputComponent} onClick={() => {
                                             setErrorMessage("");
@@ -89,7 +89,7 @@ function Profile() {
           </div>
           <br></br>
           
-          <div class="form-group">
+          <div className="form-group">
             <label>Password:</label>
             <Field name="password" type="password" className="form-control" onClick={() => {
                                             setErrorMessage("");
@@ -117,7 +117,7 @@ function Profile() {
 				    <tbody>
             {downloads.map((val) => {
             return (
-					    <tr className = "profile" onClick={() => {usenavigate(`/files/${val.FileId}`)}}>
+					    <tr key={val.id} className = "profile" onClick={() => {usenavigate(`/files/${val.FileId}`)}}>
 						    <td>{val.FileId}</td>
 						    <td>{formatDate(val.createdAt)}</td>
 					    </tr>
@@ -140,7 +140,7 @@ function Profile() {
 				    <tbody>
             {donations.map((val) => {
             return (
-					    <tr className = "profile">
+					    <tr key={val.id} className = "profile">
 						    <td>{val.amount}</td>
                 <td>{val.operationId}</td>
 						    <td>{formatDate(val.createdAt)}</td>

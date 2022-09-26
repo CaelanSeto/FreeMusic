@@ -22,15 +22,15 @@ export const ContactUs = () => {
       <br></br><br></br><br></br>
       <h3>Contact Us</h3><br></br><br></br><br></br>
       <form ref={form} onSubmit={sendEmail}>
-      <div class="form-group">
+      <div className="form-group">
        <label>Name</label>
         <input type="text" name="user_name" className="form-control" />
       </div><br></br>
-      <div class="form-group">
+      <div className="form-group">
         <label>Email</label>
         <input type="email" name="user_email" className="form-control"/>
       </div><br></br>
-      <div class="form-group">
+      <div className="form-group">
         <label>Message</label>
         <textarea name="message" className="form-control"/>
       </div><br></br><br></br>

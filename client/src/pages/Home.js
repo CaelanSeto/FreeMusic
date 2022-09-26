@@ -1,10 +1,25 @@
 import React from "react";
+import { useState, useEffect } from "react";
+
+import axiosInst from "../helpers/AxiosInst";
 
 import Button from 'react-bootstrap/Button';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Container from 'react-bootstrap/Container';
 
+import SearchBar from '../searchbar/SearchBar';
+
 function Home() {
+  const [listOfPieces, setListOfPieces] = useState([]);
+
+  useEffect(() => {
+    axiosInst.get(`/pieces`).then((response) => {
+      if (response.data) {
+        setListOfPieces(response.data);
+      }
+    });
+  }, []);
+
   return (
     <div>
       <Container>
@@ -40,13 +55,15 @@ function Home() {
           </div>
         </div>
         <div className="col-md-6">
-          <div className="h-100 p-5 text-white bg-secondary border rounded-3">
-            <h2>Placeholder (Searchbar?)</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies ultrices tortor, vitae suscipit risus interdum a. Phasellus id felis felis. 
-              Sed risus ligula, interdum sed nunc id, aliquet ullamcorper dolor. Praesent ex risus, lobortis at volutpat at, dictum et diam. 
-              Praesent luctus urna lacus, ut efficitur sem ultrices vitae. In eget mattis eros. Ut congue, odio id dapibus aliquam, elit eros pharetra erat, 
-              id maximus quam nunc vel ante. In bibendum tortor nisl, vel vehicula erat malesuada non. Fusce neque est, efficitur et diam sed, dictum gravida enim.</p>
-            <Button variant="btn btn-dark" href="/">Placeholder</Button>
+          <div className="h-100 p-5 bg-light border rounded-3 text-muted">
+            <h3>Already know the name of your piece?</h3>
+            <br></br>
+            <p>You may use the search bar below to find your piece inside our database!<br></br>
+            If your piece is missing, leave us an e-mail through our Contact Us page,
+            and we will get back to you as soon as possible.</p>
+            <br></br>
+            <SearchBar placeholder="Enter Piece name..." data={listOfPieces}/>
+            <br></br>
           </div>
         </div>
       </div>
