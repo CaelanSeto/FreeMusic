@@ -62,7 +62,7 @@ app3.post('/webhook', express.raw({type: 'application/json'}), (request, respons
     const sig = req.headers['stripe-signature']
     const endpointsecret = "whsec_899cdb4179c61d33b658d78ac3df1903cd312663e2cb9d5914f0b8f4f37ea776";
     let event;
- 
+  
     try {
  
         event = Stripe.webhooks.constructEvent(payload,sig,endpointsecret)

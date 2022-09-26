@@ -63,10 +63,16 @@ function App () {
     status: false,
   });
 
+
+  // USE AXIOS INSTANCE INSTEAD OF STATIC AXIOS FOR CONFIG --- TODO ---
+  let axiosInst = axios.create( {
+    baseURL: "http://localhost:3001" //change this so it's not hardcoded
+  });
+
   const [listOfPieces, setListOfPieces] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/users/auth", {
+    axiosInst.get("/users/auth", {
       headers: {
         accessToken: localStorage.getItem("accessToken"),
       }

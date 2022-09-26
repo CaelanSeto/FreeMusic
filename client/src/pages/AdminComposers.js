@@ -10,7 +10,11 @@ function AdminComposers() {
   const [errMessage, setErrMessage] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/composers").then((response) =>{
+    axios.get("http://localhost:3001/composers", {
+      headers: {
+        accessToken: localStorage.getItem("accessToken"),
+      }
+    }).then((response) =>{
         if(response.data.error) {
             setErrMessage(response.data.error);
         }

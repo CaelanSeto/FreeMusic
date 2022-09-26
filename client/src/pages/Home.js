@@ -25,12 +25,16 @@ function Home() {
               className='img-fuild img-thumbnail' 
               alt=""
             />
-            <p><br></br>Free Music is a free open-source digital library containing public-domain music scores. 
-            This project accepts any score of older musical editions out of copyright, and admits any scores by contemporary composers
-            who wish to share their music with the world under a Creative Commons license. <br></br><br></br>This website also lets you play along with the
-            sheet music thanks to a built-in MIDI plugin that detects if you have a MIDI device connected. <br></br><br></br>
-            To get started, click on the button below to browse through our list of Composers!
-
+            <p><br></br>
+              Free Music is a free open-source digital library containing <a href="https://en.wikipedia.org/wiki/Public_domain_music" style={{color: "white"}}>
+              public-domain music scores</a>. 
+              This project accepts any score of older musical editions out of copyright, and admits any scores by contemporary composers
+              who wish to share their music with the world under a <a href="https://en.wikipedia.org/wiki/Creative_Commons" style={{color: "white"}}>Creative Commons license</a>.
+              <br></br><br></br>
+              This website also lets you play along with the
+              sheet music thanks to a built-in MIDI plugin that detects if you have a MIDI device connected. 
+              <br></br><br></br>
+              To get started, click on the button below to browse through our list of Composers!
             </p>
             <Button variant="btn btn-outline-light" href="/composers">Browse our Composers</Button>
           </div>

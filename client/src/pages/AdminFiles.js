@@ -10,7 +10,11 @@ function AdminFiles() {
   const [errMessage, setErrMessage] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/files").then((response) =>{
+    axios.get("http://localhost:3001/files", {
+      headers: {
+        accessToken: localStorage.getItem("accessToken"),
+      }
+    }).then((response) =>{
         if(response.data.error) {
             setErrMessage(response.data.error);
         }

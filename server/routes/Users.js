@@ -4,6 +4,7 @@ const { Users } = require("../models");
 const bcrypt = require("bcrypt");
 const {sign} = require("jsonwebtoken");
 const {validateToken} = require('../middlewares/AuthMiddleware');
+const {adminRoleCheck} = require('../middlewares/AdminRoleCheck');
 
 //email format validation
 function isEmail(email) {
@@ -14,7 +15,7 @@ function isEmail(email) {
 }
 
 //get the list of all users
-router.get("/", async (req, res) => {
+router.get("/", adminRoleCheck, async (req, res) => {
     const listOfUsers = await Users.findAll();
     if(!listOfUsers){
         res.status(200).json({error: "There are no users yet!"});
@@ -25,7 +26,7 @@ router.get("/", async (req, res) => {
 });
 
 //get user by id
-router.get("/:id([0-9]+)", async (req, res) => {
+router.get("/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     const id = req.params.id;
     const user = await Users.findByPk(id);
     if(!user){
@@ -96,7 +97,7 @@ router.post("/login", async (req, res) => {
 });
 
 //update user
-router.patch("/edit/:id([0-9]+)", async (req, res) => {
+router.patch("/edit/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     const id = req.params.id;
     const name = req.body.name;
     const role = req.body.role;
@@ -132,7 +133,7 @@ router.patch("/edit/profile/:id([0-9]+)", async (req, res) => {
 });
 
 //delete user
-router.delete("/delete/:id([0-9]+)", async (req, res) => {
+router.delete("/delete/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     const id = req.params.id;
     await Users.destroy({
         where: {

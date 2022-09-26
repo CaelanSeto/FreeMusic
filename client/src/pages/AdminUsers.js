@@ -10,7 +10,11 @@ function AdminUsers() {
   const [errMessage, setErrMessage] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/users").then((response) =>{
+    axios.get("http://localhost:3001/users", {
+      headers: {
+        accessToken: localStorage.getItem("accessToken"),
+      }
+    }).then((response) =>{
         if(response.data.error) {
             setErrMessage(response.data.error);
         }
