@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const { Donations } = require("../models");
+const {adminRoleCheck} = require('../middlewares/AdminRoleCheck');
 
 //get all Donations
-router.get("/", async (req, res) => {
+router.get("/", adminRoleCheck, async (req, res) => {
     const listOfDonations = await Donations.findAll();
     if(!listOfDonations){
         res.json({error: "There are no donations yet!"});
@@ -49,7 +50,7 @@ router.post("/add", async (req, res) => {
 });
 
 //update Donation
-router.patch("/edit/:id([0-9]+)", async (req, res) => {
+router.patch("/edit/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     const id = req.params.id;
     const donation = await Donations.findByPk(id);
     if(!donation){
@@ -69,7 +70,7 @@ router.patch("/edit/:id([0-9]+)", async (req, res) => {
 });
 
 //delete Donation
-router.delete("/delete/:id([0-9]+)", async (req, res) => {
+router.delete("/delete/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     const id = req.params.id;
     await Donations.destroy({
         where: {

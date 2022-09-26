@@ -65,7 +65,7 @@ function App () {
 
 
   // USE AXIOS INSTANCE INSTEAD OF STATIC AXIOS FOR CONFIG --- TODO ---
-  let axiosInst = axios.create( {
+  let axiosInst = axios.create({
     baseURL: "http://localhost:3001" //change this so it's not hardcoded
   });
 
@@ -91,7 +91,7 @@ function App () {
     });
   }, []);
   useEffect(() => {
-    axios.get(`http://localhost:3001/pieces`).then((response) => {
+    axiosInst.get(`/pieces`).then((response) => {
       if (response.data) {
         setListOfPieces(response.data);
       }
@@ -109,8 +109,6 @@ function App () {
   const user = localStorage.getItem("status");
   const admin = localStorage.getItem("role");
 
-  //SEARCHBAR TO DO
-  console.log(listOfPieces);
   return (
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>

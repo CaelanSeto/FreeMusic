@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Pieces } = require("../models");
+const {adminRoleCheck} = require('../middlewares/AdminRoleCheck');
 
 //get all Pieces
 router.get("/", async (req, res) => {
@@ -43,14 +44,14 @@ router.get("/byId/:id([0-9]+)", async (req, res) => {
 });
 
 //create Piece
-router.post("/add", async (req, res) => {
+router.post("/add", adminRoleCheck, async (req, res) => {
     const piece = req.body;
     await Pieces.create(piece);
     res.json("The piece is created!");
 });
 
 //update Piece
-router.patch("/edit/:id([0-9]+)", async (req, res) => {
+router.patch("/edit/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     const id = req.params.id;
     const piece = await Pieces.findByPk(id);
     if(!piece){
@@ -69,7 +70,7 @@ router.patch("/edit/:id([0-9]+)", async (req, res) => {
 });
 
 //delete Piece
-router.delete("/delete/:id([0-9]+)", async (req, res) => {
+router.delete("/delete/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     const id = req.params.id;
     await Pieces.destroy({
         where: {

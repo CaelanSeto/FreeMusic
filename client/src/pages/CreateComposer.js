@@ -17,7 +17,11 @@ function CreateComposer() {
     });
 
     const onSubmit =(data) => {
-        axios.post("http://localhost:3001/composers/add", data).then((response) => {
+        axios.post("http://localhost:3001/composers/add", data, {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          }
+        }).then((response) => {
             if(response.data.error) {
                 setErrorMessage(response.data.error);
             }

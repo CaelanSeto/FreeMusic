@@ -2,6 +2,7 @@ const e = require("express");
 const express = require("express");
 const router = express.Router();
 const { Files } = require("../models");
+const {adminRoleCheck} = require('../middlewares/AdminRoleCheck');
 
 //get all Files
 router.get("/", async (req, res) => {
@@ -45,7 +46,7 @@ router.get("/byId/:id([0-9]+)", async (req, res) => {
 });
 
 //create File
-router.post("/add", async (req, res) => {
+router.post("/add", adminRoleCheck, async (req, res) => {
     const title = req.body.title;
     const type = req.body.type;
     let file = title+".pdf";
@@ -76,7 +77,7 @@ router.post("/add", async (req, res) => {
 });
 
 //update File
-router.patch("/edit/:id([0-9]+)", async (req, res) => {
+router.patch("/edit/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     const id = req.params.id;
     const file = await Files.findByPk(id);
     if(!file){
@@ -108,7 +109,7 @@ router.patch("/edit/:id([0-9]+)", async (req, res) => {
 });
 
 //delete File
-router.delete("/delete/:id([0-9]+)", async (req, res) => {
+router.delete("/delete/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     const id = req.params.id;
     await Files.destroy({
         where: {

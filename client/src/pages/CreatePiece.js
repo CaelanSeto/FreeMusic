@@ -24,7 +24,11 @@ function CreatePiece() {
     }, []);
 
     const onSubmit =(data) => {
-        axios.post("http://localhost:3001/pieces/add", data).then((response) => {
+        axios.post("http://localhost:3001/pieces/add", data, {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          }
+        }).then((response) => {
             if(response.data.error) {
                 setErrorMessage(response.data.error);
             }

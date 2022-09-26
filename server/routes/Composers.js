@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Composers } = require("../models");
+const {adminRoleCheck} = require('../middlewares/AdminRoleCheck');
 
 //get all Composers
 router.get("/", async (req, res) => {
@@ -26,7 +27,7 @@ router.get("/byId/:id([0-9]+)", async (req, res) => {
 });
 
 //create Composer
-router.post("/add", async (req, res) => {
+router.post("/add", adminRoleCheck, async (req, res) => {
     const composer = req.body;
     await Composers.create(composer);
     if(!composer){
@@ -38,7 +39,7 @@ router.post("/add", async (req, res) => {
 });
 
 //update Composer
-router.patch("/edit/:id([0-9]+)", async (req, res) => {
+router.patch("/edit/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     const id = req.params.id;
     const composer = await Composers.findByPk(id);
     if(!composer){
@@ -57,7 +58,7 @@ router.patch("/edit/:id([0-9]+)", async (req, res) => {
 });
 
 //delete Composer
-router.delete("/delete/:id([0-9]+)", async (req, res) => {
+router.delete("/delete/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     const id = req.params.id;
     await Composers.destroy({
         where: {

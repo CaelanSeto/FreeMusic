@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const { Downloads } = require("../models");
 const sequelize = require("sequelize");
+const {adminRoleCheck} = require('../middlewares/AdminRoleCheck');
 
 //get all Downloads
-router.get("/", async (req, res) => {
+router.get("/", adminRoleCheck, async (req, res) => {
     const listOfDownloads = await Downloads.findAll({order: ["createdAt"]});
     if(!listOfDownloads){
         res.json({error: "No downloads yet!"});
@@ -31,7 +32,7 @@ router.get("/userId/:UserId([0-9]+)", async (req, res) => {
 });
 
 //get all Downloads by FileId
-router.get("/fileId/:FileId([0-9]+)", async (req, res) => {
+router.get("/fileId/:FileId([0-9]+)", adminRoleCheck, async (req, res) => {
     const FileId = req.params.FileId;
     const listOfDownloads = await Downloads.findAll({
         where: {
@@ -48,7 +49,7 @@ router.get("/fileId/:FileId([0-9]+)", async (req, res) => {
 
 
 //count all downloads grouped by date
-router.get("/statistics", async (req, res) => {
+router.get("/statistics", adminRoleCheck, async (req, res) => {
     const listOfDownloads = await Downloads.findAll({
         attributes: [
             'date',
@@ -89,7 +90,7 @@ router.post("/add", async (req, res) => {
 });
 
 //delete Download
-router.delete("/delete/:id([0-9]+)", async (req, res) => {
+router.delete("/delete/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     const id = req.params.id;
     await Downloads.destroy({
         where: {

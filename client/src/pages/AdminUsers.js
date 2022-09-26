@@ -25,7 +25,11 @@ function AdminUsers() {
   }, []);
 
   const deleteUser = (id) => {
-    axios.delete(`http://localhost:3001/users/delete/${id}`);
+    axios.delete(`http://localhost:3001/users/delete/${id}`, {
+      headers: {
+        accessToken: localStorage.getItem("accessToken"),
+      }
+    });
     window.location.reload(true);
   };
 
@@ -52,7 +56,7 @@ function AdminUsers() {
 				    <tbody>
             {usersList.map((val) => {
             return (
-					    <tr>
+					    <tr key={val.id}>
 						    <td>{val.id}</td>
 						    <td>{val.email}</td>
                 <td>{val.name}</td>

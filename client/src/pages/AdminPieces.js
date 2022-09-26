@@ -25,7 +25,11 @@ function AdminPieces() {
   }, []);
 
   const deletePiece = (id) => {
-    axios.delete(`http://localhost:3001/pieces/delete/${id}`);
+    axios.delete(`http://localhost:3001/pieces/delete/${id}`, {
+      headers: {
+        accessToken: localStorage.getItem("accessToken"),
+      }
+    });
     window.location.reload(true);
   };
 
@@ -53,7 +57,7 @@ function AdminPieces() {
 				    <tbody>
             {piecesList.map((val) => {
             return (
-					    <tr>
+					    <tr key={val.id}>
 						    <td>{val.id}</td>
 						    <td>{val.title}</td>
 						    <td>{val.ComposerId}</td>

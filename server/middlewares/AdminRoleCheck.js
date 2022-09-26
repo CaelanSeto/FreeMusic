@@ -3,7 +3,7 @@ const { verify } = require("jsonwebtoken");
 const adminRoleCheck = (req, res, next) => {
   const accessToken = req.header("accessToken");
 
-  if (!accessToken) return res.json({ error: "User not logged in!" });
+  if (!accessToken) return res.json({ error: "Admin not logged in!" });
 
   try {
     const validToken = verify(accessToken, "noSecretAtAll");
@@ -19,7 +19,6 @@ const adminRoleCheck = (req, res, next) => {
 
     if (role == "admin")
     {
-        console.log("Yes admin");
         return next();
     }
     else

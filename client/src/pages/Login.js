@@ -115,7 +115,7 @@ function Login() {
                                     <br></br>
                                     <Field
                                         autoComplete="off"
-                                        id="inputCreatePost" name="email"
+                                        id="inputCreatePost2" name="email"
                                         placeholder="(Ex.John@gmail...)"
                                         onClick={() => {
                                             setError("");
@@ -130,7 +130,7 @@ function Login() {
                                     <br></br>
                                     <Field
                                         autoComplete="off" type="password"
-                                        id="inputCreatePost" name="password"
+                                        name="password"
                                         placeholder="(Your Password)"
                                         onClick={() => {
                                             setError("");
@@ -146,7 +146,6 @@ function Login() {
                             </Formik>
                         </div>
                     </div>
-
                     <div className="col-md-6">
                         <div className="h-100 p-5 text-white bg-dark rounded-3">
                             <h4>Login</h4>
@@ -186,7 +185,7 @@ function Login() {
                         rel="stylesheet"
                         href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
                         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-                        crossorigin="anonymous"
+                        crossOrigin="anonymous"
                     />
                 </div>
             </Container>

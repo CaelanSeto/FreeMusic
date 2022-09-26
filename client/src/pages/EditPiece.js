@@ -27,7 +27,11 @@ function EditPiece() {
     }, []);
 
       const onSubmit = (data) => {
-         axios.patch(`http://localhost:3001/pieces/edit/${id}`, data).then((response) => {
+         axios.patch(`http://localhost:3001/pieces/edit/${id}`, data, {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          }
+        }).then((response) => {
             if(response.data.error) {
                 setErrorMessage(response.data.error);
             }

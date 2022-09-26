@@ -26,7 +26,7 @@ router.get("/", adminRoleCheck, async (req, res) => {
 });
 
 //get user by id
-router.get("/:id([0-9]+)", adminRoleCheck, async (req, res) => {
+router.get("/:id([0-9]+)", async (req, res) => {
     const id = req.params.id;
     const user = await Users.findByPk(id);
     if(!user){
@@ -143,7 +143,7 @@ router.delete("/delete/:id([0-9]+)", adminRoleCheck, async (req, res) => {
     res.json("deleted!!!");
 });
 
-//authentification 
+//authentication 
 router.get('/auth', validateToken, (req, res) => {
     res.json(req.user);
 });

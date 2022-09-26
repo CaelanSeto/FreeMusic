@@ -25,7 +25,11 @@ function AdminComposers() {
   }, []);
 
   const deleteComposer = (id) => {
-    axios.delete(`http://localhost:3001/composers/delete/${id}`);
+    axios.delete(`http://localhost:3001/composers/delete/${id}`, {
+      headers: {
+        accessToken: localStorage.getItem("accessToken"),
+      }
+    });
     window.location.reload();
   };
 
@@ -53,7 +57,7 @@ function AdminComposers() {
 				    <tbody>
             {composersList.map((val) => {
             return (
-					    <tr>
+					    <tr key={val.id}>
 						    <td>{val.id}</td>
 						    <td>{val.name}</td>
 						    <td style={{width:"25%"}}>

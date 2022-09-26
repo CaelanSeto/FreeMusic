@@ -25,7 +25,11 @@ function AdminFiles() {
   }, []);
 
   const deleteFile = (id) => {
-    axios.delete(`http://localhost:3001/files/delete/${id}`);
+    axios.delete(`http://localhost:3001/files/delete/${id}`, {
+      headers: {
+        accessToken: localStorage.getItem("accessToken"),
+      }
+    });
     window.location.reload(true);
   };
 
@@ -58,7 +62,7 @@ function AdminFiles() {
 				    <tbody>
             {filesList.map((val) => {
             return (
-					    <tr>
+					    <tr key={val.id}>
 						    <td>{val.id}</td>
 						    <td>{val.title}</td>
 						    <td>{val.file}</td>

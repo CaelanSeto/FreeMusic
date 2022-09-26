@@ -26,7 +26,11 @@ function EditUser() {
     }, []);
 
       const onSubmit = (data) => {
-         axios.patch(`http://localhost:3001/users/edit/${id}`, data).then((response) => {
+         axios.patch(`http://localhost:3001/users/edit/${id}`, data, {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          }
+        }).then((response) => {
             if(response.data.error) {
                 setErrorMessage(response.data.error);
             }

@@ -66,7 +66,11 @@ function CreateFile() {
         .catch(err => console.error(err));
         setSelect("File has been created and uploaded successfully!");
 
-        axios.post("http://localhost:3001/files/add", data).then((response) => {
+        axios.post("http://localhost:3001/files/add", data, {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          }
+        }).then((response) => {
             if(response.data.error) {
                 setErrorMessage(response.data.error);
             }
