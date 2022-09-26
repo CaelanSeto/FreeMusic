@@ -107,6 +107,7 @@ const donationRouter = require('./routes/Donations');
 app1.use("/donations", donationRouter);
 
 const composerRouter = require('./routes/Composers');
+const { sequelize } = require("./models");
 app1.use("/composers", composerRouter);
 
 

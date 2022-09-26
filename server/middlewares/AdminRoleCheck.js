@@ -1,3 +1,4 @@
+
 const { verify } = require("jsonwebtoken");
 
 const adminRoleCheck = (req, res, next) => {
@@ -6,12 +7,12 @@ const adminRoleCheck = (req, res, next) => {
   if (!accessToken) return res.json({ error: "Admin not logged in!" });
 
   try {
-    const validToken = verify(accessToken, "noSecretAtAll");
+    const validToken = verify(accessToken, process.env.JWT_SECRET);
 
     if (!validToken) {
       return res.json({ error: "User has invalid token!" });
     }
-    
+
     const role = validToken["role"];
     console.log(role);
 
