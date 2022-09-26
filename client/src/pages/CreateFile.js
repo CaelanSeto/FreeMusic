@@ -11,13 +11,18 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 
 function CreateFile() {
     //file upload to S3
-    const [selectedFile, setSelectedFile] = useState(null);
+    
     const [select, setSelect] = useState("");
-
-    let usenavigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState("");
     const [piecesList, setPiecesList] = useState([]);
 
+    //changing name for uploaded file
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [newFileName, setNewFileName] = useState("");
+    const [uuidName, setUuidName] = useState("");
+    const [typeName, setTypeName] = useState("");
+    
+    let usenavigate = useNavigate(); 
     // the configuration information is fetched from the .env file
     const config = {
       bucketName: process.env.REACT_APP_BUCKET_NAME,
@@ -30,17 +35,7 @@ function CreateFile() {
       setSelectedFile(e.target.files[0]);
     }
 
-    const uploadFile = async (file) => {
-      const ReactS3Client = new S3(config);
-      // the name of the file uploaded is used to upload it to S3
-      ReactS3Client
-      .uploadFile(file, file.name)
-      .then(data => console.log(data.location))
-      .catch(err => console.error(err));
-      setSelect("File uploaded!");
-    }
-
-    const initialValues = {title: "", type: "", description: "", instruments: "", uuid: "", PieceId: null}; 
+    const initialValues = {title: "", type: "", description: "", instruments: "", uuid: uuidv4(), PieceId: null}; 
       
     const validationSchema = Yup.object().shape({
         title: Yup.string().min(3).max(260).matches(/^\S*$/, 'No spaces allowed').required(),
@@ -58,6 +53,19 @@ function CreateFile() {
     }, []);
 
     const onSubmit =(data) => {
+        const ReactS3Client = new S3(config);
+        let ext = ".pdf";
+        if(data.type==="recording"){
+          ext = ".mp3"
+        }
+        let fileName = data.uuid+ext; 
+        // the name of the file uploaded is used to upload it to S3
+        ReactS3Client
+        .uploadFile(selectedFile, fileName)
+        .then(data => console.log(data.location))
+        .catch(err => console.error(err));
+        setSelect("File has been created and uploaded successfully!");
+
         axios.post("http://localhost:3001/files/add", data).then((response) => {
             if(response.data.error) {
                 setErrorMessage(response.data.error);
@@ -86,15 +94,8 @@ function CreateFile() {
           <br></br>
 
           <div class="form-group">
-            <label>UUID:</label>
-            <Field className="form-control"  name="uuid" value={uuidv4()}/>
-            <ErrorMessage name="uuid" component="span"/>
-          </div>
-          <br></br>
-
-          <div class="form-group">
             <label>Type:</label>
-            <Field as="select" name="type" className="form-control">
+            <Field as="select" name="type" className="form-control" >
              <option value=""></option>
              <option value="recording">recording</option>
              <option value="sheetmusic">sheetmusic</option>
@@ -168,19 +169,16 @@ function CreateFile() {
            </Field>
             <ErrorMessage name="PieceId" component="span"/>
           </div>
-          <br></br><br></br><br></br>
+          <br></br>
+          <input className="btn btn-secondary" type="file" onChange={handleFileInput}/>
+          <br></br><br></br>
             <p style={{color: 'red'}}>{errorMessage}</p>
+            <p style={{color: 'green'}}>{select}</p>
             <button type="submit" className="btn btn-dark">Add File</button>
             <br></br><br></br>
           </Form>
         </Formik>
-        <br></br>
-                <p>Please attach the file with the UUID + .mp3 or .pdf! UUID is provided in this form!</p>
-                <input className="btn btn-secondary" type="file" onChange={handleFileInput}/>
-                <br></br><br></br>
-                <button className="btn btn-dark" onClick={() => uploadFile(selectedFile)}>Upload to S3</button>
-                <br></br><br></br>
-                <h5 style={{color: 'green'}}>{select}</h5>
+        <br></br>   
      </div>
   );
 }
