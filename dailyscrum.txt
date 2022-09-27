@@ -338,3 +338,33 @@ EDGAR:
 
 
 
+9/26/22
+CAELAN:
+1) Done / Not done since Last Scrum:
+    Work on presentation
+
+2) To do until next Scrum:
+    No more scrums
+
+3) Need Assistance / figure things out
+    Need to figure out how to deploy website onto AWS
+
+VLAD:
+1) Done / Not done since Last Scrum:
+    Work on presentation
+
+2) To do until next Scrum:
+    No more scrums
+
+3) Need Assistance / figure things out
+
+
+EDGAR:
+1) Done / Not done since Last Scrum:
+    Work on presentation
+
+2) To do until next Scrum:
+    No more scrums
+
+3) Need Assistance / figure things out
+

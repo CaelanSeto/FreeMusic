@@ -32,7 +32,7 @@ function SearchBar({placeholder, data}) {
             <div className="dataResult">
                 {filteredData.slice(0, 15).map((value, key) => {
                     return (
-                    <a key={value.id} className="dataItem" href={`/files/${value.id}`} 
+                    <a key={value.id} className="dataItem" href={`/files/${value.id}`}
                         onClick={() => {localStorage.setItem("linkToFiles", `/files/${value.id}`)}}>
                         <p>{value.title}</p>
                     </a>
