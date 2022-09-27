@@ -13,7 +13,6 @@ const adminRoleCheck = (req, res, next) => {
     }
     
     const role = validToken["role"];
-    console.log(role);
 
     if (role == "admin")
     {
