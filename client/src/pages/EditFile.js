@@ -23,16 +23,16 @@ function EditFile() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/files/byId/${id}`).then((response) =>{
+        axios.get(`http://18.217.161.38:3001/files/byId/${id}`).then((response) =>{
                 setFile(response.data);
         });
-        axios.get(`http://localhost:3001/pieces`).then((response) =>{
+        axios.get(`http://18.217.161.38:3001/pieces`).then((response) =>{
                 setPiecesList(response.data);
         });
     }, []);
 
       const onSubmit = (data) => {
-         axios.patch(`http://localhost:3001/files/edit/${id}`, data, {
+         axios.patch(`http://18.217.161.38:3001/files/edit/${id}`, data, {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           }

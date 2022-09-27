@@ -12,7 +12,7 @@ function AdminStat() {
   const [downloads, setDownloads] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/downloads/statistics", {
+    axios.get("http://18.217.161.38:3001/downloads/statistics", {
       headers: {
         accessToken: localStorage.getItem("accessToken"),
       }

@@ -37,7 +37,7 @@ function Donations() {
     const donateNow = async token => {
         try {
             const response = await axios({
-                url: 'http://localhost:5000/donation',
+                url: 'http://18.217.161.38:5000/donation',
                 method: 'post',
                 data: {
                     amount: donation.amount * 100,

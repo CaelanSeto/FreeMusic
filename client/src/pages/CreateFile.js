@@ -47,7 +47,7 @@ function CreateFile() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/pieces`).then((response) =>{
+        axios.get(`http://18.217.161.38:3001/pieces`).then((response) =>{
                 setPiecesList(response.data);
         });
     }, []);
@@ -66,7 +66,7 @@ function CreateFile() {
         .catch(err => console.error(err));
         setSelect("File has been created and uploaded successfully!");
 
-        axios.post("http://localhost:3001/files/add", data, {
+        axios.post("http://18.217.161.38:3001/files/add", data, {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           }

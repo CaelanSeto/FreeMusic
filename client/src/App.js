@@ -66,7 +66,7 @@ function App() {
 
   // USE AXIOS INSTANCE INSTEAD OF STATIC AXIOS FOR CONFIG --- TODO ---
   let axiosInst = axios.create({
-    baseURL: "http://localhost:3001" //change this so it's not hardcoded
+    baseURL: "http://18.217.161.38:3001" //change this so it's not hardcoded
   });
 
   const [listOfPieces, setListOfPieces] = useState([]);

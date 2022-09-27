@@ -24,13 +24,13 @@ function Profile() {
     const usenavigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/users/${id}`).then((response) =>{
+        axios.get(`http://18.217.161.38:3001/users/${id}`).then((response) =>{
                 setUser(response.data);
         });
     }, []);
 
       const onSubmit = (data) => {
-         axios.patch(`http://localhost:3001/users/edit/profile/${id}`, data).then((response) => {
+         axios.patch(`http://18.217.161.38:3001/users/edit/profile/${id}`, data).then((response) => {
             if(response.data.error) {
                 setErrorMessage(response.data.error);
             }
@@ -41,7 +41,7 @@ function Profile() {
       };
 
       useEffect(() => {
-        axios.get(`http://localhost:3001/downloads/userId/${id}`).then((response) =>{
+        axios.get(`http://18.217.161.38:3001/downloads/userId/${id}`).then((response) =>{
           if(response.data.error) {
               setErrMessage(response.data.error);
           }
@@ -52,7 +52,7 @@ function Profile() {
     }, []);
 
     useEffect(() => {
-      axios.get(`http://localhost:3001/donations/${id}`).then((response) =>{
+      axios.get(`http://18.217.161.38:3001/donations/${id}`).then((response) =>{
         if(response.data.error) {
             setErr1Message(response.data.error);
         }

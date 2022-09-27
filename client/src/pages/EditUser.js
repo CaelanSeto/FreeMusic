@@ -20,13 +20,13 @@ function EditUser() {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/users/${id}`).then((response) =>{
+        axios.get(`http://18.217.161.38:3001/users/${id}`).then((response) =>{
                 setUser(response.data);
         });
     }, []);
 
       const onSubmit = (data) => {
-         axios.patch(`http://localhost:3001/users/edit/${id}`, data, {
+         axios.patch(`http://18.217.161.38:3001/users/edit/${id}`, data, {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           }

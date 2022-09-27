@@ -11,7 +11,7 @@ function Composers() {
    const usenavigate = useNavigate();
 
   useEffect(() => {  
-    axios.get("http://localhost:3001/composers").then((response) => {
+    axios.get("http://18.217.161.38:3001/composers").then((response) => {
         setListOfComposers(response.data);   
     });
   }, []);

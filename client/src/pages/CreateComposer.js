@@ -17,7 +17,7 @@ function CreateComposer() {
     });
 
     const onSubmit =(data) => {
-        axios.post("http://localhost:3001/composers/add", data, {
+        axios.post("http://18.217.161.38:3001/composers/add", data, {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           }

@@ -14,10 +14,10 @@ function Pieces() {
    let { ComposerId } = useParams();
 
   useEffect(() => {  
-    axios.get(`http://localhost:3001/composers/byId/${ComposerId}`).then((response) => {
+    axios.get(`http://18.217.161.38:3001/composers/byId/${ComposerId}`).then((response) => {
         setComposer(response.data);
     });
-    axios.get(`http://localhost:3001/pieces/${ComposerId}`).then((response) => {
+    axios.get(`http://18.217.161.38:3001/pieces/${ComposerId}`).then((response) => {
         setListOfPieces(response.data);
       });
     },[]);

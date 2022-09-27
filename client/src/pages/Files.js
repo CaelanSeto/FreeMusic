@@ -27,7 +27,7 @@ function Files() {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/files/${PieceId}`).then((response) => {
+    axios.get(`http://18.217.161.38:3001/files/${PieceId}`).then((response) => {
       if (response.data) {
         setListOfFiles(response.data);
       }
@@ -36,7 +36,7 @@ function Files() {
       }
     });
 
-    axios.get(`http://localhost:3001/pieces/byId/${PieceId}`).then((response) => {
+    axios.get(`http://18.217.161.38:3001/pieces/byId/${PieceId}`).then((response) => {
       if (response.data) {
         setComposerId(response.data.ComposerId);
         setPieceTitle(response.data.title);
@@ -49,7 +49,7 @@ function Files() {
   }, []);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/composers/byId/${composerId}`).then((response) => {
+    axios.get(`http://18.217.161.38:3001/composers/byId/${composerId}`).then((response) => {
       if (response.data) {
         setComposerName(response.data.name);
       }
@@ -111,7 +111,7 @@ function Files() {
                   <div>
                     <Button className="btn-secondary" size="sm" 
                       onClick={() => {
-                        axios.post("http://localhost:3001/downloads/add", {
+                        axios.post("http://18.217.161.38:3001/downloads/add", {
                           UserId: localStorage.getItem("userId"),
                           FileId: value.id
                       })}}>Download</Button>

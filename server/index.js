@@ -39,7 +39,7 @@ app2.post('/donation', async (req, res) => {
 
 //Stripe Endpoint
 
-// 3) Run the server on http://localhost:4242
+// 3) Run the server on http://18.217.161.38:4242
 
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
 const endpointSecret = "whsec_899cdb4179c61d33b658d78ac3df1903cd312663e2cb9d5914f0b8f4f37ea776";

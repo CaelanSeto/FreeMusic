@@ -10,7 +10,7 @@ function AdminFiles() {
   const [errMessage, setErrMessage] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/files", {
+    axios.get("http://18.217.161.38:3001/files", {
       headers: {
         accessToken: localStorage.getItem("accessToken"),
       }
@@ -25,7 +25,7 @@ function AdminFiles() {
   }, []);
 
   const deleteFile = (id) => {
-    axios.delete(`http://localhost:3001/files/delete/${id}`, {
+    axios.delete(`http://18.217.161.38:3001/files/delete/${id}`, {
       headers: {
         accessToken: localStorage.getItem("accessToken"),
       }

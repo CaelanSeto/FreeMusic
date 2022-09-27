@@ -10,7 +10,7 @@ function AdminUsers() {
   const [errMessage, setErrMessage] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/users", {
+    axios.get("http://18.217.161.38:3001/users", {
       headers: {
         accessToken: localStorage.getItem("accessToken"),
       }
@@ -25,7 +25,7 @@ function AdminUsers() {
   }, []);
 
   const deleteUser = (id) => {
-    axios.delete(`http://localhost:3001/users/delete/${id}`, {
+    axios.delete(`http://18.217.161.38:3001/users/delete/${id}`, {
       headers: {
         accessToken: localStorage.getItem("accessToken"),
       }

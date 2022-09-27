@@ -17,13 +17,13 @@ function EditComposer() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/composers/byId/${id}`).then((response) =>{
+        axios.get(`http://18.217.161.38:3001/composers/byId/${id}`).then((response) =>{
                 setComposer(response.data);
         });
     }, []);
 
       const onSubmit = (data) => {
-         axios.patch(`http://localhost:3001/composers/edit/${id}`, data, {
+         axios.patch(`http://18.217.161.38:3001/composers/edit/${id}`, data, {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           }

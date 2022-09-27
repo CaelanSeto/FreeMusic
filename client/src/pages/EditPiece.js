@@ -18,16 +18,16 @@ function EditPiece() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/pieces/byId/${id}`).then((response) =>{
+        axios.get(`http://18.217.161.38:3001/pieces/byId/${id}`).then((response) =>{
                 setPiece(response.data);
         });
-        axios.get(`http://localhost:3001/composers`).then((response) =>{
+        axios.get(`http://18.217.161.38:3001/composers`).then((response) =>{
                 setComposersList(response.data);
         });
     }, []);
 
       const onSubmit = (data) => {
-         axios.patch(`http://localhost:3001/pieces/edit/${id}`, data, {
+         axios.patch(`http://18.217.161.38:3001/pieces/edit/${id}`, data, {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           }

@@ -28,7 +28,7 @@ function Login() {
     });
 
     const onSubmit = (data) => {
-        axios.post("http://localhost:3001/users/register", data).then((response) => {
+        axios.post("http://18.217.161.38:3001/users/register", data).then((response) => {
             if (response.data.error) {
                 setError(response.data.error);
 
@@ -48,7 +48,7 @@ function Login() {
     const login = () => {
 
         const data = { email: email, password: password };
-        axios.post("http://localhost:3001/users/login", data).then((response) => {
+        axios.post("http://18.217.161.38:3001/users/login", data).then((response) => {
             if (response.data.error) {
                 setBadCredentials(response.data.error);
             } 

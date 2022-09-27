@@ -18,13 +18,13 @@ function CreatePiece() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/composers`).then((response) =>{
+        axios.get(`http://18.217.161.38:3001/composers`).then((response) =>{
                 setComposersList(response.data);
         });
     }, []);
 
     const onSubmit =(data) => {
-        axios.post("http://localhost:3001/pieces/add", data, {
+        axios.post("http://18.217.161.38:3001/pieces/add", data, {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           }
