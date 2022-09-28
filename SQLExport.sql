@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: 18.217.161.38    Database: freemusicdb
+-- Host: localhost    Database: freemusicdb
 -- ------------------------------------------------------
 -- Server version	8.0.28
 
@@ -91,7 +91,7 @@ CREATE TABLE `downloads` (
   KEY `UserId` (`UserId`),
   CONSTRAINT `downloads_ibfk_1` FOREIGN KEY (`FileId`) REFERENCES `files` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `downloads_ibfk_2` FOREIGN KEY (`UserId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +100,7 @@ CREATE TABLE `downloads` (
 
 LOCK TABLES `downloads` WRITE;
 /*!40000 ALTER TABLE `downloads` DISABLE KEYS */;
-INSERT INTO `downloads` VALUES (1,'2022-09-25','2022-09-26 01:43:02','2022-09-26 01:43:02',3,1),(2,'2022-09-25','2022-09-26 01:43:05','2022-09-26 01:43:05',3,1),(3,'2022-09-25','2022-09-26 01:43:07','2022-09-26 01:43:07',4,1);
+INSERT INTO `downloads` VALUES (1,'2022-09-25','2022-09-26 01:43:02','2022-09-26 01:43:02',3,1),(2,'2022-09-25','2022-09-26 01:43:05','2022-09-26 01:43:05',3,1),(3,'2022-09-25','2022-09-26 01:43:07','2022-09-26 01:43:07',4,1),(4,'2022-09-26','2022-09-27 01:03:04','2022-09-27 01:03:04',4,1),(5,'2022-09-26','2022-09-27 01:03:10','2022-09-27 01:03:10',3,1),(6,'2022-09-26','2022-09-27 01:03:17','2022-09-27 01:03:17',4,1);
 /*!40000 ALTER TABLE `downloads` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,6 +168,29 @@ INSERT INTO `pieces` VALUES (1,'Symphony No. 9 in D minor, op.125','2022-09-23 1
 UNLOCK TABLES;
 
 --
+-- Table structure for table `sequelizemeta`
+--
+
+DROP TABLE IF EXISTS `sequelizemeta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sequelizemeta` (
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`name`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sequelizemeta`
+--
+
+LOCK TABLES `sequelizemeta` WRITE;
+/*!40000 ALTER TABLE `sequelizemeta` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sequelizemeta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -185,7 +208,7 @@ CREATE TABLE `users` (
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,7 +217,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'caelan@seto.com','Caelan','$2b$10$RGj743s4WPq4kbozoR8yNuQtbfB5Vi81jVXG4TnFWDAtgim0rY3N6','admin',0,'2022-09-26 01:42:07','2022-09-26 01:42:07'),(2,'caelan1@seto.com','Caelan1','$2b$10$Djeazds4YJaWa.hu3DICRuKsMA5MUu9jfKNzZYmn2DCPprEno1ZJ6','user',0,'2022-09-26 01:42:32','2022-09-26 01:42:32'),(3,'vlad@gmail.com','Vlad Apple','$2b$10$AeR9zSs6VOGBjTP/QknpnuuBH/3NAfwcDMXx8F6bBB.rN0cSuwmXa','admin',0,'2022-09-26 02:38:39','2022-09-26 02:38:39'),(4,'bob@bob.com','BoB','$2b$10$NVteRbatKr0Csz8l5kfzxudNVgpM9Y8RJ2SzpuJKziV.1hhu2UBne','admin',0,'2022-09-26 02:38:59','2022-09-26 02:38:59'),(6,'a@b.com','a@b.com','$2b$10$iGROFTJ8NiCtjDm2z9RXIOdiUHznMHETcvEt8qcUb9X1uMoPxtBQG','user',0,'2022-09-26 04:33:54','2022-09-26 04:33:54');
+INSERT INTO `users` VALUES (1,'caelan@seto.com','Caelan','$2b$10$uZW/YPv8MaKk/8VluNgFcODP3QISkmxKGPIRx1uax4QA3Epm5jlxO','admin',0,'2022-09-26 01:42:07','2022-09-27 14:54:31'),(2,'caelan1@seto.com','Caelan1a','$2b$10$6BAgcKsI7mUOoJJzCz/QrOXuYty6GlgJ0Lqgt1ifnTzUJjtTAMllO','user',0,'2022-09-26 01:42:32','2022-09-26 13:18:26'),(3,'vlad@gmail.com','Vlad Apple','$2b$10$AeR9zSs6VOGBjTP/QknpnuuBH/3NAfwcDMXx8F6bBB.rN0cSuwmXa','admin',0,'2022-09-26 02:38:39','2022-09-26 02:38:39'),(4,'bob@bob.com','BoB','$2b$10$NVteRbatKr0Csz8l5kfzxudNVgpM9Y8RJ2SzpuJKziV.1hhu2UBne','admin',0,'2022-09-26 02:38:59','2022-09-26 02:38:59'),(6,'a@b.com','a@b.com','$2b$10$iGROFTJ8NiCtjDm2z9RXIOdiUHznMHETcvEt8qcUb9X1uMoPxtBQG','user',0,'2022-09-26 04:33:54','2022-09-26 04:33:54'),(7,'hacker@man.copm','Hackerman','$2b$10$bKC1iRnShxBoij9IQOnpb.vmN20pBjXoLFa7RjXT0Br.XHtsA1nia','user',0,'2022-09-27 15:37:46','2022-09-27 15:37:46');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -207,4 +230,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-26  3:23:43
+-- Dump completed on 2022-09-27 20:06:11

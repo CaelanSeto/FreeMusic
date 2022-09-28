@@ -1,0 +1,19 @@
+1)NAMES OF TEAM MEMBERS
+Caelan Seto
+Edgar Townsend
+Vladislav Epelboym
+
+2)TITLE OF THE PROJECT
+FreeMusic
+
+3)URL TO GIT REPOSITORY
+https://github.com/Solitarity/FinalProject_Webdev2
+NOTE: The last daily scrum was commited on the backup-before-server-deployment branch.
+
+4) TRELLO BOARD
+https://trello.com/b/YsVq786a/final-project-web-dev-2
+
+5) URL TO LIVE WEBSITE
+http://ec2-18-217-161-38.us-east-2.compute.amazonaws.com/
+NOTE: There was some trouble after deploying onto AWS EC2 and many functions broke.
+For full functionality, please check the backup-before-server-deployment branch on Git.
