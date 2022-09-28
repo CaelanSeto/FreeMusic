@@ -59,7 +59,6 @@ function Donations() {
             <br></br>
             <h3>Donate $10 to help us to continue to provide free music</h3>
             <br></br>
-            <button>${donation.amount}</button>
             <StripeCheckout
                 stripeKey={publishableKey}
                 label="Donate Now"
